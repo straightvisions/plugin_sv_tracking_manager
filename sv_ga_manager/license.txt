@@ -1,0 +1,9 @@
+This is SV GA Manager. This means, that this package has it's own, probritary license:
+
+	SV GA Manager
+	Code (c) 2017 Matthias Reuter
+	Website: https://straightvisions.com/
+
+	Please note: This is no free software. You need to purchase a license
+	to legaly use this software. If you are using the trial version of this
+	software, you have to buy a license if the trial period expires.
