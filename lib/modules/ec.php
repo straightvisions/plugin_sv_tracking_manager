@@ -31,21 +31,76 @@ class ec extends modules{
 	public static function get_product(){
 		return static::$product;
 	}
-	public function product_impression($product=false){
-		if(static::get_product()){
+	public function product_list_single($product=false){
+		/*if(static::get_product()){
 			$product									= static::get_product();
 		}
-
+*/
 		if($product){
+			// @todo: Add price support (make prices to settings)
 			echo '
 			<script data-id="'.static::get_name().'">
 			ga("ec:addImpression", {
 				"id": "'.$product['id'].'",
 				"name": "'.$product['name'].'",
-				"category": "'.$product['category'].'"
+				"category": "'.$product['category'].'",
+				"price": "1290"
 			});
 			</script>
 			';
 		}
+	}
+	public function product_detail_view($product=false){
+		if(static::get_product()){
+			$product									= static::get_product();
+		}
+
+		if($product){
+			// @todo: Add price support (make prices to settings)
+			echo '
+			<script data-id="'.static::get_name().'">
+			ga("ec:addProduct", {
+				"id": "'.$product['id'].'",
+				"name": "'.$product['name'].'",
+				"category": "'.$product['category'].'",
+				"price": "1290"
+			});
+			</script>
+			';
+		}
+	}
+	public function set_action_detail(){
+		echo '
+		<script data-id="'.static::get_name().'">
+		ga("ec:setAction", "detail");
+		</script>
+		';
+	}
+	public function add_to_cart_form(){
+		echo '
+		<script data-id="'.static::get_name().'">
+			$( document ).ready()
+			function addToCart(product) {
+			  ga("ec:addProduct", {
+				"id": product.id,
+				"name": product.name,
+				"category": product.category,
+				"brand": product.brand,
+				"variant": product.variant,
+				"price": product.price,
+				"quantity": product.qty
+			  });
+			  ga("ec:setAction", "add");
+			  ga("send", "event", "UX", "click", "add to cart");     // Send data using an event.
+			}
+		
+		ga("ec:addProduct", {
+			"id": "'.$product['id'].'",
+			"name": "'.$product['name'].'",
+			"category": "'.$product['category'].'",
+			"price": "1290"
+		});
+		</script>
+		';
 	}
 }
