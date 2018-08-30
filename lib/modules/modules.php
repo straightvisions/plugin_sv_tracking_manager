@@ -18,7 +18,7 @@
 		 * @since			1.0
 		 */
 		public function init(){
-			$this->woocommerce->init();
+			$this->ec->init();
 			
 			/*add_action('admin_menu', array($this, 'get_settings_menu'));
 			add_action('admin_enqueue_scripts', array($this, 'backend_scripts'));
