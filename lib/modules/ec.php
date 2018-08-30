@@ -38,11 +38,13 @@ class ec extends modules{
 
 		if($product){
 			echo '
-			ga("ec:addImpression", {						// Provide product details in an impressionFieldObject.
-				"id": "'.$product['id'].'",					// Product ID (string).
-				"name": "'.$product['name'].'",				// Product name (string).
-				"category": "'.$product['category'].'",		// Product category (string).
+			<script data-id="'.static::get_name().'">
+			ga("ec:addImpression", {
+				"id": "'.$product['id'].'",
+				"name": "'.$product['name'].'",
+				"category": "'.$product['category'].'"
 			});
+			</script>
 			';
 		}
 	}
