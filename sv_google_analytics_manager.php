@@ -16,7 +16,7 @@
 	
 	class init extends \sv_core\core{
 		public function __construct(){
-			$this->setup(__NAMESPACE__);
+			$this->setup(__NAMESPACE__,__FILE__);
 		}
 	}
 	
