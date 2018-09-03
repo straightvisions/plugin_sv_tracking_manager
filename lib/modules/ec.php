@@ -8,7 +8,15 @@ class ec extends modules{
 
 	}
 	public function init(){
-	
+		$this->ec_woocommerce->init();
+		add_action('wp_footer',array($this,'wp_footer'), 990);
+	}
+	public function wp_footer(){
+		echo '
+			<script id="'.$this->get_name().'">
+			ga("require", "ec");
+			</script>
+		';
 	}
 	public static function set_product($product){
 		if(!static::$product){
@@ -16,15 +24,15 @@ class ec extends modules{
 				static::$product							= $product;
 			}else{
 				$notice = static::$notices->create();
-				$notice->set_title(__('Invalid Produkt for GA Manager', static::get_name()));
-				$notice->set_desc_admin(__('Product should be instance of WC_Product - ', static::get_name()) . var_export($product,true));
+				$notice->set_title(__('Invalid Produkt for GA Manager', $this->get_name()));
+				$notice->set_desc_admin(__('Product should be instance of WC_Product - ', $this->get_name()) . var_export($product,true));
 				$notice->set_state(3);
 				die($product);
 			}
 		}else{
 			$notice = static::$notices->create();
-			$notice->set_title(__('Product for GA Manager already set', static::get_name()));
-			$notice->set_desc_admin(__FUNCTION__ . __(' in GA Manager was called but product was already set', static::get_name()));
+			$notice->set_title(__('Product for GA Manager already set', $this->get_name()));
+			$notice->set_desc_admin(__FUNCTION__ . __(' in GA Manager was called but product was already set', $this->get_name()));
 			$notice->set_state(3);
 		}
 	}
@@ -39,7 +47,7 @@ class ec extends modules{
 		if($product){
 			// @todo: Add price support (make prices to settings)
 			echo '
-			<script data-id="'.static::get_name().'">
+			<script data-id="'.$this->get_name().'">
 			ga("ec:addImpression", {
 				"id": "'.$product['id'].'",
 				"name": "'.$product['name'].'",
@@ -58,7 +66,7 @@ class ec extends modules{
 		if($product){
 			// @todo: Add price support (make prices to settings)
 			echo '
-			<script data-id="'.static::get_name().'">
+			<script data-id="'.$this->get_name().'">
 			ga("ec:addProduct", {
 				"id": "'.$product['id'].'",
 				"name": "'.$product['name'].'",
@@ -71,14 +79,14 @@ class ec extends modules{
 	}
 	public function set_action_detail(){
 		echo '
-		<script data-id="'.static::get_name().'">
+		<script data-id="'.$this->get_name().'">
 		ga("ec:setAction", "detail");
 		</script>
 		';
 	}
 	public function add_to_cart_form(){
 		echo '
-		<script data-id="'.static::get_name().'">
+		<script data-id="'.$this->get_name().'">
 			$( document ).ready()
 			function addToCart(product) {
 			  ga("ec:addProduct", {
@@ -102,5 +110,20 @@ class ec extends modules{
 		});
 		</script>
 		';
+	}
+	public function ec_add_product(array $param){
+		echo '
+			<script id="'.$this->get_name().'">
+			ga("ec:addProduct", {
+				"id": "'.$param['id'].'",
+				"name": "'.$param['name'].'",
+				"category": "'.$param['category'].'",
+				"brand": "'.$param['brand'].'",
+				"variant": "'.$param['variant'].'",
+				"price": "'.$param['price'].'",
+				"quantity": '.$param['quantity'].'
+			});
+			</script>
+			';
 	}
 }
