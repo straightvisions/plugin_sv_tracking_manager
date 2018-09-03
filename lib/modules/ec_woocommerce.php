@@ -21,12 +21,12 @@ class ec_woocommerce extends ec{
 	}
 	public function wp_footer(){
 		echo '
-			<script id="'.$this->get_name().'">
+			<script data-id="'.$this->get_name().'">
 			ga("set", "currencyCode", "'.get_woocommerce_currency().'");
 			</script>
 		';
 	}
-	public static function set_product($product){
+	public function set_product($product){
 		if(!static::$product){
 			if($product instanceof \WC_Product){
 				static::$product							= $product;
@@ -82,8 +82,7 @@ class ec_woocommerce extends ec{
 			'name'								=> get_the_title($item['product_id']),
 			'category'							=> $this->get_product_cat($item['product_id']),
 			'brand'								=> '', // no default support for brands in WooCommerce
-			//'variant'							=> strip_tags($item['data']->get_formatted_name()),
-			'variant'							=> strip_tags($item->get_name()),
+			'variant'							=> isset($item['data']) ? strip_tags($item['data']->get_formatted_name()) : strip_tags($item->get_name()),
 			'price'								=> $item['line_total'],
 			'quantity'							=> $item['quantity']
 		);
@@ -95,8 +94,7 @@ class ec_woocommerce extends ec{
 			}
 
 			echo '
-			<script id="'.$this->get_name().'">
-			// Add the step number and additional info about the checkout to the action.
+			<script data-id="'.$this->get_name().'">
 			ga("ec:setAction","checkout", {
 				"step": 1,
 				"option": "Cart"
@@ -112,8 +110,7 @@ class ec_woocommerce extends ec{
 			}
 
 			echo '
-			<script id="'.$this->get_name().'">
-			// Add the step number and additional info about the checkout to the action.
+			<script data-id="'.$this->get_name().'">
 			ga("ec:setAction","checkout", {
 				"step": 2,
 				"option": "Checkout"
@@ -125,37 +122,27 @@ class ec_woocommerce extends ec{
 	public function checkout_thankyou(){
 		if(is_wc_endpoint_url('order-received')) {
 			$order									= new \WC_Order(static::$order_id);
+			if(!$order->meta_exists( $this->get_name().'_checkout_tracked')) {
+				foreach ($order->get_items() as $item) {
+					$this->ec_add_product($this->map_wc_item_to_ec_product($item));
+				}
 
-			foreach($order->get_items() as $item){
-				$this->ec_add_product($this->map_wc_item_to_ec_product($item));
+				$order->update_meta_data($this->get_name() . '_checkout_tracked', '1');
+				$order->save();
+
+				echo '
+				<script data-id="' . $this->get_name() . '">
+				ga("ec:setAction", "purchase", {
+					"id": "'.$order->get_id().'",
+					"affiliation": "'.get_bloginfo('name').'",
+					"revenue": "'.$order->get_total().'",
+					"tax": "'.$order->get_total_tax().'",
+					"shipping": "'.$order->get_shipping_total().'",
+					"coupon": "'.implode(',',$order->get_used_coupons()).'"
+				});
+				</script>
+				';
 			}
-
-			$order->update_meta_data( $this->get_name().'_checkout_tracked', '1' );
-			$order->save();
-
-			echo '
-			<script id="'.$this->get_name().'">
-			ga("ec:addProduct", {               // Provide product details in an productFieldObject.
-				"id": "P12345",                   // Product ID (string).
-				"name": "Android Warhol T-Shirt", // Product name (string).
-				"category": "Apparel",            // Product category (string).
-				"brand": "Google",                // Product brand (string).
-				"variant": "black",               // Product variant (string).
-				"price": "29.20",                 // Product price (currency).
-				"quantity": 1                     // Product quantity (number).
-			});
-			
-			// Add the step number and additional info about the checkout to the action.
-			ga("ec:setAction", "purchase", {
-				"id": "T12345",
-				"affiliation": "Google Store - Online",
-				"revenue": "37.39",
-				"tax": "2.85",
-				"shipping": "5.34",
-				"coupon": "SUMMER2013"    // User added a coupon at checkout.
-			});
-			</script>
-			';
 		}
 	}
 }

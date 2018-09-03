@@ -18,7 +18,7 @@ class ec extends modules{
 			</script>
 		';
 	}
-	public static function set_product($product){
+	public function set_product($product){
 		if(!static::$product){
 			if(is_array($product)){
 				static::$product							= $product;
@@ -84,10 +84,10 @@ class ec extends modules{
 		</script>
 		';
 	}
-	public function add_to_cart_form(){
+	public function add_to_cart_form($product){
 		echo '
 		<script data-id="'.$this->get_name().'">
-			$( document ).ready()
+			jQuery( document ).ready()
 			function addToCart(product) {
 			  ga("ec:addProduct", {
 				"id": product.id,
@@ -106,7 +106,7 @@ class ec extends modules{
 			"id": "'.$product['id'].'",
 			"name": "'.$product['name'].'",
 			"category": "'.$product['category'].'",
-			"price": "1290"
+			"price": "'.$product['price'].'"
 		});
 		</script>
 		';
