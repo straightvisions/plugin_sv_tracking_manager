@@ -19,6 +19,7 @@
 		 */
 		public function init(){
 			$this->ec->init();
+			$this->shapepress_dsgvo->init();
 			
 			/*add_action('admin_menu', array($this, 'get_settings_menu'));
 			add_action('admin_enqueue_scripts', array($this, 'backend_scripts'));

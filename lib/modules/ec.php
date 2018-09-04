@@ -9,12 +9,26 @@ class ec extends modules{
 	}
 	public function init(){
 		$this->ec_woocommerce->init();
-		add_action('wp_footer',array($this,'wp_footer'), 990);
+		add_action('wp_head',array($this,'wp_head'), 990);
 	}
-	public function wp_footer(){
+	public function wp_head(){
 		echo '
-			<script id="'.$this->get_name().'">
+			<script data-id="'.$this->get_name().'">
 			ga("require", "ec");
+			function addToCart(product) {
+				ga("send", "event", "Checkout", "Add To Cart", "", ' . (product . price * product . qty) . ');     // Send data using an event.
+				
+				ga("ec:setAction", "add");
+				ga("ec:addProduct", {
+					"id": product.id,
+					"name": product.name,
+					"category": product.category,
+					"brand": product.brand,
+					"variant": product.variant,
+					"price": product.price,
+					"quantity": product.qty
+				});
+			}
 			</script>
 		';
 	}
@@ -52,7 +66,7 @@ class ec extends modules{
 				"id": "'.$product['id'].'",
 				"name": "'.$product['name'].'",
 				"category": "'.$product['category'].'",
-				"price": "1290"
+				"price": 1290
 			});
 			</script>
 			';
@@ -71,7 +85,7 @@ class ec extends modules{
 				"id": "'.$product['id'].'",
 				"name": "'.$product['name'].'",
 				"category": "'.$product['category'].'",
-				"price": "1290"
+				"price": 1290
 			});
 			</script>
 			';
@@ -87,40 +101,25 @@ class ec extends modules{
 	public function add_to_cart_form($product){
 		echo '
 		<script data-id="'.$this->get_name().'">
-			jQuery( document ).ready()
-			function addToCart(product) {
-			  ga("ec:addProduct", {
-				"id": product.id,
-				"name": product.name,
-				"category": product.category,
-				"brand": product.brand,
-				"variant": product.variant,
-				"price": product.price,
-				"quantity": product.qty
-			  });
-			  ga("ec:setAction", "add");
-			  ga("send", "event", "UX", "click", "add to cart");     // Send data using an event.
-			}
-		
 		ga("ec:addProduct", {
 			"id": "'.$product['id'].'",
 			"name": "'.$product['name'].'",
 			"category": "'.$product['category'].'",
-			"price": "'.$product['price'].'"
+			"price": '.$product['price'].'
 		});
 		</script>
 		';
 	}
 	public function ec_add_product(array $param){
 		echo '
-			<script id="'.$this->get_name().'">
+			<script data-id="'.$this->get_name().'">
 			ga("ec:addProduct", {
 				"id": "'.$param['id'].'",
 				"name": "'.$param['name'].'",
 				"category": "'.$param['category'].'",
 				"brand": "'.$param['brand'].'",
 				"variant": "'.$param['variant'].'",
-				"price": "'.$param['price'].'",
+				"price": '.$param['price'].',
 				"quantity": '.$param['quantity'].'
 			});
 			</script>

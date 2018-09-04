@@ -9,15 +9,11 @@ class ec_woocommerce extends ec{
 
 	}
 	public function init(){
-		add_action('wp_footer',array($this,'wp_footer'), 991);
-		add_action('wp_footer',array($this,'product_impression'), 999);
-		add_action('wp_footer',array($this,'checkout_cart'), 999);
-		add_action('wp_footer',array($this,'checkout_review'), 999);
-		add_action('woocommerce_thankyou',array($this,'woocommerce_thankyou'));
-	}
-	public function woocommerce_thankyou($order_id){
-		static::$order_id								= $order_id;
-		add_action('wp_footer',array($this,'checkout_thankyou'), 999);
+		add_action('wp_head',array($this,'wp_footer'), 991);
+		add_action('wp_head',array($this,'product_impression'), 999);
+		add_action('wp_head',array($this,'checkout_cart'), 999);
+		add_action('wp_head',array($this,'checkout_review'), 999);
+		add_action('wp_head',array($this,'checkout_thankyou'), 999);
 	}
 	public function wp_footer(){
 		echo '
@@ -99,6 +95,7 @@ class ec_woocommerce extends ec{
 				"step": 1,
 				"option": "Cart"
 			});
+			ga("send", "event", "Checkout", "View Cart");
 			</script>
 			';
 		}
@@ -111,17 +108,19 @@ class ec_woocommerce extends ec{
 
 			echo '
 			<script data-id="'.$this->get_name().'">
-			ga("ec:setAction","checkout", {
+			ga("ec:setAction","review", {
 				"step": 2,
 				"option": "Checkout"
 			});
+			ga("send", "event", "Checkout", "View Review");
 			</script>
 			';
 		}
 	}
 	public function checkout_thankyou(){
 		if(is_wc_endpoint_url('order-received')) {
-			$order									= new \WC_Order(static::$order_id);
+			global $wp;
+			$order									= new \WC_Order($wp->query_vars['order-received']);
 			if(!$order->meta_exists( $this->get_name().'_checkout_tracked')) {
 				foreach ($order->get_items() as $item) {
 					$this->ec_add_product($this->map_wc_item_to_ec_product($item));
@@ -140,6 +139,7 @@ class ec_woocommerce extends ec{
 					"shipping": "'.$order->get_shipping_total().'",
 					"coupon": "'.implode(',',$order->get_used_coupons()).'"
 				});
+				ga("send", "event", "Checkout", "View Thankyou", "", '.$order->get_total().');
 				</script>
 				';
 			}
