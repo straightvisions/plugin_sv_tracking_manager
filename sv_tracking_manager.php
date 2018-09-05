@@ -10,7 +10,7 @@
 	Domain Path: /languages
 	*/
 	
-	namespace sv_google_analytics_manager;
+	namespace sv_tracking_manager;
 	
 	require_once('lib/core/core.php');
 	
