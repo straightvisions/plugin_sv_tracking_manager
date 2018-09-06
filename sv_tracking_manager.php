@@ -1,12 +1,12 @@
 <?php
 	/*
-	Plugin Name: SV Google Analytics Manager
+	Plugin Name: SV Tracking Manager
 	Plugin URI: https://straightvisions.com/
 	Description: Manage Google Analytics
 	Version: 1.0.0
 	Author: Matthias Reuter
 	Author URI: https://straightvisions.com
-	Text Domain: sv_qualified_vat_check
+	Text Domain: sv_tracking_manager
 	Domain Path: /languages
 	*/
 	

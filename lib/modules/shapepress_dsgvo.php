@@ -1,5 +1,5 @@
 <?php
-namespace sv_google_analytics_manager;
+namespace sv_tracking_manager;
 
 class shapepress_dsgvo extends modules{
 	public function __construct(){

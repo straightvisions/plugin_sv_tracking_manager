@@ -1,1 +1,1 @@
-# plugin_sv_google_analytics_manager
+# plugin_sv_tracking_manager

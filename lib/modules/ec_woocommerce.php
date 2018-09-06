@@ -1,5 +1,5 @@
 <?php
-namespace sv_google_analytics_manager;
+namespace sv_tracking_manager;
 
 class ec_woocommerce extends ec{
 	private static $product								= false;
