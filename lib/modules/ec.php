@@ -16,7 +16,7 @@ class ec extends modules{
 			<script data-id="'.$this->get_name().'">
 			ga("require", "ec");
 			function addToCart(product) {
-				ga("send", "event", "Checkout", "Add To Cart", "", ' . (product . price * product . qty) . ');     // Send data using an event.
+				ga("send", "event", "Checkout", "Add To Cart", "", (product.price * product.qty));     // Send data using an event.
 				
 				ga("ec:setAction", "add");
 				ga("ec:addProduct", {
