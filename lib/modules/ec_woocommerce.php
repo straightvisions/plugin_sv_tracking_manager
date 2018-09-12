@@ -134,12 +134,12 @@ class ec_woocommerce extends ec{
 				ga("ec:setAction", "purchase", {
 					"id": "'.$order->get_id().'",
 					"affiliation": "'.get_bloginfo('name').'",
-					"revenue": "'.$order->get_total().'",
-					"tax": "'.$order->get_total_tax().'",
-					"shipping": "'.$order->get_shipping_total().'",
+					"revenue": '.$order->get_total().',
+					"tax": '.$order->get_total_tax().',
+					"shipping": '.$order->get_shipping_total().',
 					"coupon": "'.implode(',',$order->get_used_coupons()).'"
 				});
-				ga("send", "event", "Checkout", "View Thankyou", "", '.$order->get_total().');
+				ga("send", "event", "Checkout", "View Thankyou", "", '.intval($order->get_total()).');
 				</script>
 				';
 			}
