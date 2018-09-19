@@ -8,7 +8,7 @@ class shapepress_dsgvo extends modules{
 	public function init(){
 		add_action('wp_head',array($this,'wp_head_first'), 900);
 		add_action('wp_head',array($this,'wp_head_last'), 1100);
-		require($this->get_path_lib_modules('shapepress_dsgvo_function_overloading.php'));
+		require($this->get_root()->get_path_lib_modules('shapepress_dsgvo_function_overloading.php'));
 	}
 	public function wp_head_first(){
 		?>
