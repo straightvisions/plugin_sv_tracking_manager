@@ -2,7 +2,7 @@
 namespace sv_tracking_manager;
 
 class ec extends modules{
-	private static $product								= false;
+	private $product								= array();
 
 	public function __construct(){
 
@@ -10,6 +10,7 @@ class ec extends modules{
 	public function init(){
 		$this->ec_woocommerce->init();
 		add_action('wp_head',array($this,'wp_head'), 990);
+		add_action('wp_head',array($this,'product_view'), 991);
 	}
 	public function wp_head(){
 		echo '
@@ -33,7 +34,7 @@ class ec extends modules{
 		';
 	}
 	public function set_product($product){
-		if(!static::$product){
+		/*if(!static::$product){
 			if(is_array($product)){
 				static::$product							= $product;
 			}else{
@@ -48,16 +49,16 @@ class ec extends modules{
 			$notice->set_title(__('Product for GA Manager already set', $this->get_name()));
 			$notice->set_desc_admin(__FUNCTION__ . __(' in GA Manager was called but product was already set', $this->get_name()));
 			$notice->set_state(3);
-		}
+		}*/
 	}
-	public static function get_product(){
-		return static::$product;
+	public function get_product(){
+		return apply_filters($this->get_prefix().'product',$this->product);
 	}
-	public function product_list_single($product=false){
-		/*if(static::get_product()){
-			$product									= static::get_product();
+	public function product_view($product=false){
+		if(count($this->get_product()) > 0){
+			$product									= $this->get_product();
 		}
-*/
+
 		if($product){
 			// @todo: Add price support (make prices to settings)
 			echo '
