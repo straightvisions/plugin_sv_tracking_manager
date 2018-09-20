@@ -39,9 +39,6 @@ class ec_woocommerce extends ec{
 			$notice->set_state(3);
 		}
 	}
-	public static function get_product(){
-		return static::$product;
-	}
 	public function product_impression($product=false){
 		if(is_product()){
 			// @todo: get product object
