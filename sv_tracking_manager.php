@@ -15,6 +15,9 @@
 	require_once('lib/core/core.php');
 	
 	class init extends \sv_core\core{
+		const version							= 1000;
+		const version_core_match				= 1000;
+		
 		public function __construct(){
 			$this->setup(__NAMESPACE__,__FILE__);
 		}
