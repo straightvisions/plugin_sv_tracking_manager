@@ -10,7 +10,6 @@ class ec_woocommerce extends ec{
 	}
 	public function init(){
 		add_action('wp_head',array($this,'wp_footer'), 991);
-		add_action('wp_head',array($this,'product_impression'), 999);
 		add_action('wp_head',array($this,'checkout_cart'), 999);
 		add_action('wp_head',array($this,'checkout_review'), 999);
 		add_action('wp_head',array($this,'checkout_thankyou'), 999);
@@ -39,29 +38,6 @@ class ec_woocommerce extends ec{
 			$notice->set_state(3);
 		}
 	}
-	public function product_impression($product=false){
-		if(is_product()){
-			// @todo: get product object
-		}elseif(static::get_product()){
-			$product									= static::get_product();
-		}
-		if($product){
-			echo '
-			<script data-id="'.$this->get_name().'">
-			ga("ec:addImpression", {					// Provide product details in an impressionFieldObject.
-				"id": "P12345",							// Product ID (string).
-				"name": "Android Warhol T-Shirt",		// Product name (string).
-				"category": "Apparel/T-Shirts",			// Product category (string).
-				"brand": "Google",						// Product brand (string).
-				"variant": "Black",						// Product variant (string).
-				"list": "Search Results",				// Product list (string).
-				"position": 1,							// Product position (number).
-				"dimension1": "Member"					// Custom dimension (string).
-			});
-			</script>
-			';
-		}
-	}
 	public function get_product_cat($product_id){
 		$terms = get_the_terms( $product_id, 'product_cat' );
 		foreach ($terms as $term) {
@@ -70,7 +46,7 @@ class ec_woocommerce extends ec{
 		return $product_cat;
 	}
 	public function map_wc_item_to_ec_product($item){
-		return array(
+		return apply_filters('sv_tracking_manager_ec_woocommerce_map_wc_item_to_ec_product', array(
 			'id'								=> $item['product_id'],
 			'name'								=> get_the_title($item['product_id']),
 			'category'							=> $this->get_product_cat($item['product_id']),
@@ -78,14 +54,13 @@ class ec_woocommerce extends ec{
 			'variant'							=> isset($item['data']) ? strip_tags($item['data']->get_formatted_name()) : strip_tags($item->get_name()),
 			'price'								=> $item['line_total'],
 			'quantity'							=> $item['quantity']
-		);
+		), $item);
 	}
 	public function checkout_cart(){
 		if(is_cart() && WC()->cart->get_cart_contents_count() > 0) {
 			foreach(WC()->cart->cart_contents as $item){
-				$this->ec_add_product($this->map_wc_item_to_ec_product($item));
+				$this->add_product($this->map_wc_item_to_ec_product($item));
 			}
-
 			echo '
 			<script data-id="'.$this->get_name().'">
 			ga("ec:setAction","checkout", {
@@ -100,7 +75,7 @@ class ec_woocommerce extends ec{
 	public function checkout_review(){
 		if(is_checkout() && WC()->cart->get_cart_contents_count() > 0) {
 			foreach(WC()->cart->cart_contents as $item){
-				$this->ec_add_product($this->map_wc_item_to_ec_product($item));
+				$this->add_product($this->map_wc_item_to_ec_product($item));
 			}
 
 			echo '
@@ -120,7 +95,7 @@ class ec_woocommerce extends ec{
 			$order									= new \WC_Order($wp->query_vars['order-received']);
 			if(!$order->meta_exists( $this->get_name().'_checkout_tracked')) {
 				foreach ($order->get_items() as $item) {
-					$this->ec_add_product($this->map_wc_item_to_ec_product($item));
+					$this->add_product($this->map_wc_item_to_ec_product($item));
 				}
 
 				$order->update_meta_data($this->get_name() . '_checkout_tracked', '1');
