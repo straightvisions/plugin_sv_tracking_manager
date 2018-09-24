@@ -20,13 +20,7 @@
 		public function init(){
 			$this->ec->init();
 			$this->shapepress_dsgvo->init();
-			
-			/*add_action('admin_menu', array($this, 'get_settings_menu'));
-			add_action('admin_enqueue_scripts', array($this, 'backend_scripts'));
-			add_action('wp_enqueue_scripts', array($this, 'frontend_scripts'));
-			add_filter('plugin_action_links', array($this,'plugin_action_links'), 10, 5);*/
-			
-			// @todo: we will re-add settings once we have a settings class in core
+			$this->custom_events->init();
 		}
 	}
 ?>
