@@ -93,7 +93,7 @@ class ec_woocommerce extends ec{
 		if(is_wc_endpoint_url('order-received')) {
 			global $wp;
 			$order									= new \WC_Order($wp->query_vars['order-received']);
-			if(!$order->meta_exists( $this->get_name().'_checkout_tracked')) {
+			if(!$order->meta_exists( $this->get_name().'_checkout_tracked') && $order->get_items()) {
 				foreach ($order->get_items() as $item) {
 					$this->add_product($this->map_wc_item_to_ec_product($item));
 				}
