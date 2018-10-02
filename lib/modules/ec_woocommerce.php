@@ -17,7 +17,9 @@ class ec_woocommerce extends ec{
 	public function wp_footer(){
 		echo '
 			<script data-id="'.$this->get_name().'">
-			ga("set", "currencyCode", "'.get_woocommerce_currency().'");
+			if (window.ga) {
+				ga("set", "currencyCode", "' . get_woocommerce_currency() . '");
+			}
 			</script>
 		';
 	}
@@ -63,11 +65,13 @@ class ec_woocommerce extends ec{
 			}
 			echo '
 			<script data-id="'.$this->get_name().'">
-			ga("ec:setAction","checkout", {
-				"step": 1,
-				"option": "Cart"
-			});
-			ga("send", "event", "Checkout", "View Cart");
+			if (window.ga) {
+				ga("ec:setAction","checkout", {
+					"step": 1,
+					"option": "Cart"
+				});
+				ga("send", "event", "Checkout", "View Cart");
+			}
 			</script>
 			';
 		}
@@ -80,11 +84,13 @@ class ec_woocommerce extends ec{
 
 			echo '
 			<script data-id="'.$this->get_name().'">
-			ga("ec:setAction","review", {
-				"step": 2,
-				"option": "Checkout"
-			});
-			ga("send", "event", "Checkout", "View Review");
+			if (window.ga) {
+				ga("ec:setAction","review", {
+					"step": 2,
+					"option": "Checkout"
+				});
+				ga("send", "event", "Checkout", "View Review");
+			}
 			</script>
 			';
 		}
@@ -103,15 +109,17 @@ class ec_woocommerce extends ec{
 
 				echo '
 				<script data-id="' . $this->get_name() . '">
-				ga("ec:setAction", "purchase", {
-					"id": "'.$order->get_id().'",
-					"affiliation": "'.get_bloginfo('name').'",
-					"revenue": '.$order->get_total().',
-					"tax": '.$order->get_total_tax().',
-					"shipping": '.$order->get_shipping_total().',
-					"coupon": "'.implode(',',$order->get_used_coupons()).'"
-				});
-				ga("send", "event", "Checkout", "View Thankyou", "", '.intval($order->get_total()).');
+				if (window.ga) {
+					ga("ec:setAction", "purchase", {
+						"id": "' . $order->get_id() . '",
+						"affiliation": "' . get_bloginfo('name') . '",
+						"revenue": ' . $order->get_total() . ',
+						"tax": ' . $order->get_total_tax() . ',
+						"shipping": ' . $order->get_shipping_total() . ',
+						"coupon": "' . implode(',', $order->get_used_coupons()) . '"
+					});
+					ga("send", "event", "Checkout", "View Thankyou", "", ' . intval($order->get_total()) . ');
+				}
 				</script>
 				';
 			}

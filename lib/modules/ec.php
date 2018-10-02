@@ -14,23 +14,9 @@ class ec extends modules{
 	public function wp_head(){
 		echo '
 			<script data-id="'.$this->get_name().'">
-			ga("require", "ec");
-			
-			/* not finished yet
-			function addToCart(product) {
-				ga("send", "event", "Checkout", "Add To Cart", "", (product.price * product.qty));     // Send data using an event.
-				
-				ga("ec:setAction", "add");
-				ga("ec:addProduct", {
-					"id": product.id,
-					"name": product.name,
-					"category": product.category,
-					"brand": product.brand,
-					"variant": product.variant,
-					"price": product.price,
-					"quantity": product.qty
-				});
-			}*/
+			if (window.ga) {
+				ga("require", "ec");
+			}
 			</script>
 		';
 	}
@@ -41,16 +27,18 @@ class ec extends modules{
 		if($product) {
 			echo '
 			<script data-id="' . $this->get_name() . '">
+			if (window.ga) {
 				ga("ec:addProduct", {                 // Provide product details in an productFieldObject.
-				  "id": "'.$product['id'].'",                     // Product ID (string).
-				  "name": "'.$product['name'].'",  // Product name (string).
-				  "category": "'.$product['category'].'",     // Product category (string).
-				  "brand": "'.$product['brand'].'",                 // Product brand (string).
+				  "id": "' . $product['id'] . '",                     // Product ID (string).
+				  "name": "' . $product['name'] . '",  // Product name (string).
+				  "category": "' . $product['category'] . '",     // Product category (string).
+				  "brand": "' . $product['brand'] . '",                 // Product brand (string).
 				  //"variant": "gray",                  // Product variant (string).
 				  //"position": 2                       // Product position (number).
 				});
 				
 				ga("ec:setAction", "detail");       // Detail action.
+			}
 			</script>
 		';
 		}
@@ -71,6 +59,7 @@ class ec extends modules{
 				foreach($products as $product) {
 					echo '
 						<script data-id="' . $this->get_name() . '">
+						if (window.ga) {
 							ga("ec:addImpression", {            // Provide product details in an impressionFieldObject.
 								"id": "' . $product['id'] . '",                   // Product ID (string).
 								"name": "' . $product['name'] . '", // Product name (string).
@@ -81,6 +70,7 @@ class ec extends modules{
 								"position": ' . $product['position'] . ',                     // Product position (number).
 								"price": ' . $product['price'] . '
 							});
+						}
 						</script>
 					';
 				}
@@ -90,15 +80,17 @@ class ec extends modules{
 	public function add_product(array $param){
 		echo '
 			<script data-id="'.$this->get_name().'">
-			ga("ec:addProduct", {
-				"id": "'.$param['id'].'",
-				"name": "'.$param['name'].'",
-				"category": "'.$param['category'].'",
-				"brand": "'.$param['brand'].'",
-				"variant": "'.$param['variant'].'",
-				"price": '.$param['price'].',
-				"quantity": '.$param['quantity'].'
-			});
+			if (window.ga) {
+				ga("ec:addProduct", {
+					"id": "' . $param['id'] . '",
+					"name": "' . $param['name'] . '",
+					"category": "' . $param['category'] . '",
+					"brand": "' . $param['brand'] . '",
+					"variant": "' . $param['variant'] . '",
+					"price": ' . $param['price'] . ',
+					"quantity": ' . $param['quantity'] . '
+				});
+			}
 			</script>
 			';
 	}

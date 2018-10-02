@@ -89,8 +89,10 @@ class custom_events extends modules{
 				}
 				echo '
 				jQuery(document).on("'.$event['event'].'", "'.$event['element'].'", function(){
-					console.log("'.addslashes($event['element'].' / '.$event['event'].' triggered: eventAction: '.$event['eventAction'].' eventLabel: '.$event['eventLabel'].' eventValue: '.$event['eventValue']).'");
-					ga("send", "event", "'.$event['eventCategory'].'", "'.$event['eventAction'].'", "'.$event['eventLabel'].'", '.((intval($event['eventValue']) > 0) ? intval($event['eventValue']) : 0).');
+					if (window.ga) {
+						console.log("'.addslashes($event['element'].' / '.$event['event'].' triggered: eventAction: '.$event['eventAction'].' eventLabel: '.$event['eventLabel'].' eventValue: '.$event['eventValue']).'");
+						ga("send", "event", "'.$event['eventCategory'].'", "'.$event['eventAction'].'", "'.$event['eventLabel'].'", '.((intval($event['eventValue']) > 0) ? intval($event['eventValue']) : 0).');
+					}
 				});
 				';
 			}
