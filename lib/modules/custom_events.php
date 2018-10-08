@@ -107,7 +107,7 @@ class custom_events extends modules{
 			'manage_options',
 			$this->get_prefix(),
 			'',
-			$this->get_root()->get_url_lib_core('assets/logo_icon.png'),
+			$this->get_url_lib_core('assets/logo_icon.png'),
 			2
 		);
 		add_submenu_page(
@@ -116,7 +116,7 @@ class custom_events extends modules{
 			__('Custom Events', $this->get_module_name()),											// menu title
 			'manage_options',																		// capability
 			$this->get_prefix(),																	// menu slug
-			function(){ require_once($this->get_root()->get_path_lib_section('tpl','backend','custom_events.php')); }				// callable function
+			function(){ require_once($this->get_path_lib_section('tpl','backend','custom_events.php')); }				// callable function
 		);
 	}
 	public function array(){
