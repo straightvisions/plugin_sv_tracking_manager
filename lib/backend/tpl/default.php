@@ -9,20 +9,15 @@
 		?>
     </div>
     <div id="section_about" class="sv_content_wrapper">
-    <div class="sv_content">
-    <h1 class="sv_content_title"><?php _e('About', $this->get_module_name()); ?></h1>
-    
-        <div class="wrap" id="sv_settings">
-            <div id="sv_header">
-                <div id="sv_logo"><img src="<?php echo $this->get_url_lib_core('assets/logo.png'); ?>" /></div>
-            </div>
-            <h1><?php echo get_admin_page_title(); ?></h1>
-			<?php
-				//echo static::$settings->get_module_settings_form($this);
-			?>
-        </div>
-		<?php } ?>
-    </div>
+		<div class="sv_content">
+			<h1 class="sv_content_title"><?php _e('About', $this->get_module_name()); ?></h1>
+			<div class="sv_content_descripion">
+				<h2><?php echo get_admin_page_title(); ?></h2>
+				<p>by <a href="https://straightvisions.com"><img src="<?php echo $this->get_url_lib_core('assets/logo.png'); ?>" /></a></p>
+			</div>
+			<div></div>
+			<?php } ?>
+		</div>
     </div>
 <?php
 	foreach($this->get_root()->get_sections() as $section_name => $section_path) {
