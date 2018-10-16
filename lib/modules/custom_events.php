@@ -6,6 +6,8 @@ class custom_events extends modules{
 
 	}
 	private function load_settings(){
+		$this->get_root()->add_section($this->get_name(), $this->get_path_lib_section('backend', 'tpl', $this->get_module_name().'.php'));
+		
 		// Uploaded Fonts
 		$this->s['custom_events']					= static::$settings->create($this);
 		$this->s['custom_events']->set_section_name(__('Custom Events',$this->get_module_name()));
@@ -66,8 +68,6 @@ class custom_events extends modules{
 		$this->load_settings();
 	}
 	public function wp_init(){
-		add_action('admin_menu', array($this, 'menu'));
-		
 		if(!is_admin()){
 			$this->load_settings();
 			add_action('wp_head',array($this,'wp_head'), 1000);
@@ -97,27 +97,5 @@ class custom_events extends modules{
 		}
 		//	     // Send data using an event.
 		echo '</script>';
-	}
-	public function menu(){
-		add_menu_page(
-			'SV Tracking Manager',
-			'SV Tracking Manager',
-			'manage_options',
-			$this->get_prefix(),
-			'',
-			$this->get_url_lib_core('assets/logo_icon.png'),
-			2
-		);
-		add_submenu_page(
-			$this->get_prefix(),																	// parent slug
-			__('Custom Events', $this->get_module_name()),											// page title
-			__('Custom Events', $this->get_module_name()),											// menu title
-			'manage_options',																		// capability
-			$this->get_prefix(),																	// menu slug
-			function(){ require_once($this->get_path_lib_section('tpl','backend','custom_events.php')); }				// callable function
-		);
-	}
-	public function array(){
-	
 	}
 }
