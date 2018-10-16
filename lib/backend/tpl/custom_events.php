@@ -13,7 +13,7 @@
 				</div>
 				<div class="sv_content">
 					<?php
-						echo static::$settings->get_module_settings_form($this->custom_events);
+						echo static::$settings->get_module_settings_form($this->modules->custom_events);
 					?>
 				</div>
 			</div>

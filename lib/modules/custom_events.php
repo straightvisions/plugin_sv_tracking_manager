@@ -6,7 +6,7 @@ class custom_events extends modules{
 
 	}
 	private function load_settings(){
-		$this->get_root()->add_section($this->get_name(), $this->get_path_lib_section('backend', 'tpl', $this->get_module_name().'.php'));
+		$this->get_root()->add_section($this->get_root()->get_name(), $this->get_path_lib_section('backend', 'tpl', $this->get_module_name().'.php'));
 		
 		// Uploaded Fonts
 		$this->s['custom_events']					= static::$settings->create($this);
