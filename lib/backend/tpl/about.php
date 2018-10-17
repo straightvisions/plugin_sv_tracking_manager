@@ -3,8 +3,8 @@
         <a href="#section_about" class="sv_side_menu_item active">About</a>
 		<?php
 			$i = 0;
-			foreach($this->get_root()->get_sections() as $section_name => $section_path) {
-				echo '<a href="#section_' . $section_name . '" class="sv_side_menu_item">' . $section_name . '</a>';
+			foreach($this->get_root()->get_sections() as $section_name => $section) {
+				echo '<a href="#section_' . $section_name . '" class="sv_side_menu_item">' . $section['title'] . '</a>';
 			}
 		?>
     </div>
@@ -20,7 +20,7 @@
 		</div>
     </div>
 <?php
-	foreach($this->get_root()->get_sections() as $section_name => $section_path) {
-		require_once($section_path);
+	foreach($this->get_root()->get_sections() as $section_name => $section) {
+		require_once($section['path']);
 	}
 ?>
