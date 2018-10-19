@@ -18,6 +18,7 @@
 		const version							= 1001;
 		const version_core_match				= 1003;
 		const section_title						= 'SV Tracking Manager';
+		const description                       = 'Description for SV Tracking Manager.';
 		
 		public function __construct(){
 			$this->setup(__NAMESPACE__,__FILE__);
