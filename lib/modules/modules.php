@@ -44,10 +44,10 @@
 
 			// Uploaded Fonts
 			$this->s['tracking_id']					= static::$settings->create($this)
-				->set_section_name(__('Custom Events',$this->get_module_name()))
-				->set_section_description('Set Custom Analytics Elements')
-				->set_ID('custom_events')
-				->set_title(__('Custom Events', $this->get_module_name()))
+				->set_section_name(__('Tracking ID',$this->get_module_name()))
+				->set_section_description('Set Analytics Tracking ID')
+				->set_ID('tracking_id')
+				->set_title(__('Tracking ID', $this->get_module_name()))
 				->load_type('text')
 				->set_placeholder($tracking_code);
 
