@@ -31,15 +31,12 @@
 			$this->get_root()->add_section($this, 'settings');
 
 			// check for tracking code by child available
+			$tracking_code						= 'UA-XXXXXX-XXX';
 			if(class_exists('\SPDSGVOSettings') && \SPDSGVOSettings::get('ga_enable_analytics') === '1') {
 				$ga_code = \SPDSGVOSettings::get('ga_code', '');
 				if($ga_code == '' || \SPDSGVOSettings::get('own_code') !== '1') {
 					$tracking_code = __('Code retrieved by SPDSGVO-Plugin:',$this->get_root()->get_prefix()).' '.\SPDSGVOSettings::get('ga_tag_number');
-				}else{
-					$tracking_code = '';
 				}
-			}else{
-				$tracking_code						= '';
 			}
 
 			// Uploaded Fonts
