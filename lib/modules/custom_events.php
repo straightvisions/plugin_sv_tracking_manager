@@ -2,18 +2,15 @@
 namespace sv_tracking_manager;
 
 class custom_events extends modules{
-	const section_title						= 'Custom Events';
-	
 	public function __construct(){
-
+		$this->set_section_title('Custom Events');
+		$this->set_section_desc('Set Custom Analytics Elements');
 	}
 	private function load_settings(){
 		$this->get_root()->add_section($this, 'settings');
 		
 		// Uploaded Fonts
 		$this->s['custom_events']					= static::$settings->create($this)
-			->set_section_name(__('Custom Events',$this->get_module_name()))
-			->set_section_description('Set Custom Analytics Elements')
 			->set_ID('custom_events')
 			->set_title(__('Custom Events', $this->get_module_name()))
 			->load_type('group')

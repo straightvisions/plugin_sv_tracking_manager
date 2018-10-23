@@ -17,11 +17,11 @@
 	class init extends \sv_core\core{
 		const version							= 1001;
 		const version_core_match				= 1003;
-		const section_title						= 'SV Tracking Manager';
-		const section_desc						= 'Manage Google Analytics';
 		
 		public function __construct(){
 			$this->setup(__NAMESPACE__,__FILE__);
+			$this->set_section_title('SV Tracking Manager');
+			$this->set_section_desc('Manage Google Analytics');
 		}
 	}
 	

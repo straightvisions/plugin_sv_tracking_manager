@@ -2,8 +2,6 @@
 	namespace sv_tracking_manager;
 
 	class modules extends init{
-		const section_title						= 'Common Settings';
-
 		/**
 		 * @desc			Loads other classes of package
 		 * @author			Matthias Reuter
@@ -11,7 +9,8 @@
 		 * @ignore
 		 */
 		public function __construct(){
-
+			$this->set_section_title('Common Settings');
+			$this->set_section_desc('General Basic Settings');
 		}
 		/**
 		 * @desc			initialize actions and filters
@@ -41,8 +40,6 @@
 
 			// Uploaded Fonts
 			$this->s['tracking_id']					= static::$settings->create($this)
-				->set_section_name(__('Tracking ID',$this->get_module_name()))
-				->set_section_description('Set Analytics Tracking ID')
 				->set_ID('tracking_id')
 				->set_title(__('Tracking ID', $this->get_module_name()))
 				->load_type('text')
