@@ -62,6 +62,9 @@
 				add_action('wp_head',array($this,'wp_head'), 1000);
 			}
 		}
+		public function wp_head(){
+
+		}
 		public function wp_head_first(){
 			if(strlen($this->s['tracking_id']->run_type()->get_data()) > 0){
 					?>
