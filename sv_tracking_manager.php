@@ -15,13 +15,13 @@
 	require_once('lib/core/core.php');
 	
 	class init extends \sv_core\core{
-		const version							= 1001;
-		const version_core_match				= 1003;
-		const section_title						= 'SV Tracking Manager';
-		const description                       = 'Description for SV Tracking Manager.';
+		const version							= 1002;
+		const version_core_match				= 1004;
 		
 		public function __construct(){
 			$this->setup(__NAMESPACE__,__FILE__);
+			$this->set_section_title('SV Tracking Manager');
+			$this->set_section_desc('Manage Google Analytics');
 		}
 	}
 	
