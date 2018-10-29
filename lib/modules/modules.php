@@ -37,8 +37,7 @@
 					$tracking_code = __('Code retrieved by SPDSGVO-Plugin:',$this->get_root()->get_prefix()).' '.\SPDSGVOSettings::get('ga_tag_number');
 				}
 			}
-
-			// Uploaded Fonts
+			
 			$this->s['tracking_id']					= static::$settings->create($this)
 				->set_ID('tracking_id')
 				->set_title(__('Tracking ID', $this->get_module_name()))
