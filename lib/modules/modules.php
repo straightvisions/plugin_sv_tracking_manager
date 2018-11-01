@@ -11,6 +11,7 @@
 		public function __construct(){
 			$this->set_section_title('Common Settings');
 			$this->set_section_desc('General Basic Settings');
+			$this->set_section_type('settings');
 		}
 		/**
 		 * @desc			initialize actions and filters
@@ -27,7 +28,7 @@
 			add_action('init', array($this, 'wp_init'));
 		}
 		private function load_settings(){
-			$this->get_root()->add_section($this, 'settings');
+			$this->get_root()->add_section($this);
 
 			// check for tracking code by child available
 			$tracking_code						= 'UA-XXXXXX-XXX';

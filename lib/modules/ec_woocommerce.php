@@ -18,6 +18,7 @@ class ec_woocommerce extends ec{
 				<li>Category equals <strong>Checkout</strong>, Action equals <strong>View Thankyou</strong></li>
 			</ul>
 			');
+		$this->set_section_type('settings');
 	}
 	public function init(){
 		add_action('wp_head',array($this,'wp_footer'), 991);
@@ -29,7 +30,7 @@ class ec_woocommerce extends ec{
 		add_action('init', array($this, 'wp_init'));
 	}
 	private function load_settings(){
-		$this->get_root()->add_section($this, 'settings');
+		$this->get_root()->add_section($this);
 		
 		$this->s['checkout_label_cart']					= static::$settings->create($this)
 			->set_ID('checkout_label_cart')
