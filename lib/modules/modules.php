@@ -11,6 +11,7 @@
 		public function __construct(){
 			$this->set_section_title('Common Settings');
 			$this->set_section_desc('General Basic Settings');
+			$this->set_section_type('settings');
 		}
 		/**
 		 * @desc			initialize actions and filters
@@ -27,7 +28,7 @@
 			add_action('init', array($this, 'wp_init'));
 		}
 		private function load_settings(){
-			$this->get_root()->add_section($this, 'settings');
+			$this->get_root()->add_section($this);
 
 			// check for tracking code by child available
 			$tracking_code						= 'UA-XXXXXX-XXX';
@@ -37,8 +38,7 @@
 					$tracking_code = __('Code retrieved by SPDSGVO-Plugin:',$this->get_root()->get_prefix()).' '.\SPDSGVOSettings::get('ga_tag_number');
 				}
 			}
-
-			// Uploaded Fonts
+			
 			$this->s['tracking_id']					= static::$settings->create($this)
 				->set_ID('tracking_id')
 				->set_title(__('Tracking ID', $this->get_module_name()))

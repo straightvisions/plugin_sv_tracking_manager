@@ -5,9 +5,10 @@ class custom_events extends modules{
 	public function __construct(){
 		$this->set_section_title('Custom Events');
 		$this->set_section_desc('Set Custom Analytics Elements');
+		$this->set_section_type('settings');
 	}
 	private function load_settings(){
-		$this->get_root()->add_section($this, 'settings');
+		$this->get_root()->add_section($this);
 		
 		// Uploaded Fonts
 		$this->s['custom_events']					= static::$settings->create($this)
