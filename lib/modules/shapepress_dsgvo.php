@@ -8,7 +8,7 @@ class shapepress_dsgvo extends modules{
 	public function init(){
 		add_action('wp_head',array($this,'wp_head_first'), 900);
 		add_action('wp_head',array($this,'wp_head_last'), 1100);
-		require($this->get_root()->get_path_lib_modules('shapepress_dsgvo_function_overloading.php'));
+		require($this->get_path_lib_modules('shapepress_dsgvo_function_overloading.php'));
 	}
 	public function wp_head_first(){
 	    if(class_exists('\SPDSGVOSettings') && \SPDSGVOSettings::get('ga_enable_analytics') === '1') {
@@ -29,6 +29,9 @@ class shapepress_dsgvo extends modules{
 		}
 	}
 	public function wp_head_last(){
+		if(class_exists('\SPDSGVOSettings') && \SPDSGVOSettings::get('ga_enable_analytics') === '1') {
+			$ga_code = \SPDSGVOSettings::get('ga_code', '');
+			if($ga_code == '' || \SPDSGVOSettings::get('own_code') !== '1') {
         ?>
         <script data-id="<?php echo $this->get_name(); ?>">
 			if (window.ga) {
@@ -36,5 +39,7 @@ class shapepress_dsgvo extends modules{
 			}
         </script>
         <?php
+			}
+		}
 	}
 }
