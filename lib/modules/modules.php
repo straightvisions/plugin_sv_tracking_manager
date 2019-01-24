@@ -23,6 +23,7 @@
 			$this->ec->init();
 			$this->shapepress_dsgvo->init();
 			$this->custom_events->init();
+			$this->optimize->init();
 
 			add_action('admin_init', array($this, 'admin_init'));
 			add_action('init', array($this, 'wp_init'));
