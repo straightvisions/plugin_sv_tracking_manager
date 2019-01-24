@@ -52,7 +52,7 @@ class ec_woocommerce extends ec{
 	public function wp_init(){
 		if(!is_admin()){
 			$this->load_settings();
-			add_action('wp_head',array($this,'wp_head'), 1000);
+			//add_action('wp_head',array($this,'wp_head'), 1000); // @toto check: double?
 		}
 	}
 	public function wp_footer(){
