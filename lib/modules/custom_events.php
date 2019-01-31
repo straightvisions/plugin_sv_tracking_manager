@@ -85,14 +85,48 @@ class custom_events extends modules{
 				if (isset($event['active_page']) && intval($event['active_page']) > 0 && intval($event['active_page']) != get_queried_object_id()) {
 					continue;
 				}
-				echo '
-				jQuery(document).on("'.$event['event'].'", "'.$event['element'].'", function(){
-					if (window.ga) {
-						console.log("'.addslashes($event['element'].' / '.$event['event'].' triggered: eventAction: '.$event['eventAction'].' eventLabel: '.$event['eventLabel'].' eventValue: '.$event['eventValue']).'");
-						ga("send", "event", "'.$event['eventCategory'].'", "'.$event['eventAction'].'", "'.$event['eventLabel'].'", '.((intval($event['eventValue']) > 0) ? intval($event['eventValue']) : 0).');
-					}
-				});
-				';
+
+				if ( $event['event'] == 'scroll' ) {
+					// This custom function checks if the given element is in view
+					echo '
+					jQuery.fn.isInView = function() {
+					    var win         = jQuery( window );
+					    var viewport    = {
+					        top : win.scrollTop(),
+					        left : win.scrollLeft()
+					    };
+					    viewport.right  = viewport.left + win.width();
+					    viewport.bottom = viewport.top + win.height();
+					    
+					    var bounds      = this.offset();
+					    bounds.right    = bounds.left + this.outerWidth();
+					    bounds.bottom   = bounds.top + this.outerHeight();
+					    
+					    return ( ! ( viewport.right < bounds.left || viewport.left > bounds.right || viewport.bottom < bounds.top || viewport.top > bounds.bottom ) );
+					    
+					};';
+
+					echo 'var once = false';
+
+					echo '
+					jQuery( document ).on( "scroll", function() {
+						if ( window.ga ) { 
+							if( !once && jQuery( "' . $event['element'] . '" ).isInView() ) {
+								once = true;
+								console.log("' . $event['element'] . ' is in view!");
+							}
+						}
+					});';
+				} else {
+					echo '
+					jQuery(document).on("'.$event['event'].'", "'.$event['element'].'", function(){
+						if (window.ga) {
+							console.log("'.addslashes($event['element'].' / '.$event['event'].' triggered: eventAction: '.$event['eventAction'].' eventLabel: '.$event['eventLabel'].' eventValue: '.$event['eventValue']).'");
+							ga("send", "event", "'.$event['eventCategory'].'", "'.$event['eventAction'].'", "'.$event['eventLabel'].'", '.((intval($event['eventValue']) > 0) ? intval($event['eventValue']) : 0).');
+						}
+					});
+					';
+				}
 			}
 		}
 		//	     // Send data using an event.
