@@ -113,7 +113,7 @@ class custom_events extends modules{
 						if ( window.ga ) { 
 							if( !once && jQuery( "' . $event['element'] . '" ).isInView() ) {
 								once = true;
-								console.log("' . $event['element'] . ' is in view!");
+								ga("send", "event", "' . $event['eventCategory'] . '", "'.$event['eventAction'].'", "'.$event['eventLabel'].'", '.((intval($event['eventValue']) > 0) ? intval($event['eventValue']) : 0).');
 							}
 						}
 					});';
