@@ -29,7 +29,19 @@
 																						->set_title(__('Activate Anti Flicker Script', $this->get_module_name()))
 																						->load_type('checkbox');
 			
-			add_action('wp_head',array($this,'wp_head'), 991);
+			$this->s['specific_pages_only']						= static::$settings->create($this)
+																						->set_ID('specific_pages_only')
+																						->set_title(__('Specific Pages only', $this->get_module_name()))
+																						->set_description(__('Activate this setting to enable Optimize for specific pages only. This will help to keep your site lean.', $this->get_module_name()))
+																						->load_type('checkbox');
+			
+			if($this->s['specific_pages_only']->run_type()->get_data()){
+				$this->optimize_metabox->set_parent($this);
+				$this->optimize_metabox->set_root($this->get_root());
+				$this->optimize_metabox->init();
+			}else {
+				add_action( 'wp_head', array( $this, 'wp_head' ), 991 );
+			}
 		}
 		public function wp_head(){
 			if(
