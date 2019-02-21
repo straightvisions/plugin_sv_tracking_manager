@@ -21,12 +21,6 @@ class ec_woocommerce extends ec{
 		$this->set_section_type('settings');
 	}
 	public function init(){
-		add_action('wp_head',array($this,'wp_footer'), 991);
-		add_action('wp_head',array($this,'checkout_cart'), 999);
-		add_action('wp_head',array($this,'checkout_review'), 999);
-		add_action('wp_head',array($this,'checkout_thankyou'), 999);
-		
-		add_action('admin_init', array($this, 'admin_init'));
 		add_action('init', array($this, 'wp_init'));
 	}
 	private function load_settings(){
@@ -50,9 +44,18 @@ class ec_woocommerce extends ec{
 		$this->load_settings();
 	}
 	public function wp_init(){
-		if(!is_admin()){
-			$this->load_settings();
-			//add_action('wp_head',array($this,'wp_head'), 1000); // @toto check: double?
+		if(function_exists('WC')) {
+			add_action('wp_head', array($this, 'wp_footer'), 991);
+			add_action('wp_head', array($this, 'checkout_cart'), 999);
+			add_action('wp_head', array($this, 'checkout_review'), 999);
+			add_action('wp_head', array($this, 'checkout_thankyou'), 999);
+
+			add_action('admin_init', array($this, 'admin_init'));
+
+			if (!is_admin()) {
+				$this->load_settings();
+				add_action('wp_head', array($this, 'wp_head'), 1000);
+			}
 		}
 	}
 	public function wp_footer(){
