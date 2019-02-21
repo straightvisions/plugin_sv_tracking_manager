@@ -50,6 +50,7 @@
 			) {
 				echo '
 			<script data-id="' . $this->get_name() . '">
+			/* ' . $this->get_name() . ' */
 			if (window.ga) {
 				ga("require", "' . $this->s['ID']->run_type()->get_data() . '");
 			}
@@ -65,10 +66,12 @@
 				$this->s['activate_anti_flicker']->run_type()->get_data()
 			) {
 				echo '
-			<style data-id="' . $this->get_name() . '">
+			<style data-id="' . $this->get_name() . '_anti_flicker">
+				/* ' . $this->get_name() . '_anti_flicker */
 				.async-hide { opacity: 0 !important}
 			</style>
-			<script data-id="' . $this->get_name() . '">
+			<script data-id="' . $this->get_name() . '_anti_flicker">
+				/* ' . $this->get_name() . '_anti_flicker */
 				(function(a,s,y,n,c,h,i,d,e){s.className+=" "+y;h.start=1*new Date;
 				h.end=i=function(){s.className=s.className.replace(RegExp(" ?"+y),"")};
 				(a[n]=a[n]||[]).hide=h;setTimeout(function(){i();h.end=null},c);h.timeout=c;

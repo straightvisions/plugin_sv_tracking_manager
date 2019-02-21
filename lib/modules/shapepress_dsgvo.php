@@ -13,10 +13,11 @@ class shapepress_dsgvo extends modules{
 	public function wp_head_first(){
 	    if(class_exists('\SPDSGVOSettings') && \SPDSGVOSettings::get('ga_enable_analytics') === '1') {
 			$ga_code = \SPDSGVOSettings::get('ga_code', '');
-			if($ga_code == '' || \SPDSGVOSettings::get('own_code') !== '1') {
+			if($ga_code == '' || \SPDSGVOSettings::get('own_code') !== '1' && strlen($this->s['tracking_id']->run_type()->get_data()) === 0) {
 				?>
                 <script async src='https://www.google-analytics.com/analytics.js'></script>
                 <script data-id="<?php echo $this->get_name(); ?>">
+					/* <?php echo $this->get_name(); ?> */
 					window.ga = window.ga || function () {
 						(ga.q = ga.q || []).push(arguments)
 					};
@@ -34,6 +35,7 @@ class shapepress_dsgvo extends modules{
 			if($ga_code == '' || \SPDSGVOSettings::get('own_code') !== '1') {
         ?>
         <script data-id="<?php echo $this->get_name(); ?>">
+		/* <?php echo $this->get_name(); ?> */
 			if (window.ga) {
 				ga('send', 'pageview');
 			}

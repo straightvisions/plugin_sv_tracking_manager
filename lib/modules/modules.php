@@ -34,10 +34,12 @@
 
 			// check for tracking code by child available
 			$tracking_code						= 'UA-XXXXXX-XXX';
+			$disabled		= false;
 			if(class_exists('\SPDSGVOSettings') && \SPDSGVOSettings::get('ga_enable_analytics') === '1') {
 				$ga_code = \SPDSGVOSettings::get('ga_code', '');
 				if($ga_code == '' || \SPDSGVOSettings::get('own_code') !== '1') {
-					$tracking_code = __('Code retrieved by SPDSGVO-Plugin:',$this->get_root()->get_prefix()).' '.\SPDSGVOSettings::get('ga_tag_number');
+					$tracking_code = __('Code retrieved by Shapepress WP DSGVO-Plugin:',$this->get_root()->get_prefix()).' '.\SPDSGVOSettings::get('ga_tag_number');
+					$disabled		= true;
 				}
 			}
 			
@@ -46,6 +48,10 @@
 				->set_title(__('Tracking ID', $this->get_module_name()))
 				->load_type('text')
 				->set_placeholder($tracking_code);
+				
+			if($disabled){
+				$this->s['tracking_id']->set_disabled(true);
+			}
 
 			if(strlen($this->s['tracking_id']->run_type()->get_data()) > 0){
 				add_action('wp_head',array($this,'wp_head_first'), 900);
@@ -69,6 +75,7 @@
 					?>
 					<script async src='https://www.google-analytics.com/analytics.js'></script>
 					<script data-id="<?php echo $this->get_name(); ?>">
+						/* <?php echo $this->get_name(); ?> */
 						window.ga = window.ga || function () {
 							(ga.q = ga.q || []).push(arguments)
 						};
@@ -83,6 +90,7 @@
 			if(strlen($this->s['tracking_id']->run_type()->get_data()) > 0) {
 				?>
 				<script data-id="<?php echo $this->get_name(); ?>">
+					/* <?php echo $this->get_name(); ?> */
 					if (window.ga) {
 						ga('send', 'pageview');
 					}
