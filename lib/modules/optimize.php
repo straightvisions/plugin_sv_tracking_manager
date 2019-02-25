@@ -41,6 +41,7 @@
 				$this->optimize_metabox->init();
 			}else {
 				add_action( 'wp_head', array( $this, 'wp_head' ), 991 );
+				add_action( 'wp_head', array( $this, 'anti_flicker' ), 0 ); // as early as possible
 			}
 		}
 		public function wp_head(){
@@ -56,7 +57,6 @@
 			}
 			</script>
 		';
-				$this->anti_flicker();
 			}
 		}
 		public function anti_flicker(){
@@ -70,15 +70,14 @@
 				/* ' . $this->get_name() . '_anti_flicker */
 				.async-hide { opacity: 0 !important}
 			</style>
-			<script data-id="' . $this->get_name() . '_anti_flicker">
-				/* ' . $this->get_name() . '_anti_flicker */
-				(function(a,s,y,n,c,h,i,d,e){s.className+=" "+y;h.start=1*new Date;
-				h.end=i=function(){s.className=s.className.replace(RegExp(" ?"+y),"")};
-				(a[n]=a[n]||[]).hide=h;setTimeout(function(){i();h.end=null},c);h.timeout=c;
-				})(window,document.documentElement,"async-hide","dataLayer",4000,
-				{"'.$this->s['ID']->run_type()->get_data().'":true});
-			</script>
-		';
+			';
+
+			// never alter this code
+echo "<script>(function(a,s,y,n,c,h,i,d,e){s.className+=' '+y;h.start=1*new Date;
+h.end=i=function(){s.className=s.className.replace(RegExp(' ?'+y),'')};
+(a[n]=a[n]||[]).hide=h;setTimeout(function(){i();h.end=null},c);h.timeout=c;
+})(window,document.documentElement,'async-hide','dataLayer',4000,
+{'".$this->s['ID']->run_type()->get_data()."':true});</script>";
 			}
 		}
 	}

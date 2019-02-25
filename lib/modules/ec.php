@@ -14,6 +14,7 @@ class ec extends modules{
 	public function wp_head(){
 		echo '
 			<script data-id="'.$this->get_name().'">
+			/* '.$this->get_name().' */
 			if (window.ga) {
 				ga("require", "ec");
 			}
@@ -27,6 +28,7 @@ class ec extends modules{
 		if($product) {
 			echo '
 			<script data-id="' . $this->get_name() . '">
+			/* '.$this->get_name().' */
 			if (window.ga) {
 				ga("ec:addProduct", {                 // Provide product details in an productFieldObject.
 				  "id": "' . $product['id'] . '",                     // Product ID (string).
@@ -59,6 +61,7 @@ class ec extends modules{
 				foreach($products as $product) {
 					echo '
 						<script data-id="' . $this->get_name() . '">
+						/* '.$this->get_name().' */
 						if (window.ga) {
 							ga("ec:addImpression", {            // Provide product details in an impressionFieldObject.
 								"id": "' . $product['id'] . '",                   // Product ID (string).
@@ -80,6 +83,7 @@ class ec extends modules{
 	public function add_product(array $param){
 		echo '
 			<script data-id="'.$this->get_name().'">
+			/* '.$this->get_name().' */
 			if (window.ga) {
 				ga("ec:addProduct", {
 					"id": "' . $param['id'] . '",
