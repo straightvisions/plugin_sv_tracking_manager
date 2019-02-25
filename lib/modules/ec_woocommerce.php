@@ -20,6 +20,9 @@ class ec_woocommerce extends ec{
 			');
 		$this->set_section_type('settings');
 	}
+	public function wp_head(){
+		
+	}
 	public function init(){
 		add_action('init', array($this, 'wp_init'));
 	}

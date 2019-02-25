@@ -27,6 +27,7 @@
 			
 			if(get_post_meta($post->ID, $this->s['enable_on_page']->get_prefix($this->s['enable_on_page']->get_ID()), true)){
 				add_action( 'wp_head', array( $this->get_parent(), 'wp_head' ), 991 );
+				add_action( 'wp_head', array( $this->get_parent(), 'anti_flicker' ), 0 ); // as early as possible
 			}
 		}
 	}
