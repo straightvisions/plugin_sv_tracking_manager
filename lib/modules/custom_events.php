@@ -59,6 +59,12 @@ class custom_events extends modules{
 			->set_title(__('Active Page', $this->get_module_name()))
 			->set_description(__('Optional, if you do not want to apply this event globally on site, but on a specific page.', $this->get_module_name()))
 			->load_type('select_page');
+		
+		$child												= $this->s['custom_events']->run_type()->add_child($this)
+			 ->set_ID('non_interaction')
+			 ->set_title(__('Non Interaction', $this->get_module_name()))
+			 ->set_description(__('Custom Events will reduce bounce rate in Analytics. Activate this to avoid reducing bounce rate by this event.', $this->get_module_name()))
+			 ->load_type('checkbox');
 	}
 	public function init(){
 		add_action('admin_init', array($this, 'admin_init'));
@@ -84,6 +90,12 @@ class custom_events extends modules{
 				}
 				if (isset($event['active_page']) && intval($event['active_page']) > 0 && intval($event['active_page']) != get_queried_object_id()) {
 					continue;
+				}
+				
+				if (isset($event['non_interaction']) && intval($event['non_interaction']) > 0) {
+					$non_interaction			= ', { nonInteraction: true }';
+				}else{
+					$non_interaction			= '';
 				}
 
 				if ( $event['event'] == 'scroll' ) {
@@ -113,7 +125,7 @@ class custom_events extends modules{
 						if ( window.ga ) { 
 							if( !once && jQuery( "' . $event['element'] . '" ).get(0) && jQuery( "' . $event['element'] . '" ).isInView() ) {
 								once = true;
-								ga("send", "event", "' . $event['eventCategory'] . '", "'.$event['eventAction'].'", "'.$event['eventLabel'].'", '.((intval($event['eventValue']) > 0) ? intval($event['eventValue']) : 0).');
+								ga("send", "event", "' . $event['eventCategory'] . '", "'.$event['eventAction'].'", "'.$event['eventLabel'].'", '.((intval($event['eventValue']) > 0) ? intval($event['eventValue']) : 0).$non_interaction.');
 							}
 						}
 					});';
@@ -121,8 +133,7 @@ class custom_events extends modules{
 					echo '
 					jQuery(document).on("'.$event['event'].'", "'.$event['element'].'", function(){
 						if (window.ga) {
-							console.log("'.addslashes($event['element'].' / '.$event['event'].' triggered: eventAction: '.$event['eventAction'].' eventLabel: '.$event['eventLabel'].' eventValue: '.$event['eventValue']).'");
-							ga("send", "event", "'.$event['eventCategory'].'", "'.$event['eventAction'].'", "'.$event['eventLabel'].'", '.((intval($event['eventValue']) > 0) ? intval($event['eventValue']) : 0).');
+							ga("send", "event", "'.$event['eventCategory'].'", "'.$event['eventAction'].'", "'.$event['eventLabel'].'", '.((intval($event['eventValue']) > 0) ? intval($event['eventValue']) : 0).$non_interaction.');
 						}
 					});
 					';
