@@ -7,17 +7,7 @@ class ec_woocommerce extends ec{
 	
 	public function __construct(){
 		$this->set_section_title('WooCommerce');
-		$this->set_section_desc('
-			<h3>Activate Advanced E-Commerce-Tracking.</h3>
-			<p>Go to Analytics -> Settings -> E-Commerce-Settings and enable "Advanced E-Commerce-Reports".</p>
-			<h3>Activate Event-Goals</h3>
-			<p>Go to Analytics -> Settings -> Goals and create the following <strong>3 Custom Events</strong> - Titles of the goals can be custom. On Step 3 (Goal Details), set the following:</p>
-			<ul>
-				<li>Category equals <strong>Checkout</strong>, Action equals <strong>View Cart</strong></li>
-				<li>Category equals <strong>Checkout</strong>, Action equals <strong>View Review</strong></li>
-				<li>Category equals <strong>Checkout</strong>, Action equals <strong>View Thankyou</strong></li>
-			</ul>
-			');
+		$this->set_section_desc('');
 		$this->set_section_type('settings');
 	}
 	public function wp_head(){
