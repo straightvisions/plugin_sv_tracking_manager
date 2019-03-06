@@ -2,4 +2,4 @@
 Contact Person: Matthias Bathke
 
 ## Modules
-- sv_core (v1.010)
+- sv_core (v1.013)
