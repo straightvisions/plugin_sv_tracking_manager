@@ -90,6 +90,7 @@ class custom_events extends modules{
 		echo '<script data-id="' . $this->get_name() . '">';
 				// This custom function checks if the given element is in view
 				echo '
+				window.onload = function () {
 					jQuery.fn.isInView = function() {
 					    var win         = jQuery( window );
 					    var viewport    = {
@@ -187,6 +188,6 @@ class custom_events extends modules{
 			}
 		}
 		//	     // Send data using an event.
-		echo '</script>';
+		echo '}</script>';
 	}
 }
