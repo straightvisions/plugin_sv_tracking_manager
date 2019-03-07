@@ -14,8 +14,7 @@ class custom_events extends modules{
 		$this->s['custom_events']					= static::$settings->create($this)
 			->set_ID('custom_events')
 			->set_title(__('Custom Events', $this->get_module_name()))
-			->load_type('group')
-			->set_loop(-1);
+			->load_type('group');
 		
 		$child										= $this->s['custom_events']->run_type()->add_child($this)
 			->set_ID('event')
