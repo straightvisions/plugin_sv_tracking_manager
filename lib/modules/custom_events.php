@@ -29,6 +29,13 @@ class custom_events extends modules{
 			->set_title(__('DOM Element', $this->get_module_name()))
 			->set_description(__('DOM Selector (e.g. .contact_form, #submit)', $this->get_module_name()))
 			->load_type('text');
+		
+		$child												= $this->s['custom_events']->run_type()->add_child($this)
+			 ->set_ID('scroll_percentage')
+			 ->set_title(__('Scroll Percentage', $this->get_module_name()))
+			 ->set_description(__('Requires Event Trigger set to "scroll". This Event will be triggered once scrolling has reached percentage of the DOM element set above. Use "html" as element if you want to track scroll-status auf the whole page.', $this->get_module_name()))
+			->load_type('select')
+			->set_options(range(0,100));
 
 		$child												= $this->s['custom_events']->run_type()->add_child($this)
 			->set_ID('eventCategory')
@@ -82,25 +89,8 @@ class custom_events extends modules{
 	public function wp_head()
 	{
 		echo '<script data-id="' . $this->get_name() . '">';
-		$events = $this->s['custom_events']->run_type()->get_data();
-		if ($events && is_array($events) && count($events) > 0) {
-			foreach ($events as $event) {
-				if(strlen($event['event']) == 0){
-					continue;
-				}
-				if (isset($event['active_page']) && intval($event['active_page']) > 0 && intval($event['active_page']) != get_queried_object_id()) {
-					continue;
-				}
-				
-				if (isset($event['non_interaction']) && intval($event['non_interaction']) > 0) {
-					$non_interaction			= ', { nonInteraction: true }';
-				}else{
-					$non_interaction			= '';
-				}
-
-				if ( $event['event'] == 'scroll' ) {
-					// This custom function checks if the given element is in view
-					echo '
+				// This custom function checks if the given element is in view
+				echo '
 					jQuery.fn.isInView = function() {
 					    var win         = jQuery( window );
 					    var viewport    = {
@@ -116,17 +106,74 @@ class custom_events extends modules{
 					    
 					    return ( ! ( viewport.right < bounds.left || viewport.left > bounds.right || viewport.bottom < bounds.top || viewport.top > bounds.bottom ) );
 					    
-					};';
+					};
+					
+					
+					jQuery.fn.scroll_percentage = function(name) {
+						var elementTop = jQuery(this).offset().top;
+						var elementHeight = jQuery(this).height();
+						var elementBottom = elementHeight;
+						
+						var windowHeight	= jQuery(window).height();
+						var scrollTop		= jQuery(window).scrollTop()-elementTop;
+						var elementScroll	= scrollTop+windowHeight;
 
-					echo 'var once = false';
+						var percentage = elementScroll / elementBottom * 100;
+						/*
+						if(name = ".selector"){
+							console.log(name);
+							console.log("scrollTop: "+scrollTop);
+							console.log("elementScroll: "+elementScroll);
+							console.log("elementBottom: "+elementBottom);
+							console.log("percentage: "+percentage);
+							console.log("###");
+						}
+						*/
+						return Math.round(percentage);
+					};
+					';
+		$events = $this->s['custom_events']->run_type()->get_data();
+		if ($events && is_array($events) && count($events) > 0) {
+			foreach ($events as $event_id => $event) {
+				if(strlen($event['event']) == 0){
+					continue;
+				}
+				if (isset($event['active_page']) && intval($event['active_page']) > 0 && intval($event['active_page']) != get_queried_object_id()) {
+					continue;
+				}
+				
+				if (isset($event['non_interaction']) && intval($event['non_interaction']) > 0) {
+					$non_interaction			= ', { nonInteraction: true }';
+				}else{
+					$non_interaction			= '';
+				}
 
+				if ( $event['event'] == 'scroll' ) {
+					echo 'var '.$this->get_prefix($event_id).' = false';
+					
 					echo '
 					jQuery( document ).on( "scroll", function() {
-						if ( window.ga ) { 
-							if( !once && jQuery( "' . $event['element'] . '" ).get(0) && jQuery( "' . $event['element'] . '" ).isInView() ) {
-								once = true;
-								ga("send", "event", "' . $event['eventCategory'] . '", "'.$event['eventAction'].'", "'.$event['eventLabel'].'", '.((intval($event['eventValue']) > 0) ? intval($event['eventValue']) : 0).$non_interaction.');
-							}
+						if ( window.ga ) {
+						';
+					
+					if ($event['scroll_percentage'] == '0') {
+						echo '
+								if( !'.$this->get_prefix($event_id).' && jQuery( "' . $event['element'] . '" ).get(0) && jQuery( "' . $event['element'] . '" ).isInView() ) {
+									'.$this->get_prefix($event_id).' = true;
+									ga("send", "event", "' . $event['eventCategory'] . '", "' . $event['eventAction'] . '", "' . $event['eventLabel'] . '", ' . ( ( intval( $event['eventValue'] ) > 0 ) ? intval( $event['eventValue'] ) : 0 ) . $non_interaction . ');
+								}
+						';
+					// check for scroll percentage
+					}else{
+						echo '
+								if( !'.$this->get_prefix($event_id).' && jQuery( "' . $event['element'] . '" ).get(0) && jQuery( "' . $event['element'] . '" ).scroll_percentage("'.$event['element'].'") >=  ' . $event['scroll_percentage'] . ') {
+									'.$this->get_prefix($event_id).' = true;
+									ga("send", "event", "' . $event['eventCategory'] . '", "' . $event['eventAction'] . '", "' . $event['eventLabel'] . '", ' . ( ( intval( $event['eventValue'] ) > 0 ) ? intval( $event['eventValue'] ) : 0 ) . $non_interaction . ');
+								}
+								';
+					}
+				
+					echo '
 						}
 					});';
 				} else {
