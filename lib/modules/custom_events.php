@@ -156,7 +156,7 @@ class custom_events extends modules{
 						if ( window.ga ) {
 						';
 					
-					if ($event['scroll_percentage'] == '0') {
+					if ($event['scroll_percentage'] == '' || $event['scroll_percentage'] == '0') {
 						echo '
 								if( !'.$this->get_prefix($event_id).' && jQuery( "' . $event['element'] . '" ).get(0) && jQuery( "' . $event['element'] . '" ).isInView() ) {
 									'.$this->get_prefix($event_id).' = true;
