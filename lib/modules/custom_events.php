@@ -33,8 +33,9 @@ class custom_events extends modules{
 			 ->set_ID('scroll_percentage')
 			 ->set_title(__('Scroll Percentage', $this->get_module_name()))
 			 ->set_description(__('Requires Event Trigger set to "scroll". This Event will be triggered once scrolling has reached percentage of the DOM element set above. Use "html" as element if you want to track scroll-status auf the whole page.', $this->get_module_name()))
-			->load_type('select')
-			->set_options(range(0,100));
+			->load_type('number')
+			->set_min(0)
+			->set_max(100);
 
 		$child												= $this->s['custom_events']->run_type()->add_child($this)
 			->set_ID('eventCategory')
