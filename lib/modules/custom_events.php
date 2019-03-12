@@ -166,7 +166,7 @@ class custom_events extends modules{
 					// check for scroll percentage
 					}else{
 						echo '
-								if( !'.$this->get_prefix($event_id).' && jQuery( "' . $event['element'] . '" ).get(0) && jQuery( "' . $event['element'] . '" ).scroll_percentage("'.$event['element'].'") >=  ' . $event['scroll_percentage'] . ') {
+								if( !'.$this->get_prefix($event_id).' && jQuery( "' . $event['element'] . '" ).get(0) && jQuery( "' . $event['element'] . '" ).scroll_percentage("'.$event['element'].'") >=  ' . intval($event['scroll_percentage']) . ') {
 									'.$this->get_prefix($event_id).' = true;
 									ga("send", "event", "' . $event['eventCategory'] . '", "' . $event['eventAction'] . '", "' . $event['eventLabel'] . '", ' . ( ( intval( $event['eventValue'] ) > 0 ) ? intval( $event['eventValue'] ) : 0 ) . $non_interaction . ');
 								}
