@@ -53,6 +53,12 @@
 				$this->s['tracking_id']->set_disabled(true);
 			}
 
+			$this->s['user_identification']					= static::$settings->create($this)
+				->set_ID('user_identification')
+				->set_title(__('User Identification', $this->get_module_name()))
+				->set_description(__('Activate user identification, see <a href="https://developers.google.com/analytics/devguides/collection/analyticsjs/cookies-user-id" target="_blank">Google Analytics Docs</a>.', $this->get_module_name()))
+				->load_type('checkbox');
+
 			if(strlen($this->s['tracking_id']->run_type()->get_data()) > 0){
 				add_action('wp_head',array($this,'wp_head_first'), 900);
 				add_action('wp_head',array($this,'wp_head_last'), 1100);
@@ -70,6 +76,15 @@
 		public function wp_head(){
 
 		}
+		public function get_user_identification(){
+			$output = '';
+
+			if($this->s['user_identification']->run_type()->get_data()){
+				$output = 'ga("set", "userId", "'.md5(wp_hash_password(get_current_user_id())).'");';
+			}
+
+			return $output;
+		}
 		public function wp_head_first(){
 			if(strlen($this->s['tracking_id']->run_type()->get_data()) > 0){
 					?>
@@ -82,6 +97,7 @@
 						ga.l = +new Date;
 						ga('create', '<?php echo $this->s['tracking_id']->run_type()->get_data(); ?>', 'auto');
 						ga('set', 'anonymizeIp', true);
+						<?php echo $this->get_user_identification(); ?>
 					</script>
 					<?php
 			}

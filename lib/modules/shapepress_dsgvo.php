@@ -24,6 +24,7 @@ class shapepress_dsgvo extends modules{
 					ga.l = +new Date;
 					ga('create', '<?php echo \SPDSGVOSettings::get('ga_tag_number'); ?>', 'auto');
 					ga('set', 'anonymizeIp', true);
+					<?php echo $this->get_parent()->get_user_identification(); ?>
                 </script>
 				<?php
 			}
