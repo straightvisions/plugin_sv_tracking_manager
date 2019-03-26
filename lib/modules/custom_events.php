@@ -27,12 +27,14 @@ class custom_events extends modules{
 			->set_ID('element')
 			->set_title(__('DOM Element', $this->get_module_name()))
 			->set_description(__('DOM Selector (e.g. .contact_form, #submit)', $this->get_module_name()))
-			->load_type('text');
+			->load_type('text')
+			->set_placeholder('html')
+			->set_default_value('html');
 		
 		$child												= $this->s['custom_events']->run_type()->add_child($this)
 			 ->set_ID('scroll_percentage')
 			 ->set_title(__('Scroll Percentage', $this->get_module_name()))
-			 ->set_description(__('Requires Event Trigger set to "scroll". This Event will be triggered once scrolling has reached percentage of the DOM element set above. Use "html" as element if you want to track scroll-status auf the whole page.', $this->get_module_name()))
+			 ->set_description(__('Requires Event Trigger set to "scroll". This Event will be triggered once scrolling has reached percentage of the DOM element set above. Use "html" as element if you want to track scroll-status auf the whole page. When no percentage is set, event triggers when element is in view.', $this->get_module_name()))
 			->load_type('number')
 			->set_min(0)
 			->set_max(100);
