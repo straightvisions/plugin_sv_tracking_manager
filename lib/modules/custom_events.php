@@ -10,12 +10,19 @@ class custom_events extends modules{
 	private function load_settings(){
 		$this->get_root()->add_section($this);
 		
-		// Uploaded Fonts
+		// Custom Events Groups
 		$this->s['custom_events']					= static::$settings->create($this)
 			->set_ID('custom_events')
 			->set_title(__('Custom Events', $this->get_module_name()))
 			->load_type('group');
-		
+
+		$child										= $this->s['custom_events']->run_type()->add_child($this)
+			->set_ID('entry_label')
+			->set_title(__('Entry Label', $this->get_module_name()))
+			->set_description(__('This Label will be used as Entry Title for this Settings Group.', $this->get_module_name()))
+			->load_type('text')
+			->set_placeholder('Entry #...');
+
 		$child										= $this->s['custom_events']->run_type()->add_child($this)
 			->set_ID('event')
 			->set_title(__('Event Trigger', $this->get_module_name()))

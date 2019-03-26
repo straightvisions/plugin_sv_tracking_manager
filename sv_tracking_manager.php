@@ -1,10 +1,10 @@
 <?php
 	/*
 	Plugin Name: SV Tracking Manager
-	Plugin URI: https://straightvisions.com/
+	Plugin URI: https://straightvisions.com
 	Description: Manage Google Analytics
-	Version: 3.0.0
-	Author: Matthias Reuter
+	Version: 1.3.02
+	Author: straightvisions GmbH
 	Author URI: https://straightvisions.com
 	Text Domain: sv_tracking_manager
 	Domain Path: /languages
@@ -15,8 +15,8 @@
 	require_once('lib/core/core.php');
 	
 	class init extends \sv_core\core{
-		const version							= 3001;
-		const version_core_match				= 3014;
+		const version							= 1302;
+		const version_core_match				= 3015;
 		
 		public function __construct(){
 			$this->setup(__NAMESPACE__,__FILE__);
