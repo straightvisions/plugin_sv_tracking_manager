@@ -95,6 +95,9 @@ class custom_events extends modules{
 			add_action('wp_head',array($this,'wp_head'), 1000);
 		}
 	}
+	public function cleanup(&$value, $key){
+		$value = str_replace('"', "'", $value);
+	}
 	public function wp_head()
 	{
 		echo '<script data-id="' . $this->get_name() . '">';
@@ -145,6 +148,9 @@ class custom_events extends modules{
 		$events = $this->s['custom_events']->run_type()->get_data();
 		if ($events && is_array($events) && count($events) > 0) {
 			foreach ($events as $event_id => $event) {
+
+				array_walk($event, array($this, 'cleanup'));
+
 				if(strlen($event['event']) == 0){
 					continue;
 				}
