@@ -40,7 +40,7 @@
 				strlen($this->s['project_ID']->run_type()->get_data()) > 0
 			) {
 				echo '
-			<script data-id="' . $this->get_name() . '_gemini">
+			<script data-id="' . $this->get_name() . '">
 				/* ' . $this->get_name() . '_gemini */
 				(function(w,d,t,r,u){w[u]=w[u]||[];w[u].push({"projectId":"'.$this->s['project_ID']->run_type()->get_data().'","properties":{"pixelId":"'.$this->s['pixel_ID']->run_type()->get_data().'"}});var s=d.createElement(t);s.src=r;s.async=true;s.onload=s.onreadystatechange=function(){var y,rs=this.readyState,c=w[u];if(rs&&rs!="complete"&&rs!="loaded")
 				
