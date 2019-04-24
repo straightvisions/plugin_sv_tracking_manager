@@ -24,14 +24,21 @@
 																				  ->set_title(__('Checkout Label: Cart Page', $this->get_module_name()))
 																				  ->set_description(__('Must be the same name as in Analytics -> Settings -> E-Commerce-Settings -> Checkout Labeling.', $this->get_module_name()))
 																				  ->load_type('text')
-																				  ->set_placeholder('e.g. Cart');
+																				  ->set_placeholder('e.g. View Cart');
 			
-			$this->s['checkout_label_checkout']				= static::$settings->create($this)
-																				  ->set_ID('checkout_label_checkout')
-																				  ->set_title(__('Checkout Label: Checkout Page', $this->get_module_name()))
+			$this->s['checkout_label_review']				= static::$settings->create($this)
+																				  ->set_ID('checkout_label_review')
+																				  ->set_title(__('Checkout Label: Review Page', $this->get_module_name()))
 																				  ->set_description(__('Must be the same name as in Analytics -> Settings -> E-Commerce-Settings -> Checkout Labeling.', $this->get_module_name()))
 																				  ->load_type('text')
-																				  ->set_placeholder('e.g. Checkout');
+																				  ->set_placeholder('e.g. View Review');
+			
+			$this->s['checkout_label_thankyou']				= static::$settings->create($this)
+																				  ->set_ID('checkout_label_thankyou')
+																				  ->set_title(__('Checkout Label: Thankyou Page', $this->get_module_name()))
+																				  ->set_description(__('Must be the same name as in Analytics -> Settings -> E-Commerce-Settings -> Checkout Labeling.', $this->get_module_name()))
+																				  ->load_type('text')
+																				  ->set_placeholder('e.g. View Thankyou');
 		}
 		public function admin_init(){
 			$this->load_settings();
@@ -108,7 +115,7 @@
 			if (window.ga) {
 				ga("ec:setAction","checkout", {
 					"step": 1,
-					"option": "'.((strlen($this->s['checkout_label_cart']->run_type()->get_data()) > 0) ? $this->s['checkout_label_cart']->run_type()->get_data() : 'Cart').'"
+					"option": "'.((strlen($this->s['checkout_label_cart']->run_type()->get_data()) > 0) ? $this->s['checkout_label_cart']->run_type()->get_data() : 'View Cart').'"
 				});
 				ga("send", "event", "Checkout", "View Cart");
 			}
@@ -125,9 +132,9 @@
 				echo '
 			<script data-id="'.$this->get_name().'">
 			if (window.ga) {
-				ga("ec:setAction","review", {
+				ga("ec:setAction","checkout", {
 					"step": 2,
-					"option": "'.((strlen($this->s['checkout_label_cart']->run_type()->get_data()) > 0) ? $this->s['checkout_label_cart']->run_type()->get_data() : 'Checkout').'"
+					"option": "'.((strlen($this->s['checkout_label_review']->run_type()->get_data()) > 0) ? $this->s['checkout_label_review']->run_type()->get_data() : 'View Review').'"
 				});
 				ga("send", "event", "Checkout", "View Review");
 			}
@@ -158,6 +165,10 @@
 					echo '
 				<script data-id="' . $this->get_name() . '">
 				if (window.ga) {
+					ga("ec:setAction","checkout", {
+						"step": 3,
+						"option": "'.((strlen($this->s['checkout_label_thankyou']->run_type()->get_data()) > 0) ? $this->s['checkout_label_thankyou']->run_type()->get_data() : '"View Thankyou').'"
+					});
 					ga("ec:setAction", "purchase", {
 						"id": "' . $order->get_id() . '",
 						"affiliation": "' . get_bloginfo('name') . '",
