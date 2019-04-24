@@ -165,8 +165,34 @@
 				$order									= new \WC_Order($wp->query_vars['order-received']);
 				if(!$order->meta_exists( $this->get_name().'_checkout_tracked') && $order->get_items()) {
 					foreach ($order->get_items() as $item) {
+						// @note: ec actions should never run after an event has been sent. Make sure to send all ec:actions before first ga(send, event, ...) command.
 						$this->add_product($this->map_wc_item_to_ec_product($item));
-						
+					}
+					
+					$order->update_meta_data($this->get_name() . '_checkout_tracked', '1');
+					$order->save();
+					
+					echo '
+					<script data-id="' . $this->get_name() . '">
+					if (window.ga) {
+						ga("ec:setAction","checkout", {
+							"step": '.intval($this->s['checkout_step_thankyou']->run_type()->get_data()).',
+							"option": "'.((strlen($this->s['checkout_label_thankyou']->run_type()->get_data()) > 0) ? $this->s['checkout_label_thankyou']->run_type()->get_data() : '"View Thankyou').'"
+						});
+						ga("ec:setAction", "purchase", {
+							"id": "' . $order->get_id() . '",
+							"affiliation": "' . get_bloginfo('name') . '",
+							"revenue": ' . $order->get_total() . ',
+							"tax": ' . $order->get_total_tax() . ',
+							"shipping": ' . $order->get_shipping_total() . ',
+							"coupon": "' . implode(',', $order->get_used_coupons()) . '"
+						});
+						ga("send", "event", "Checkout", "View Thankyou", "", ' . intval($order->get_total()) . ');
+					}
+					</script>
+					';
+					
+					foreach ($order->get_items() as $item) {
 						echo '
 						<script data-id="' . $this->get_name() . '">
 						if (window.ga) {
@@ -175,29 +201,6 @@
 						</script>
 						';
 					}
-					
-					$order->update_meta_data($this->get_name() . '_checkout_tracked', '1');
-					$order->save();
-					
-					echo '
-				<script data-id="' . $this->get_name() . '">
-				if (window.ga) {
-					ga("ec:setAction","checkout", {
-						"step": '.intval($this->s['checkout_step_thankyou']->run_type()->get_data()).',
-						"option": "'.((strlen($this->s['checkout_label_thankyou']->run_type()->get_data()) > 0) ? $this->s['checkout_label_thankyou']->run_type()->get_data() : '"View Thankyou').'"
-					});
-					ga("ec:setAction", "purchase", {
-						"id": "' . $order->get_id() . '",
-						"affiliation": "' . get_bloginfo('name') . '",
-						"revenue": ' . $order->get_total() . ',
-						"tax": ' . $order->get_total_tax() . ',
-						"shipping": ' . $order->get_shipping_total() . ',
-						"coupon": "' . implode(',', $order->get_used_coupons()) . '"
-					});
-					ga("send", "event", "Checkout", "View Thankyou", "", ' . intval($order->get_total()) . ');
-				}
-				</script>
-				';
 				}
 			}
 		}
