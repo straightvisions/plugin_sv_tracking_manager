@@ -160,17 +160,22 @@
 			}
 		}
 		public function checkout_thankyou(){
+			// @note: ec actions should never run after an event has been sent. Make sure to send all ec:actions before first ga(send, event, ...) command.
+			
 			if(is_wc_endpoint_url('order-received')) {
 				global $wp;
 				$order									= new \WC_Order($wp->query_vars['order-received']);
 				if(!$order->meta_exists( $this->get_name().'_checkout_tracked') && $order->get_items()) {
-					foreach ($order->get_items() as $item) {
-						// @note: ec actions should never run after an event has been sent. Make sure to send all ec:actions before first ga(send, event, ...) command.
-						$this->add_product($this->map_wc_item_to_ec_product($item));
-					}
-					
 					$order->update_meta_data($this->get_name() . '_checkout_tracked', '1');
 					$order->save();
+					
+					/*
+					 * EC ACTIONS
+					 */
+					
+					foreach ($order->get_items() as $item) {
+						$this->add_product($this->map_wc_item_to_ec_product($item));
+					}
 					
 					echo '
 					<script data-id="' . $this->get_name() . '">
@@ -187,6 +192,17 @@
 							"shipping": ' . $order->get_shipping_total() . ',
 							"coupon": "' . implode(',', $order->get_used_coupons()) . '"
 						});
+					}
+					</script>
+					';
+					
+					/*
+					 * EVENTS
+					 */
+					
+					echo '
+					<script data-id="' . $this->get_name() . '">
+					if (window.ga) {
 						ga("send", "event", "Checkout", "View Thankyou", "", ' . intval($order->get_total()) . ');
 					}
 					</script>

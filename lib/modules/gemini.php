@@ -37,7 +37,8 @@
 			if(
 				$this->s['activate']->run_type()->get_data() &&
 				strlen($this->s['pixel_ID']->run_type()->get_data()) > 0 &&
-				strlen($this->s['project_ID']->run_type()->get_data()) > 0
+				strlen($this->s['project_ID']->run_type()->get_data()) > 0 &&
+				$this->get_root()->modules->shapepress_dsgvo->tracking_allowed_yahoo()
 			) {
 				echo '
 			<script data-id="' . $this->get_name() . '">
