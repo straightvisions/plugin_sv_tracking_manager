@@ -25,20 +25,37 @@
 																				  ->set_description(__('Must be the same name as in Analytics -> Settings -> E-Commerce-Settings -> Checkout Labeling.', $this->get_module_name()))
 																				  ->load_type('text')
 																				  ->set_placeholder('e.g. View Cart');
-			
 			$this->s['checkout_label_review']				= static::$settings->create($this)
 																				  ->set_ID('checkout_label_review')
 																				  ->set_title(__('Checkout Label: Review Page', $this->get_module_name()))
 																				  ->set_description(__('Must be the same name as in Analytics -> Settings -> E-Commerce-Settings -> Checkout Labeling.', $this->get_module_name()))
 																				  ->load_type('text')
 																				  ->set_placeholder('e.g. View Review');
-			
 			$this->s['checkout_label_thankyou']				= static::$settings->create($this)
 																				  ->set_ID('checkout_label_thankyou')
 																				  ->set_title(__('Checkout Label: Thankyou Page', $this->get_module_name()))
 																				  ->set_description(__('Must be the same name as in Analytics -> Settings -> E-Commerce-Settings -> Checkout Labeling.', $this->get_module_name()))
 																				  ->load_type('text')
 																				  ->set_placeholder('e.g. View Thankyou');
+			
+			$this->s['checkout_step_cart']					= static::$settings->create($this)
+																				  ->set_ID('checkout_step_cart')
+																				  ->set_title(__('Checkout Step: Cart Page', $this->get_module_name()))
+																				  ->set_description(__('Must be the same order as in Analytics -> Settings -> E-Commerce-Settings -> E-Commerce-Setup -> Funnel Steps', $this->get_module_name()))
+																				  ->load_type('number')
+																				  ->set_placeholder('e.g. 2');
+			$this->s['checkout_step_review']					= static::$settings->create($this)
+																				 ->set_ID('checkout_step_review')
+																				 ->set_title(__('Checkout Step: Review Page', $this->get_module_name()))
+																				 ->set_description(__('Must be the same order as in Analytics -> Settings -> E-Commerce-Settings -> E-Commerce-Setup -> Funnel Steps', $this->get_module_name()))
+																				 ->load_type('number')
+																				 ->set_placeholder('e.g. 3');
+			$this->s['checkout_step_thankyou']					= static::$settings->create($this)
+																				 ->set_ID('checkout_step_thankyou')
+																				 ->set_title(__('Checkout Step: Thankyou Page', $this->get_module_name()))
+																				 ->set_description(__('Should not be added to E-Commerce-Funnel in Analytics, as it it available by default. Should be one number higher than review-step.', $this->get_module_name()))
+																				 ->load_type('number')
+																				 ->set_placeholder('e.g. 4');
 		}
 		public function admin_init(){
 			$this->load_settings();
@@ -114,7 +131,7 @@
 			<script data-id="'.$this->get_name().'">
 			if (window.ga) {
 				ga("ec:setAction","checkout", {
-					"step": 1,
+					"step": '.intval($this->s['checkout_step_cart']->run_type()->get_data()).',
 					"option": "'.((strlen($this->s['checkout_label_cart']->run_type()->get_data()) > 0) ? $this->s['checkout_label_cart']->run_type()->get_data() : 'View Cart').'"
 				});
 				ga("send", "event", "Checkout", "View Cart");
@@ -133,7 +150,7 @@
 			<script data-id="'.$this->get_name().'">
 			if (window.ga) {
 				ga("ec:setAction","checkout", {
-					"step": 2,
+					"step": '.intval($this->s['checkout_step_review']->run_type()->get_data()).',
 					"option": "'.((strlen($this->s['checkout_label_review']->run_type()->get_data()) > 0) ? $this->s['checkout_label_review']->run_type()->get_data() : 'View Review').'"
 				});
 				ga("send", "event", "Checkout", "View Review");
@@ -166,7 +183,7 @@
 				<script data-id="' . $this->get_name() . '">
 				if (window.ga) {
 					ga("ec:setAction","checkout", {
-						"step": 3,
+						"step": '.intval($this->s['checkout_step_thankyou']->run_type()->get_data()).',
 						"option": "'.((strlen($this->s['checkout_label_thankyou']->run_type()->get_data()) > 0) ? $this->s['checkout_label_thankyou']->run_type()->get_data() : '"View Thankyou').'"
 					});
 					ga("ec:setAction", "purchase", {
