@@ -28,6 +28,7 @@
 			$this->mouseflow->init();
 			$this->facebook->init();
 			$this->linkedin->init();
+			$this->bing->init();
 
 			add_action('admin_init', array($this, 'admin_init'));
 			add_action('init', array($this, 'wp_init'));
