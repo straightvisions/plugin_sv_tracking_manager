@@ -5,9 +5,11 @@ class shapepress_dsgvo extends modules{
 	public function __construct(){
 		// WP DSGVO BUG FIX
 		// if user has accepted default cookies again, we should set cn to acccepted again
-		$user_permissions = json_decode($_COOKIE['sp_dsgvo_user_permissions'], true);
-		if (isset($user_permissions['cookies']) && $user_permissions['cookies'] == 1){
-			setcookie('sp_dsgvo_cn_accepted', 'true', time()+60*60*24*30);
+		if(isset($_COOKIE['sp_dsgvo_user_permissions'])) {
+			$user_permissions = json_decode($_COOKIE['sp_dsgvo_user_permissions'], true);
+			if (isset($user_permissions['cookies']) && $user_permissions['cookies'] == 1) {
+				setcookie('sp_dsgvo_cn_accepted', 'true', time() + 60 * 60 * 24 * 30);
+			}
 		}
 	}
 

@@ -71,7 +71,6 @@
 				.async-hide { opacity: 0 !important}
 			</style>
 			';
-				if (window.ga && sv_tracking_manager_modules_shapepress_dsgvo_userPermissions("google-analytics")) {
 					// never alter this code
 					echo "<script>(function(a,s,y,n,c,h,i,d,e){s.className+=' '+y;h.start=1*new Date;
 h.end=i=function(){s.className=s.className.replace(RegExp(' ?'+y),'')};
@@ -80,5 +79,4 @@ h.end=i=function(){s.className=s.className.replace(RegExp(' ?'+y),'')};
 {'" . $this->s['ID']->run_type()->get_data() . "':true});</script>";
 				}
 			}
-		}
 	}
