@@ -14,6 +14,7 @@
 		
 		}
 		public function init(){
+			$this->load_settings();
 			add_action('init', array($this, 'wp_init'));
 		}
 		private function load_settings(){
@@ -57,28 +58,19 @@
 																				 ->load_type('number')
 																				 ->set_placeholder('e.g. 4');
 		}
-		public function admin_init(){
-			$this->load_settings();
-		}
 		public function wp_init(){
 			if(function_exists('WC')) {
 				add_action('wp_head', array($this, 'wp_footer'), 991);
 				add_action('wp_head', array($this, 'checkout_cart'), 999);
 				add_action('wp_head', array($this, 'checkout_review'), 999);
 				add_action('wp_head', array($this, 'checkout_thankyou'), 999);
-				
-				add_action('admin_init', array($this, 'admin_init'));
-				
-				if (!is_admin()) {
-					$this->load_settings();
-					add_action('wp_head', array($this, 'wp_head'), 1000);
-				}
+				add_action('wp_head', array($this, 'wp_head'), 1000);
 			}
 		}
 		public function wp_footer(){
 			echo '
 			<script data-id="'.$this->get_name().'">
-			if (window.ga) {
+			if (sv_tracking_manager_modules_shapepress_dsgvo_userPermissions("google-analytics") && window.ga) {
 				ga("set", "currencyCode", "' . get_woocommerce_currency() . '");
 			}
 			</script>
@@ -129,7 +121,7 @@
 				}
 				echo '
 			<script data-id="'.$this->get_name().'">
-			if (window.ga) {
+			if (sv_tracking_manager_modules_shapepress_dsgvo_userPermissions("google-analytics") && window.ga) {
 				ga("ec:setAction","checkout", {
 					"step": '.intval($this->s['checkout_step_cart']->run_type()->get_data()).',
 					"option": "'.((strlen($this->s['checkout_label_cart']->run_type()->get_data()) > 0) ? $this->s['checkout_label_cart']->run_type()->get_data() : 'View Cart').'"
@@ -148,7 +140,7 @@
 				
 				echo '
 			<script data-id="'.$this->get_name().'">
-			if (window.ga) {
+			if (sv_tracking_manager_modules_shapepress_dsgvo_userPermissions("google-analytics") && window.ga) {
 				ga("ec:setAction","checkout", {
 					"step": '.intval($this->s['checkout_step_review']->run_type()->get_data()).',
 					"option": "'.((strlen($this->s['checkout_label_review']->run_type()->get_data()) > 0) ? $this->s['checkout_label_review']->run_type()->get_data() : 'View Review').'"
@@ -179,7 +171,7 @@
 					
 					echo '
 					<script data-id="' . $this->get_name() . '">
-					if (window.ga) {
+					if (sv_tracking_manager_modules_shapepress_dsgvo_userPermissions("google-analytics") && window.ga) {
 						ga("ec:setAction","checkout", {
 							"step": '.intval($this->s['checkout_step_thankyou']->run_type()->get_data()).',
 							"option": "'.((strlen($this->s['checkout_label_thankyou']->run_type()->get_data()) > 0) ? $this->s['checkout_label_thankyou']->run_type()->get_data() : '"View Thankyou').'"
@@ -202,7 +194,7 @@
 					
 					echo '
 					<script data-id="' . $this->get_name() . '">
-					if (window.ga) {
+					if (sv_tracking_manager_modules_shapepress_dsgvo_userPermissions("google-analytics") && window.ga) {
 						ga("send", "event", "Checkout", "View Thankyou", "", ' . intval($order->get_total()) . ');
 					}
 					</script>
@@ -211,7 +203,7 @@
 					foreach ($order->get_items() as $item) {
 						echo '
 						<script data-id="' . $this->get_name() . '">
-						if (window.ga) {
+						if (sv_tracking_manager_modules_shapepress_dsgvo_userPermissions("google-analytics") && window.ga) {
 							ga("send", "event", "Checkout", "Purchased Product", "'.$item['product_id'].'", ' . intval( $item['line_total'] ) . ');
 						}
 						</script>

@@ -6,3 +6,9 @@ if(!function_exists('googleAnalyticsScript')) :
 
 	}
 endif;
+
+if(!function_exists('facebookPixelScript')) :
+	function facebookPixelScript($return = false) {
+
+	}
+endif;

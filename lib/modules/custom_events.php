@@ -83,17 +83,8 @@ class custom_events extends modules{
 			 ->load_type('checkbox');
 	}
 	public function init(){
-		add_action('admin_init', array($this, 'admin_init'));
-		add_action('init', array($this, 'wp_init'));
-	}
-	public function admin_init(){
 		$this->load_settings();
-	}
-	public function wp_init(){
-		if(!is_admin()){
-			$this->load_settings();
-			add_action('wp_head',array($this,'wp_head'), 1000);
-		}
+		add_action('wp_head', array($this, 'wp_head'), 1000);
 	}
 	public function cleanup(&$value, $key){
 		$value = str_replace('"', "'", $value);

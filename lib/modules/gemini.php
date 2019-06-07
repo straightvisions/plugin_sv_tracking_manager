@@ -37,19 +37,20 @@
 			if(
 				$this->s['activate']->run_type()->get_data() &&
 				strlen($this->s['pixel_ID']->run_type()->get_data()) > 0 &&
-				strlen($this->s['project_ID']->run_type()->get_data()) > 0 &&
-				$this->get_root()->modules->shapepress_dsgvo->tracking_allowed_yahoo()
+				strlen($this->s['project_ID']->run_type()->get_data()) > 0
 			) {
 				echo '
 			<script data-id="' . $this->get_name() . '">
-				/* ' . $this->get_name() . '_gemini */
-				(function(w,d,t,r,u){w[u]=w[u]||[];w[u].push({"projectId":"'.$this->s['project_ID']->run_type()->get_data().'","properties":{"pixelId":"'.$this->s['pixel_ID']->run_type()->get_data().'"}});var s=d.createElement(t);s.src=r;s.async=true;s.onload=s.onreadystatechange=function(){var y,rs=this.readyState,c=w[u];if(rs&&rs!="complete"&&rs!="loaded")
+				/* ' . $this->get_name() . ' */
+				if (sv_tracking_manager_modules_shapepress_dsgvo_userPermissions("yahoo")) {
+				(function(w,d,t,r,u){w[u]=w[u]||[];w[u].push({"projectId":"' . $this->s['project_ID']->run_type()->get_data() . '","properties":{"pixelId":"' . $this->s['pixel_ID']->run_type()->get_data() . '"}});var s=d.createElement(t);s.src=r;s.async=true;s.onload=s.onreadystatechange=function(){var y,rs=this.readyState,c=w[u];if(rs&&rs!="complete"&&rs!="loaded")
 				
 				{return}
 				try{y=YAHOO.ywa.I13N.fireBeacon;w[u]=[];w[u].push=function(p)
 				
 				{y([p])}
 				;y(c)}catch(e){}};var scr=d.getElementsByTagName(t)[0],par=scr.parentNode;par.insertBefore(s,scr)})(window,document,"script","https://s.yimg.com/wi/ytc.js","dotq");
+			}
 			</script>
 		';
 			}

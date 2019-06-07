@@ -52,7 +52,7 @@
 				echo '
 			<script data-id="' . $this->get_name() . '">
 			/* ' . $this->get_name() . ' */
-			if (window.ga) {
+			if (window.ga && sv_tracking_manager_modules_shapepress_dsgvo_userPermissions("google-analytics")) {
 				ga("require", "' . $this->s['ID']->run_type()->get_data() . '");
 			}
 			</script>
@@ -71,13 +71,14 @@
 				.async-hide { opacity: 0 !important}
 			</style>
 			';
-
-			// never alter this code
-echo "<script>(function(a,s,y,n,c,h,i,d,e){s.className+=' '+y;h.start=1*new Date;
+				if (window.ga && sv_tracking_manager_modules_shapepress_dsgvo_userPermissions("google-analytics")) {
+					// never alter this code
+					echo "<script>(function(a,s,y,n,c,h,i,d,e){s.className+=' '+y;h.start=1*new Date;
 h.end=i=function(){s.className=s.className.replace(RegExp(' ?'+y),'')};
 (a[n]=a[n]||[]).hide=h;setTimeout(function(){i();h.end=null},c);h.timeout=c;
 })(window,document.documentElement,'async-hide','dataLayer',4000,
-{'".$this->s['ID']->run_type()->get_data()."':true});</script>";
+{'" . $this->s['ID']->run_type()->get_data() . "':true});</script>";
+				}
 			}
 		}
 	}

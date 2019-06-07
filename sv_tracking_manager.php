@@ -3,7 +3,7 @@
 	/*
 	Plugin Name: SV Tracking Manager
 	Description: Manage Tracking Codes
-	Version: 1.3.04
+	Version: 1.3.05
 	Plugin URI: https://straightvisions.com/
 	Author: straightvisions GmbH
 	Author URI: https://straightvisions.com
@@ -16,8 +16,8 @@
 	require_once('lib/core/core.php');
 	
 	class init extends \sv_core\core{
-		const version							= 1304;
-		const version_core_match				= 3110;
+		const version							= 1305;
+		const version_core_match				= 3126;
 		
 		public function __construct(){
 			$this->setup(__NAMESPACE__,__FILE__);

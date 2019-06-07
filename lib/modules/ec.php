@@ -7,9 +7,10 @@ class ec extends modules{
 	}
 	public function init(){
 		$this->ec_woocommerce->init();
-		add_action('wp_head',array($this,'wp_head'), 990);
-		add_action('wp_head',array($this,'product_view'), 991);
-		add_action('wp_footer',array($this,'product_impression'), 1000);
+
+		add_action('wp_head', array($this, 'wp_head'), 990);
+		add_action('wp_head', array($this, 'product_view'), 991);
+		add_action('wp_footer', array($this, 'product_impression'), 1000);
 	}
 	public function wp_head(){
 		echo '
@@ -29,7 +30,7 @@ class ec extends modules{
 			echo '
 			<script data-id="' . $this->get_name() . '">
 			/* '.$this->get_name().' */
-			if (window.ga) {
+			if (sv_tracking_manager_modules_shapepress_dsgvo_userPermissions("google-analytics") && window.ga) {
 				ga("ec:addProduct", {                 // Provide product details in an productFieldObject.
 				  "id": "' . $product['id'] . '",                     // Product ID (string).
 				  "name": "' . $product['name'] . '",  // Product name (string).
@@ -52,7 +53,6 @@ class ec extends modules{
 		// todo: check if there is an automatic way, as there will be a gap when new products are created in WooCommerce and new product data is not imported to analytics instantly.
 		return;
 
-		$product_lists						= array();
 		$product_lists						= apply_filters('sv_tracking_manager_ec_add_product_impression', $product_lists);
 
 		if($product_lists && count($product_lists) > 0) {
@@ -84,7 +84,7 @@ class ec extends modules{
 		echo '
 			<script data-id="'.$this->get_name().'">
 			/* '.$this->get_name().' */
-			if (window.ga) {
+			if (sv_tracking_manager_modules_shapepress_dsgvo_userPermissions("google-analytics") && window.ga) {
 				ga("ec:addProduct", {
 					"id": "' . $param['id'] . '",
 					"name": "' . $param['name'] . '",

@@ -26,6 +26,7 @@
 			$this->optimize->init();
 			$this->gemini->init();
 			$this->mouseflow->init();
+			$this->facebook->init();
 
 			add_action('admin_init', array($this, 'admin_init'));
 			add_action('init', array($this, 'wp_init'));
@@ -38,7 +39,7 @@
 			$disabled		= false;
 			if(class_exists('\SPDSGVOSettings') && \SPDSGVOSettings::get('ga_enable_analytics') === '1') {
 				$ga_code = \SPDSGVOSettings::get('ga_code', '');
-				if($ga_code == '' || \SPDSGVOSettings::get('own_code') !== '1') {
+				if($ga_code != '' || \SPDSGVOSettings::get('own_code') !== '1') {
 					$tracking_code = __('Code retrieved by Shapepress WP DSGVO-Plugin:',$this->get_root()->get_prefix()).' '.\SPDSGVOSettings::get('ga_tag_number');
 					$disabled		= true;
 				}
