@@ -20,6 +20,7 @@
 		 * @since			1.0
 		 */
 		public function init(){
+			$this->freemius->init();
 			$this->ec->init();
 			$this->shapepress_dsgvo->init();
 			$this->custom_events->init();

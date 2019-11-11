@@ -1,29 +1,25 @@
 <?php
-	
-	/*
-	Plugin Name: SV Tracking Manager
-	Description: Manage Tracking Codes
-	Version: 1.3.10
-	Plugin URI: https://straightvisions.com/
-	Author: straightvisions GmbH
-	Author URI: https://straightvisions.com
-	Text Domain: sv_tracking_manager
-	Domain Path: /languages
-	*/
-	
+/*
+Version: 1.4.00
+Plugin Name: SV Tracking Manager
+Text Domain: sv_tracking_manager
+Description: Manage Tracking Codes
+Plugin URI: https://straightvisions.com/
+Author: straightvisions GmbH
+Author URI: https://straightvisions.com
+Domain Path: /languages
+License: GPL-3.0-or-later
+License URI: https://www.gnu.org/licenses/gpl-3.0-standalone.html
+*/
+
 	namespace sv_tracking_manager;
-	
-	require_once('lib/core/core.php');
-	
-	class init extends \sv_core\core{
-		const version							= 1310;
-		const version_core_match				= 3126;
-		
-		public function __construct(){
-			$this->setup(__NAMESPACE__,__FILE__);
-			$this->set_section_title('SV Tracking Manager');
-			$this->set_section_desc('Manage Google Analytics');
-		}
+
+	if(!class_exists('\sv_dependencies\init')){
+		require_once( 'lib/core_plugin/dependencies/sv_dependencies.php' );
 	}
-	
-	$GLOBALS[__NAMESPACE__]			= new init();
+
+	if ( $GLOBALS['sv_dependencies']->set_instance_name( 'SV Tracking Manager' )->check_php_version() ) {
+		require_once( dirname(__FILE__) . '/init.php' );
+	} else {
+		$GLOBALS['sv_dependencies']->php_update_notification()->prevent_plugin_activation();
+	}
