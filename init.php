@@ -19,9 +19,9 @@
 				'desc'	=> 'Description'
 			));
 
-			$this->set_section_title( $info['name'] );
-			$this->set_section_desc( $info['desc'] );
-			$this->set_section_privacy( '<p>' . $this->get_section_title() . __(' does not collect or share any data',  'sv_tracking_manager').'</p>' );
+			$this->set_section_title( $info['name'] )
+				->set_section_desc( $info['desc'] )
+				->set_section_privacy( '<p>' . $this->get_section_title() . __(' does not collect or share any data, but the tracking services supported by this plugin may do.',  'sv_tracking_manager').'</p>' );
 		}
 	}
 	

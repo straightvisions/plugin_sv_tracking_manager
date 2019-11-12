@@ -9,9 +9,7 @@
 		 * @ignore
 		 */
 		public function __construct(){
-			$this->set_section_title('Common Settings');
-			$this->set_section_desc('General Basic Settings');
-			$this->set_section_type('settings');
+
 		}
 		/**
 		 * @desc			initialize actions and filters
@@ -20,8 +18,12 @@
 		 * @since			1.0
 		 */
 		public function init(){
+			$this->cache->init();
+			$this->google_analytics->init();
+
 			$this->freemius->init();
-			$this->ec->init();
+
+			/*$this->ec->init();
 			$this->shapepress_dsgvo->init();
 			$this->custom_events->init();
 			$this->optimize->init();
@@ -33,11 +35,9 @@
 			$this->hotjar->init();
 
 			add_action('admin_init', array($this, 'admin_init'));
-			add_action('init', array($this, 'wp_init'));
+			add_action('init', array($this, 'wp_init'));*/
 		}
 		private function load_settings(){
-			$this->get_root()->add_section($this);
-
 			// check for tracking code by child available
 			$tracking_code						= 'UA-XXXXXX-XXX';
 			$disabled		= false;
