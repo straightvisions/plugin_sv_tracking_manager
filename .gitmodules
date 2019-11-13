@@ -4,3 +4,21 @@
 [submodule "lib/modules/google_analytics"]
 	path = lib/modules/google_analytics
 	url = ../module_sv_tracking_manager_services_google_analytics
+[submodule "lib/modules/facebook"]
+	path = lib/modules/facebook
+	url = ../module_sv_tracking_manager_services_facebook
+[submodule "lib/modules/bing"]
+	path = lib/modules/bing
+	url = ../module_sv_tracking_manager_services_bing
+[submodule "lib/modules/yahoo"]
+	path = lib/modules/yahoo
+	url = ../module_sv_tracking_manager_services_yahoo
+[submodule "lib/modules/hotjar"]
+	path = lib/modules/hotjar
+	url = ../module_sv_tracking_manager_services_hotjar
+[submodule "lib/modules/linkedin"]
+	path = lib/modules/linkedin
+	url = ../module_sv_tracking_manager_services_linkedin
+[submodule "lib/modules/mouseflow"]
+	path = lib/modules/mouseflow
+	url = ../module_sv_tracking_manager_services_mouseflow
