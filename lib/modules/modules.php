@@ -2,21 +2,6 @@
 	namespace sv_tracking_manager;
 
 	class modules extends init{
-		/**
-		 * @desc			Loads other classes of package
-		 * @author			Matthias Reuter
-		 * @since			1.0
-		 * @ignore
-		 */
-		public function __construct(){
-
-		}
-		/**
-		 * @desc			initialize actions and filters
-		 * @return	void
-		 * @author			Matthias Reuter
-		 * @since			1.0
-		 */
 		public function init(){
 			$this->google_analytics->init();
 			$this->google_optimize->init();
@@ -27,10 +12,51 @@
 			$this->mouseflow->init();
 			$this->yahoo->init();
 
+			//add_filter( 'rocket_excluded_inline_js_content', array($this,'rocket_excluded_inline_js_content') );
+			add_filter( 'rocket_exclude_js',array($this,'rocket_exclude_js') );
+
 			$this->freemius->init();
 
 			/*$this->ec->init();
 			$this->shapepress_dsgvo->init(); */
+		}
+		// never combine inline JS
+		/*public function rocket_excluded_inline_js_content($pattern){
+			$pattern[] = 'sv_tracking_manager';
+			return $pattern;
+		}*/
+		// never combine external JS
+		public function rocket_exclude_js($pattern){
+			$pattern[] = '(.*)sv-tracking-manager/(.*)';
+
+			return $pattern;
+		}
+		public function add_service(): modules{
+			if($this->is_active()){
+				// filter name: sv_tracking_manager_active_services
+				add_filter($this->get_root()->get_prefix('active_services'), function(array $services){
+					return array_merge($services,array($this->get_module_name() => $this->get_section_title()));
+				});
+
+				add_action('wp_footer', array($this, 'consent_management'), 1);
+			}
+
+			return $this;
+		}
+		public function consent_management(): modules{
+			// filter name: sv_tracking_manager_consent_management
+			$activated = apply_filters($this->get_root()->get_prefix('consent_management'), false);
+
+			if($activated){
+				foreach($this->get_scripts() as $script){
+					$script
+						->set_consent_required()
+						// filter name: sv_tracking_manager_data_attributes
+						->set_custom_attributes(apply_filters($this->get_root()->get_prefix('data_attributes'), '', $script));
+				}
+			}
+
+			return $this;
 		}
 	}
 ?>
