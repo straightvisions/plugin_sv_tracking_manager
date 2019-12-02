@@ -3,9 +3,11 @@
 
 	class modules extends init{
 		public function init(){
+			$this->usercentrics->init();
 			$this->google_analytics->init();
 			$this->google_optimize->init();
 			$this->bing->init();
+			$this->custom->init();
 			$this->facebook->init();
 			$this->hotjar->init();
 			$this->linkedin->init();
@@ -16,15 +18,7 @@
 			add_filter( 'rocket_exclude_js',array($this,'rocket_exclude_js') );
 
 			$this->freemius->init();
-
-			/*$this->ec->init();
-			$this->shapepress_dsgvo->init(); */
 		}
-		// never combine inline JS
-		/*public function rocket_excluded_inline_js_content($pattern){
-			$pattern[] = 'sv_tracking_manager';
-			return $pattern;
-		}*/
 		// never combine external JS
 		public function rocket_exclude_js($pattern){
 			$pattern[] = '(.*)sv-tracking-manager/(.*)';
@@ -49,10 +43,12 @@
 
 			if($activated){
 				foreach($this->get_scripts() as $script){
-					$script
-						->set_consent_required()
-						// filter name: sv_tracking_manager_data_attributes
-						->set_custom_attributes(apply_filters($this->get_root()->get_prefix('data_attributes'), '', $script));
+					if($script->get_ID() != 'usercentrics') {
+						$script
+							->set_consent_required()
+							// filter name: sv_tracking_manager_data_attributes
+							->set_custom_attributes(apply_filters($this->get_root()->get_prefix('data_attributes'), $script->get_custom_attributes(), $script));
+					}
 				}
 			}
 

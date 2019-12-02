@@ -28,3 +28,6 @@
 [submodule "lib/modules/custom"]
 	path = lib/modules/custom
 	url = ../module_sv_tracking_manager_services_custom
+[submodule "lib/modules/usercentrics"]
+	path = lib/modules/usercentrics
+	url = ../module_sv_tracking_manager_services_usercentrics

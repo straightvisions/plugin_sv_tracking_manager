@@ -20,7 +20,7 @@ class freemius extends init {
 				'type'                => 'plugin',
 				'public_key'          => 'pk_20c9b91b701dbbd82fc28dcb2c576',
 				'is_premium'          => false,
-				'has_addons'          => true,
+				'has_addons'          => false,
 				'has_paid_plans'      => false,
 				'menu'                => array(
 					'slug'           => 'sv_tracking_manager',
