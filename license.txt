@@ -1,9 +1,18 @@
-This is SV GA Manager. This means, that this package has it's own, probritary license:
+	SV Tracking Manager
+		Manage Tracking Codes
+	Code (c) 2019 straightvisions GmbH
+	Project Leader: Matthias Bathke
+	Project Website: https://straightvisions.com
 
-	SV GA Manager
-	Code (c) 2017 Matthias Reuter
-	Website: https://straightvisions.com/
+	This program is free software: you can redistribute it and/or modify
+	it under the terms of the GNU General Public License as published by
+	the Free Software Foundation, either version 3 of the License, or
+	(at your option) any later version.
 
-	Please note: This is no free software. You need to purchase a license
-	to legaly use this software. If you are using the trial version of this
-	software, you have to buy a license if the trial period expires.
+	This program is distributed in the hope that it will be useful,
+	but WITHOUT ANY WARRANTY; without even the implied warranty of
+	MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+	GNU General Public License for more details.
+
+	You should have received a copy of the GNU General Public License
+	along with this program.  If not, see <http://www.gnu.org/licenses/>.

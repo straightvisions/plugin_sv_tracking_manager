@@ -110,7 +110,7 @@
 				'category'							=> $this->get_product_cat($item['product_id']),
 				'brand'								=> '', // no default support for brands in WooCommerce
 				'variant'							=> isset($item['data']) ? strip_tags($item['data']->get_formatted_name()) : strip_tags($item->get_name()),
-				'price'								=> isset($item['data']) ? $item['data']->get_data()['price'] : $item->get_data()['subtotal'],
+				'price'								=> isset($item['data']) ? $item['data']->get_data()['price'] : ($item->get_data()['subtotal'] / $item['quantity']),
 				'quantity'							=> $item['quantity']
 			), $item);
 		}

@@ -2,122 +2,57 @@
 	namespace sv_tracking_manager;
 
 	class modules extends init{
-		/**
-		 * @desc			Loads other classes of package
-		 * @author			Matthias Reuter
-		 * @since			1.0
-		 * @ignore
-		 */
-		public function __construct(){
-			$this->set_section_title('Common Settings');
-			$this->set_section_desc('General Basic Settings');
-			$this->set_section_type('settings');
-		}
-		/**
-		 * @desc			initialize actions and filters
-		 * @return	void
-		 * @author			Matthias Reuter
-		 * @since			1.0
-		 */
 		public function init(){
-			$this->ec->init();
-			$this->shapepress_dsgvo->init();
-			$this->custom_events->init();
-			$this->optimize->init();
-			$this->gemini->init();
-			$this->mouseflow->init();
-			$this->facebook->init();
-			$this->linkedin->init();
+			$this->usercentrics->init();
+			$this->google_analytics->init();
+			$this->google_optimize->init();
 			$this->bing->init();
+			$this->custom->init();
+			$this->facebook->init();
 			$this->hotjar->init();
+			$this->linkedin->init();
+			$this->mouseflow->init();
+			$this->yahoo->init();
 
-			add_action('admin_init', array($this, 'admin_init'));
-			add_action('init', array($this, 'wp_init'));
+			//add_filter( 'rocket_excluded_inline_js_content', array($this,'rocket_excluded_inline_js_content') );
+			add_filter( 'rocket_exclude_js',array($this,'rocket_exclude_js') );
+
+			$this->freemius->init();
 		}
-		private function load_settings(){
-			$this->get_root()->add_section($this);
+		// never combine external JS
+		public function rocket_exclude_js($pattern){
+			$pattern[] = '(.*)sv-tracking-manager/(.*)';
 
-			// check for tracking code by child available
-			$tracking_code						= 'UA-XXXXXX-XXX';
-			$disabled		= false;
-			if(class_exists('\SPDSGVOSettings') && \SPDSGVOSettings::get('ga_enable_analytics') === '1') {
-				$ga_code = \SPDSGVOSettings::get('ga_code', '');
-				if($ga_code != '' || \SPDSGVOSettings::get('own_code') !== '1') {
-					$tracking_code = __('Code retrieved by Shapepress WP DSGVO-Plugin:',$this->get_root()->get_prefix()).' '.\SPDSGVOSettings::get('ga_tag_number');
-					$disabled		= true;
+			return $pattern;
+		}
+		public function add_service(): modules{
+			if($this->is_active()){
+				// filter name: sv_tracking_manager_active_services
+				add_filter($this->get_root()->get_prefix('active_services'), function(array $services){
+					return array_merge($services,array($this->get_module_name() => $this->get_section_title()));
+				});
+
+				add_action('wp_footer', array($this, 'consent_management'), 1);
+			}
+
+			return $this;
+		}
+		public function consent_management(): modules{
+			// filter name: sv_tracking_manager_consent_management
+			$activated = apply_filters($this->get_root()->get_prefix('consent_management'), false);
+
+			if($activated){
+				foreach($this->get_scripts() as $script){
+					if($script->get_ID() != 'usercentrics') {
+						$script
+							->set_consent_required()
+							// filter name: sv_tracking_manager_data_attributes
+							->set_custom_attributes(apply_filters($this->get_root()->get_prefix('data_attributes'), $script->get_custom_attributes(), $script));
+					}
 				}
 			}
-			
-			$this->s['tracking_id']					= static::$settings->create($this)
-				->set_ID('tracking_id')
-				->set_title(__('Tracking ID', $this->get_module_name()))
-				->load_type('text')
-				->set_placeholder($tracking_code);
-				
-			if($disabled){
-				$this->s['tracking_id']->set_disabled(true);
-			}
 
-			$this->s['user_identification']					= static::$settings->create($this)
-				->set_ID('user_identification')
-				->set_title(__('User Identification', $this->get_module_name()))
-				->set_description(__('Activate user identification, see <a href="https://developers.google.com/analytics/devguides/collection/analyticsjs/cookies-user-id" target="_blank">Google Analytics Docs</a>.', $this->get_module_name()))
-				->load_type('checkbox');
-
-			if(strlen($this->s['tracking_id']->run_type()->get_data()) > 0){
-				add_action('wp_head',array($this,'wp_head_first'), 900);
-				add_action('wp_head',array($this,'wp_head_last'), 1100);
-			}
-		}
-		public function admin_init(){
-			$this->load_settings();
-		}
-		public function wp_init(){
-			if(!is_admin()){
-				$this->load_settings();
-				add_action('wp_head',array($this,'wp_head'), 1000);
-			}
-		}
-		public function wp_head(){
-
-		}
-		public function get_user_identification(){
-			$output = '';
-
-			if($this->s['user_identification']->run_type()->get_data()){
-				$output = 'ga("set", "userId", "'.md5(wp_hash_password(get_current_user_id())).'");';
-			}
-
-			return $output;
-		}
-		public function wp_head_first(){
-			if(strlen($this->s['tracking_id']->run_type()->get_data()) > 0){
-					?>
-					<script async src='https://www.google-analytics.com/analytics.js'></script>
-					<script data-id="<?php echo $this->get_name(); ?>">
-						/* <?php echo $this->get_name(); ?> */
-						window.ga = window.ga || function () {
-							(ga.q = ga.q || []).push(arguments)
-						};
-						ga.l = +new Date;
-						ga('create', '<?php echo $this->s['tracking_id']->run_type()->get_data(); ?>', 'auto');
-						ga('set', 'anonymizeIp', true);
-						<?php echo $this->get_user_identification(); ?>
-					</script>
-					<?php
-			}
-		}
-		public function wp_head_last(){
-			if(strlen($this->s['tracking_id']->run_type()->get_data()) > 0) {
-				?>
-				<script data-id="<?php echo $this->get_name(); ?>">
-					/* <?php echo $this->get_name(); ?> */
-					if (window.ga) {
-						ga('send', 'pageview');
-					}
-				</script>
-				<?php
-			}
+			return $this;
 		}
 	}
 ?>
