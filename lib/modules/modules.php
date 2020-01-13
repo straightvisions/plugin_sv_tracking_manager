@@ -93,9 +93,18 @@
 		public function wp_head_first(){
 			if(strlen($this->s['tracking_id']->run_type()->get_data()) > 0){
 				?>
-                <script async src='https://www.google-analytics.com/analytics.js'></script>
                 <script data-id="<?php echo $this->get_name(); ?>">
 					/* <?php echo $this->get_name(); ?> */
+
+					// DOM: Create the script element
+					var jsElm = document.createElement("script");
+					// set the type attribute
+					jsElm.type = "application/javascript";
+					// make the script element load file
+					jsElm.src = 'https://www.google-analytics.com/analytics.js';
+					// finally insert the element to the body element in order to load the script
+					document.body.appendChild(jsElm);
+     
 					window.ga = window.ga || function () {
 						(ga.q = ga.q || []).push(arguments)
 					};
