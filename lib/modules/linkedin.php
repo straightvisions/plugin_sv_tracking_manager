@@ -33,9 +33,7 @@ class linkedin extends modules{
 			echo '
 			<script data-id="' . $this->get_name() . '">
 				/* ' . $this->get_name() . ' */
-				if (sv_tracking_manager_modules_shapepress_dsgvo_userPermissions("linkedin")) {
 				_linkedin_partner_id = "' . $this->s['pixel_ID']->run_type()->get_data() . '";window._linkedin_data_partner_ids = window._linkedin_data_partner_ids || [];window._linkedin_data_partner_ids.push(_linkedin_partner_id);(function(){var s = document.getElementsByTagName("script")[0];var b = document.createElement("script");b.type = "text/javascript";b.async = true;b.src = "https://snap.licdn.com/li.lms-analytics/insight.min.js";s.parentNode.insertBefore(b, s);})();
-				}
 			</script>
 		';
 		}

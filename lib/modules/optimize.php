@@ -52,9 +52,7 @@
 				echo '
 			<script data-id="' . $this->get_name() . '">
 			/* ' . $this->get_name() . ' */
-			if (window.ga && sv_tracking_manager_modules_shapepress_dsgvo_userPermissions("google-analytics")) {
 				ga("require", "' . $this->s['ID']->run_type()->get_data() . '");
-			}
 			</script>
 		';
 			}

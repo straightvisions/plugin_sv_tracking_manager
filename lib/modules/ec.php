@@ -30,7 +30,6 @@ class ec extends modules{
 			echo '
 			<script data-id="' . $this->get_name() . '">
 			/* '.$this->get_name().' */
-			if (sv_tracking_manager_modules_shapepress_dsgvo_userPermissions("google-analytics") && window.ga) {
 				ga("ec:addProduct", {                 // Provide product details in an productFieldObject.
 				  "id": "' . $product['id'] . '",                     // Product ID (string).
 				  "name": "' . $product['name'] . '",  // Product name (string).
@@ -41,7 +40,6 @@ class ec extends modules{
 				});
 				
 				ga("ec:setAction", "detail");       // Detail action.
-			}
 			</script>
 		';
 		}
@@ -84,7 +82,6 @@ class ec extends modules{
 		echo '
 			<script data-id="'.$this->get_name().'">
 			/* '.$this->get_name().' */
-			if (sv_tracking_manager_modules_shapepress_dsgvo_userPermissions("google-analytics") && window.ga) {
 				ga("ec:addProduct", {
 					"id": "' . $param['id'] . '",
 					"name": "' . $param['name'] . '",
@@ -94,7 +91,6 @@ class ec extends modules{
 					"price": ' . $param['price'] . ',
 					"quantity": ' . $param['quantity'] . '
 				});
-			}
 			</script>
 			';
 	}

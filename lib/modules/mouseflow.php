@@ -33,7 +33,6 @@
 				echo '
 			<script data-id="' . $this->get_name() . '">
 				/* ' . $this->get_name() . ' */
-				if (sv_tracking_manager_modules_shapepress_dsgvo_userPermissions("mouseflow")) {
 window._mfq = window._mfq || [];
 (function() {
 var mf = document.createElement("script");
@@ -41,7 +40,6 @@ mf.type = "text/javascript"; mf.async = true;
 mf.src = "//cdn.mouseflow.com/projects/' . $this->s['project_ID']->run_type()->get_data() . '.js";
 document.getElementsByTagName("head")[0].appendChild(mf);
 })();
-}
 			</script>
 		';
 			}

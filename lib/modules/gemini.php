@@ -42,7 +42,6 @@
 				echo '
 			<script data-id="' . $this->get_name() . '">
 				/* ' . $this->get_name() . ' */
-				if (sv_tracking_manager_modules_shapepress_dsgvo_userPermissions("yahoo")) {
 				(function(w,d,t,r,u){w[u]=w[u]||[];w[u].push({"projectId":"' . $this->s['project_ID']->run_type()->get_data() . '","properties":{"pixelId":"' . $this->s['pixel_ID']->run_type()->get_data() . '"}});var s=d.createElement(t);s.src=r;s.async=true;s.onload=s.onreadystatechange=function(){var y,rs=this.readyState,c=w[u];if(rs&&rs!="complete"&&rs!="loaded")
 				
 				{return}
@@ -50,7 +49,6 @@
 				
 				{y([p])}
 				;y(c)}catch(e){}};var scr=d.getElementsByTagName(t)[0],par=scr.parentNode;par.insertBefore(s,scr)})(window,document,"script","https://s.yimg.com/wi/ytc.js","dotq");
-			}
 			</script>
 		';
 			}

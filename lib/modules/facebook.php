@@ -48,7 +48,6 @@ class facebook extends modules{
 			echo '
 			<script data-id="' . $this->get_name() . '">
 				/* ' . $this->get_name() . ' */
-				if (sv_tracking_manager_modules_shapepress_dsgvo_userPermissions("facebook-pixel")) {
   !function(f,b,e,v,n,t,s)
   {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
   n.callMethod.apply(n,arguments):n.queue.push(arguments)};
@@ -59,7 +58,6 @@ class facebook extends modules{
   "https://connect.facebook.net/en_US/fbevents.js");
   fbq("init", "' . $pixel_id . '");
   fbq("track", "PageView");
-  }
 			</script>
 		';
 		}
