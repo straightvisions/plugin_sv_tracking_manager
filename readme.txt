@@ -5,7 +5,7 @@ Tags: tracking, analytics, dsgvo, usercentrics, cookie banner, bing, facebook, g
 Requires PHP: 7.0
 Requires at least: 5.0
 Tested up to: 5.3
-Stable tag: 1.4.20
+Stable tag: 1.4.01
 License: GPL-3.0-or-later
 License URI: https://www.gnu.org/licenses/gpl-3.0-standalone.html
 
@@ -59,10 +59,18 @@ This plugin is build to work out-of-the-box. Installation is quite simple.
 
 == Changelog ==
 
+= 1.4.01 =
+* update core
+* fix version error
+
 = 1.4.00 =
 Initial Release
 
 == Upgrade Notice ==
+
+= 1.4.01 =
+* update core
+* fix version error
 
 = 1.4.00 =
 Initial Release
