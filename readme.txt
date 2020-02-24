@@ -4,8 +4,8 @@ Donate link: https://straightvisions.com
 Tags: tracking, analytics, dsgvo, usercentrics, cookie banner, bing, facebook, google analytics, google optimize, hotjar, linkedin, mouseflow, yahoo
 Requires PHP: 7.0
 Requires at least: 5.0
-Tested up to: 5.3
-Stable tag: 1.4.02
+Tested up to: 5.3.2
+Stable tag: 1.4.03
 License: GPL-3.0-or-later
 License URI: https://www.gnu.org/licenses/gpl-3.0-standalone.html
 
@@ -59,6 +59,10 @@ This plugin is build to work out-of-the-box. Installation is quite simple.
 
 == Changelog ==
 
+= 1.4.03 =
+* update core
+* FEAT - ADD - Privacy Shields by UserCentrics
+
 = 1.4.02 =
 * update core
 * FEAT - ADD - Anonymize IP for Google Analytics
@@ -72,9 +76,9 @@ Initial Release
 
 == Upgrade Notice ==
 
-= 1.4.02 =
+= 1.4.03 =
 * update core
-* FEAT - ADD - Anonymize IP for Google Analytics
+* FEAT - ADD - Privacy Shields by UserCentrics
 
 == Missing a feature? ==
 

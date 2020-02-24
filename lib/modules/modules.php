@@ -41,9 +41,16 @@
 			// filter name: sv_tracking_manager_consent_management
 			$activated = apply_filters($this->get_root()->get_prefix('consent_management'), false);
 
+			// @todo: currently no effect, since uc scripts are directly loaded
+			$no_consent_required	= apply_filters($this->get_prefix('no_consent_required'), array(
+				'usercentrics',
+				'usercentrics_block',
+				'usercentrics_block_ui'
+			));
+
 			if($activated){
 				foreach($this->get_scripts() as $script){
-					if($script->get_ID() != 'usercentrics') {
+					if(!in_array($script->get_ID(),$no_consent_required)) {
 						$script
 							->set_consent_required()
 							// filter name: sv_tracking_manager_data_attributes
