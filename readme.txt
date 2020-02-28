@@ -62,6 +62,8 @@ This plugin is build to work out-of-the-box. Installation is quite simple.
 = 1.4.03 =
 * update core
 * FEAT - ADD - Privacy Shields by UserCentrics
+* FEAT - ADD - Disable UserCentrics for selected User Roles
+* BUG - FIX - DIVI Visual Builder compatibility
 
 = 1.4.02 =
 * update core
@@ -79,6 +81,8 @@ Initial Release
 = 1.4.03 =
 * update core
 * FEAT - ADD - Privacy Shields by UserCentrics
+* FEAT - ADD - Disable UserCentrics for selected User Roles
+* BUG - FIX - DIVI Visual Builder compatibility
 
 == Missing a feature? ==
 
