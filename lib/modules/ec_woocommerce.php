@@ -123,8 +123,8 @@
 			<script data-id="'.$this->get_name().'">
 			if (sv_tracking_manager_modules_shapepress_dsgvo_userPermissions("google-analytics") && window.ga) {
 				ga("ec:setAction","checkout", {
-					"step": '.intval($this->s['checkout_step_cart']->run_type()->get_data()).',
-					"option": "'.((strlen($this->s['checkout_label_cart']->run_type()->get_data()) > 0) ? $this->s['checkout_label_cart']->run_type()->get_data() : 'View Cart').'"
+					"step": '.intval($this->s['checkout_step_cart']->get_data()).',
+					"option": "'.((strlen($this->s['checkout_label_cart']->get_data()) > 0) ? $this->s['checkout_label_cart']->get_data() : 'View Cart').'"
 				});
 				ga("send", "event", "Checkout", "View Cart");
 			}
@@ -142,8 +142,8 @@
 			<script data-id="'.$this->get_name().'">
 			if (sv_tracking_manager_modules_shapepress_dsgvo_userPermissions("google-analytics") && window.ga) {
 				ga("ec:setAction","checkout", {
-					"step": '.intval($this->s['checkout_step_review']->run_type()->get_data()).',
-					"option": "'.((strlen($this->s['checkout_label_review']->run_type()->get_data()) > 0) ? $this->s['checkout_label_review']->run_type()->get_data() : 'View Review').'"
+					"step": '.intval($this->s['checkout_step_review']->get_data()).',
+					"option": "'.((strlen($this->s['checkout_label_review']->get_data()) > 0) ? $this->s['checkout_label_review']->get_data() : 'View Review').'"
 				});
 				ga("send", "event", "Checkout", "View Review");
 			}
@@ -173,8 +173,8 @@
 					<script data-id="' . $this->get_name() . '">
 					if (sv_tracking_manager_modules_shapepress_dsgvo_userPermissions("google-analytics") && window.ga) {
 						ga("ec:setAction","checkout", {
-							"step": '.intval($this->s['checkout_step_thankyou']->run_type()->get_data()).',
-							"option": "'.((strlen($this->s['checkout_label_thankyou']->run_type()->get_data()) > 0) ? $this->s['checkout_label_thankyou']->run_type()->get_data() : '"View Thankyou').'"
+							"step": '.intval($this->s['checkout_step_thankyou']->get_data()).',
+							"option": "'.((strlen($this->s['checkout_label_thankyou']->get_data()) > 0) ? $this->s['checkout_label_thankyou']->get_data() : '"View Thankyou').'"
 						});
 						ga("ec:setAction", "purchase", {
 							"id": "' . $order->get_id() . '",
