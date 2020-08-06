@@ -4,7 +4,7 @@ Donate link: https://straightvisions.com
 Tags: tracking, analytics, dsgvo, usercentrics, cookie banner, bing, facebook, google analytics, google optimize, hotjar, linkedin, mouseflow, yahoo
 Requires PHP: 7.0
 Requires at least: 5.0
-Tested up to: 5.3.2
+Tested up to: 5.4.2
 Stable tag: 1.4.04
 License: GPL-3.0-or-later
 License URI: https://www.gnu.org/licenses/gpl-3.0-standalone.html
@@ -82,11 +82,9 @@ Initial Release
 
 == Upgrade Notice ==
 
-= 1.4.03 =
+= 1.4.04 =
 * update core
-* FEAT - ADD - Privacy Shields by UserCentrics
-* FEAT - ADD - Disable UserCentrics for selected User Roles
-* BUG - FIX - DIVI Visual Builder compatibility
+* Fixes Several compatibility issues
 
 == Missing a feature? ==
 
