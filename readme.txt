@@ -2,10 +2,10 @@
 Contributors: matthias-reuter, matthiasbathke, dennisheiden, adrianchudzynski
 Donate link: https://straightvisions.com
 Tags: tracking, analytics, dsgvo, usercentrics, cookie banner, bing, facebook, google analytics, google optimize, hotjar, linkedin, mouseflow, yahoo
-Requires PHP: 7.0
+Requires PHP: 7.3
 Requires at least: 5.0
-Tested up to: 5.4.2
-Stable tag: 1.4.04
+Tested up to: 5.5.0
+Stable tag: 1.4.05
 License: GPL-3.0-or-later
 License URI: https://www.gnu.org/licenses/gpl-3.0-standalone.html
 
@@ -30,7 +30,7 @@ You need another tracking service? Just add it to the ✔ Custom Scripts and you
 <a href="https://straightvisions.com/en/sv-tracking-manager/">More information</a>
 
 = Requires: =
-* PHP 7.0 or higher
+* PHP 7.3 or higher
 * WordPress 5.0.x or higher
 
 = Plugin Description =
@@ -59,6 +59,11 @@ This plugin is build to work out-of-the-box. Installation is quite simple.
 
 == Changelog ==
 
+= 1.4.05 =
+* update core
+* increase minimum PHP version from 7.0 to 7.3
+* rename UserCentrics Privacy Shield to Smart Data Protector
+
 = 1.4.04 =
 * update core
 * Fixes Several compatibility issues
@@ -82,9 +87,10 @@ Initial Release
 
 == Upgrade Notice ==
 
-= 1.4.04 =
+= 1.4.05 =
 * update core
-* Fixes Several compatibility issues
+* increase minimum PHP version from 7.0 to 7.3
+* rename UserCentrics Privacy Shield to Smart Data Protector
 
 == Missing a feature? ==
 
