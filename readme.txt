@@ -1,7 +1,7 @@
 === SV Tracking Manager ===
 Contributors: matthias-reuter, matthiasbathke, dennisheiden, adrianchudzynski
 Donate link: https://straightvisions.com
-Tags: tracking, analytics, dsgvo, usercentrics, cookie banner, bing, facebook, google analytics, google optimize, hotjar, linkedin, mouseflow, yahoo
+Tags: tracking, analytics, gdpr, dsgvo, usercentrics, cookie banner, bing, facebook, google analytics, google optimize, hotjar, linkedin, mouseflow, yahoo
 Requires PHP: 7.3
 Requires at least: 5.0
 Tested up to: 5.5.0
@@ -9,13 +9,13 @@ Stable tag: 1.4.06
 License: GPL-3.0-or-later
 License URI: https://www.gnu.org/licenses/gpl-3.0-standalone.html
 
-SV Tracking Manager allows you to implement tracking scripts on your website - DSGVO compatible with <a href="https://usercentrics.com/">Usercentrics</a> support.
+SV Tracking Manager allows you to implement tracking scripts on your website - GDPR (DSGVO) compatible with <a href="https://usercentrics.com/">Usercentrics</a> support.
 
 == Description ==
 
 This lightweight plugin is an advanced tracking manager and allows you to implement various tags from different tracking providers.
 
-✔ DSGVO ready (via Usercentrics)
+✔ GDPR (DSGVO) ready (via Usercentrics)
 ✔ Bing
 ✔ Facebook
 ✔ Google Analytics (including User Identification and Custom Events)
@@ -35,7 +35,7 @@ You need another tracking service? Just add it to the ✔ Custom Scripts and you
 
 = Plugin Description =
 
-SV Tracking Manager allows you to implement tracking scripts on your website - DSGVO compatible with Usercentrics support.
+SV Tracking Manager allows you to implement tracking scripts on your website - GDPR (DSGVO) compatible with Usercentrics support.
 
 = Team =
 
