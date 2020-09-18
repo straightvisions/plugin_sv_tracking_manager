@@ -1,21 +1,21 @@
 === SV Tracking Manager ===
 Contributors: matthias-reuter, matthiasbathke, dennisheiden, adrianchudzynski
 Donate link: https://straightvisions.com
-Tags: tracking, analytics, dsgvo, usercentrics, cookie banner, bing, facebook, google analytics, google optimize, hotjar, linkedin, mouseflow, yahoo
-Requires PHP: 7.0
+Tags: tracking, analytics, gdpr, dsgvo, usercentrics, cookie banner, bing, facebook, google analytics, google optimize, hotjar, linkedin, mouseflow, yahoo
+Requires PHP: 7.3
 Requires at least: 5.0
-Tested up to: 5.4.2
-Stable tag: 1.4.04
+Tested up to: 5.5.0
+Stable tag: 1.5.00
 License: GPL-3.0-or-later
 License URI: https://www.gnu.org/licenses/gpl-3.0-standalone.html
 
-SV Tracking Manager allows you to implement tracking scripts on your website - DSGVO compatible with <a href="https://usercentrics.com/">Usercentrics</a> support.
+SV Tracking Manager allows you to implement tracking scripts on your website - GDPR (DSGVO) compatible with <a href="https://usercentrics.com/">Usercentrics</a> support.
 
 == Description ==
 
 This lightweight plugin is an advanced tracking manager and allows you to implement various tags from different tracking providers.
 
-✔ DSGVO ready (via Usercentrics)
+✔ GDPR (DSGVO) ready (via Usercentrics)
 ✔ Bing
 ✔ Facebook
 ✔ Google Analytics (including User Identification and Custom Events)
@@ -30,12 +30,12 @@ You need another tracking service? Just add it to the ✔ Custom Scripts and you
 <a href="https://straightvisions.com/en/sv-tracking-manager/">More information</a>
 
 = Requires: =
-* PHP 7.0 or higher
+* PHP 7.3 or higher
 * WordPress 5.0.x or higher
 
 = Plugin Description =
 
-SV Tracking Manager allows you to implement tracking scripts on your website - DSGVO compatible with Usercentrics support.
+SV Tracking Manager allows you to implement tracking scripts on your website - GDPR (DSGVO) compatible with Usercentrics support.
 
 = Team =
 
@@ -58,6 +58,17 @@ This plugin is build to work out-of-the-box. Installation is quite simple.
 4. Custom Events for Google Analytics
 
 == Changelog ==
+
+= 1.5.00 =
+* update core
+
+= 1.4.06 =
+* update core
+
+= 1.4.05 =
+* update core
+* increase minimum PHP version from 7.0 to 7.3
+* rename UserCentrics Privacy Shield to Smart Data Protector
 
 = 1.4.04 =
 * update core
@@ -82,9 +93,8 @@ Initial Release
 
 == Upgrade Notice ==
 
-= 1.4.04 =
+= 1.5.00 =
 * update core
-* Fixes Several compatibility issues
 
 == Missing a feature? ==
 
