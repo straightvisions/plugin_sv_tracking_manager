@@ -3,9 +3,9 @@ Contributors: matthias-reuter, matthiasbathke, dennisheiden, adrianchudzynski
 Donate link: https://straightvisions.com
 Tags: tracking, analytics, gdpr, dsgvo, usercentrics, cookie banner, bing, facebook, google analytics, google optimize, hotjar, linkedin, mouseflow, yahoo
 Requires PHP: 7.3
-Requires at least: 5.0
-Tested up to: 5.5.0
-Stable tag: 1.5.00
+Requires at least: 5.3.2
+Tested up to: 5.5.1
+Stable tag: 1.5.10
 License: GPL-3.0-or-later
 License URI: https://www.gnu.org/licenses/gpl-3.0-standalone.html
 
@@ -31,7 +31,7 @@ You need another tracking service? Just add it to the ✔ Custom Scripts and you
 
 = Requires: =
 * PHP 7.3 or higher
-* WordPress 5.0.x or higher
+* WordPress 5.3.x or higher
 
 = Plugin Description =
 
@@ -58,6 +58,9 @@ This plugin is build to work out-of-the-box. Installation is quite simple.
 4. Custom Events for Google Analytics
 
 == Changelog ==
+
+= 1.5.10 =
+* update core
 
 = 1.5.00 =
 * update core
@@ -93,7 +96,7 @@ Initial Release
 
 == Upgrade Notice ==
 
-= 1.5.00 =
+= 1.5.10 =
 * update core
 
 == Missing a feature? ==
