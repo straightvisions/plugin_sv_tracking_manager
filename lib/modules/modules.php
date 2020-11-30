@@ -14,12 +14,17 @@
 			$this->mouseflow->init();
 			$this->yahoo->init();
 
-			//add_filter( 'rocket_excluded_inline_js_content', array($this,'rocket_excluded_inline_js_content') );
+			add_filter( 'rocket_excluded_inline_js_content', array($this,'rocket_excluded_inline_js_content') );
 			add_filter( 'rocket_exclude_js',array($this,'rocket_exclude_js') );
 
 			$this->freemius->init();
 		}
 		// never combine external JS
+		public function rocket_excluded_inline_js_content(array $pattern): array{
+			$pattern[] = 'sv_tracking_manager';
+
+			return $pattern;
+		}
 		public function rocket_exclude_js($pattern){
 			$pattern[] = '(.*)sv-tracking-manager/(.*)';
 
