@@ -59,9 +59,8 @@ This plugin is build to work out-of-the-box. Installation is quite simple.
 
 == Changelog ==
 
-= 1.5.3 =
-* update core
-* Add Support for usercentrics CMP v2
+= 1.5.13 =
+* Improve Compatibility to WP-Rocket
 
 = 1.5.12 =
 * update core
@@ -107,9 +106,8 @@ Initial Release
 
 == Upgrade Notice ==
 
-= 1.5.12 =
-* update core
-* Add Support for usercentrics CMP v2
+= 1.5.13 =
+* Improve Compatibility to WP-Rocket
 
 == Missing a feature? ==
 
