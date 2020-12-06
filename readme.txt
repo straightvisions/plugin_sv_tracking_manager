@@ -5,7 +5,7 @@ Tags: tracking, analytics, gdpr, dsgvo, usercentrics, cookie banner, bing, faceb
 Requires PHP: 7.3
 Requires at least: 5.3.2
 Tested up to: 5.5.3
-Stable tag: 1.5.13
+Stable tag: 1.5.14
 License: GPL-3.0-or-later
 License URI: https://www.gnu.org/licenses/gpl-3.0-standalone.html
 
@@ -59,6 +59,9 @@ This plugin is build to work out-of-the-box. Installation is quite simple.
 
 == Changelog ==
 
+= 1.5.14 =
+* Update Core
+
 = 1.5.13 =
 * Improve Compatibility to WP-Rocket
 
@@ -106,8 +109,8 @@ Initial Release
 
 == Upgrade Notice ==
 
-= 1.5.13 =
-* Improve Compatibility to WP-Rocket
+= 1.5.14 =
+* Update Core
 
 == Missing a feature? ==
 
