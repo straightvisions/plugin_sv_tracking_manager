@@ -6,8 +6,8 @@
 	}
 	
 	class init extends \sv_core\core_plugin {
-		const version = 1513;
-		const version_core_match = 5101;
+		const version = 1514;
+		const version_core_match = 5104;
 		
 		public function load(){
 			if(!$this->setup( __NAMESPACE__, __FILE__ )){
@@ -21,6 +21,7 @@
 
 			$this->set_section_title( $info['name'] )
 				->set_section_desc( $info['desc'] )
+				->set_section_type('')
 				->set_section_privacy( '<p>' . $this->get_section_title() . __(' does not collect or share any data, but the tracking services supported by this plugin may do.',  'sv_tracking_manager').'</p>' );
 		}
 	}
