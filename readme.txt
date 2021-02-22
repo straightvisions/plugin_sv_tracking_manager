@@ -1,5 +1,5 @@
 === SV Tracking Manager ===
-Contributors: matthias-reuter, matthiasbathke, dennisheiden, adrianchudzynski
+Contributors: matthias-reuter, matthiasbathke, dennisheiden
 Donate link: https://straightvisions.com
 Tags: tracking, analytics, gdpr, dsgvo, usercentrics, cookie banner, bing, facebook, google analytics, google optimize, hotjar, linkedin, mouseflow, yahoo
 Requires PHP: 7.3
