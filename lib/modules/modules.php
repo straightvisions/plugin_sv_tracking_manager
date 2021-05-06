@@ -3,21 +3,19 @@
 
 	class modules extends init{
 		public function init(){
-			$this->usercentrics->init();
-			$this->google_analytics->init();
-			$this->google_optimize->init();
-			$this->bing->init();
-			$this->custom->init();
-			$this->facebook->init();
-			$this->hotjar->init();
-			$this->linkedin->init();
-			$this->mouseflow->init();
-			$this->yahoo->init();
+			$this->load_module('usercentrics');
+			$this->load_module('google_analytics');
+			$this->load_module('google_optimize');
+			$this->load_module('bing');
+			$this->load_module('facebook');
+			$this->load_module('hotjar');
+			$this->load_module('linkedin');
+			$this->load_module('mouseflow');
+			$this->load_module('yahoo');
+			$this->load_module('freemius');
 
 			add_filter( 'rocket_excluded_inline_js_content', array($this,'rocket_excluded_inline_js_content') );
 			add_filter( 'rocket_exclude_js',array($this,'rocket_exclude_js') );
-
-			$this->freemius->init();
 		}
 		// never combine external JS
 		public function rocket_excluded_inline_js_content(array $pattern): array{
