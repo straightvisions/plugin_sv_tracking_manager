@@ -7,6 +7,7 @@
 			$this->load_module('google_analytics');
 			$this->load_module('google_optimize');
 			$this->load_module('bing');
+			$this->load_module('custom');
 			$this->load_module('facebook');
 			$this->load_module('hotjar');
 			$this->load_module('linkedin');
