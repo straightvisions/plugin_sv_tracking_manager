@@ -13,6 +13,7 @@
 			$this->load_module('linkedin');
 			$this->load_module('mouseflow');
 			$this->load_module('yahoo');
+			$this->load_module('plausible');
 			$this->load_module('freemius');
 
 			add_filter( 'rocket_excluded_inline_js_content', array($this,'rocket_excluded_inline_js_content') );
