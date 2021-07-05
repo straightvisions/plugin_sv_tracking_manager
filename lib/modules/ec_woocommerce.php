@@ -70,7 +70,7 @@
 		public function wp_footer(){
 			echo '
 			<script data-id="'.$this->get_name().'">
-			if (sv_tracking_manager_modules_shapepress_dsgvo_userPermissions("google-analytics") && window.ga) {
+			if (sv_tracking_manager_shapepress_dsgvo_userPermissions("google-analytics") && window.ga) {
 				ga("set", "currencyCode", "' . get_woocommerce_currency() . '");
 			}
 			</script>
@@ -121,7 +121,7 @@
 				}
 				echo '
 			<script data-id="'.$this->get_name().'">
-			if (sv_tracking_manager_modules_shapepress_dsgvo_userPermissions("google-analytics") && window.ga) {
+			if (sv_tracking_manager_shapepress_dsgvo_userPermissions("google-analytics") && window.ga) {
 				ga("ec:setAction","checkout", {
 					"step": '.intval($this->s['checkout_step_cart']->get_data()).',
 					"option": "'.((strlen($this->s['checkout_label_cart']->get_data()) > 0) ? $this->s['checkout_label_cart']->get_data() : 'View Cart').'"
@@ -140,7 +140,7 @@
 				
 				echo '
 			<script data-id="'.$this->get_name().'">
-			if (sv_tracking_manager_modules_shapepress_dsgvo_userPermissions("google-analytics") && window.ga) {
+			if (sv_tracking_manager_shapepress_dsgvo_userPermissions("google-analytics") && window.ga) {
 				ga("ec:setAction","checkout", {
 					"step": '.intval($this->s['checkout_step_review']->get_data()).',
 					"option": "'.((strlen($this->s['checkout_label_review']->get_data()) > 0) ? $this->s['checkout_label_review']->get_data() : 'View Review').'"
@@ -171,7 +171,7 @@
 					
 					echo '
 					<script data-id="' . $this->get_name() . '">
-					if (sv_tracking_manager_modules_shapepress_dsgvo_userPermissions("google-analytics") && window.ga) {
+					if (sv_tracking_manager_shapepress_dsgvo_userPermissions("google-analytics") && window.ga) {
 						ga("ec:setAction","checkout", {
 							"step": '.intval($this->s['checkout_step_thankyou']->get_data()).',
 							"option": "'.((strlen($this->s['checkout_label_thankyou']->get_data()) > 0) ? $this->s['checkout_label_thankyou']->get_data() : '"View Thankyou').'"
@@ -194,7 +194,7 @@
 					
 					echo '
 					<script data-id="' . $this->get_name() . '">
-					if (sv_tracking_manager_modules_shapepress_dsgvo_userPermissions("google-analytics") && window.ga) {
+					if (sv_tracking_manager_shapepress_dsgvo_userPermissions("google-analytics") && window.ga) {
 						ga("send", "event", "Checkout", "View Thankyou", "", ' . intval($order->get_total()) . ');
 					}
 					</script>
@@ -203,7 +203,7 @@
 					foreach ($order->get_items() as $item) {
 						echo '
 						<script data-id="' . $this->get_name() . '">
-						if (sv_tracking_manager_modules_shapepress_dsgvo_userPermissions("google-analytics") && window.ga) {
+						if (sv_tracking_manager_shapepress_dsgvo_userPermissions("google-analytics") && window.ga) {
 							ga("send", "event", "Checkout", "Purchased Product", "'.$item['product_id'].'", ' . intval( $item['line_total'] ) . ');
 						}
 						</script>

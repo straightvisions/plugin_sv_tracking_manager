@@ -5,6 +5,7 @@
 		public function init(){
 			$this->load_module('usercentrics');
 			$this->load_module('google_analytics');
+			$this->load_module('google_tag_manager');
 			$this->load_module('google_optimize');
 			$this->load_module('bing');
 			$this->load_module('custom');

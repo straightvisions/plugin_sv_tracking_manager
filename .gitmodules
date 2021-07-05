@@ -34,3 +34,6 @@
 [submodule "lib/modules/plausible"]
 	path = lib/modules/plausible
 	url = ../module_sv_tracking_manager_services_plausible
+[submodule "lib/modules/google_tag_manager"]
+	path = lib/modules/google_tag_manager
+	url = ../module_sv_tracking_manager_services_google_tag_manager
