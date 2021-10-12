@@ -22,9 +22,6 @@
 [submodule "lib/modules/mouseflow"]
 	path = lib/modules/mouseflow
 	url = ../module_sv_tracking_manager_services_mouseflow
-[submodule "lib/modules/google_optimize"]
-	path = lib/modules/google_optimize
-	url = ../module_sv_tracking_manager_services_google_optimize
 [submodule "lib/modules/custom"]
 	path = lib/modules/custom
 	url = ../module_sv_tracking_manager_services_custom
