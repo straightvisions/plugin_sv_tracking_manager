@@ -6,7 +6,6 @@
 			$this->load_module('usercentrics');
 			$this->load_module('google_analytics');
 			$this->load_module('google_tag_manager');
-			$this->load_module('google_optimize');
 			$this->load_module('bing');
 			$this->load_module('custom');
 			$this->load_module('facebook');
@@ -38,6 +37,7 @@
 					return array_merge($services,array($this->get_module_name() => $this->get_section_title()));
 				});
 
+				add_action('wp_head', array($this, 'consent_management'), 1);
 				add_action('wp_footer', array($this, 'consent_management'), 1);
 			}
 
