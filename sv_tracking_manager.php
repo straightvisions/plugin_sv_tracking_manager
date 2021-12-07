@@ -1,6 +1,6 @@
 <?php
 /*
-Version: 1.8.00
+Version: 1.8.01
 Plugin Name: SV Tracking Manager
 Text Domain: sv_tracking_manager
 Description: This lightweight plugin is an advanced tracking manager and allows you to implement various tags from different tracking providers.
