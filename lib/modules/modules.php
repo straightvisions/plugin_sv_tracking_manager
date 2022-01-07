@@ -6,12 +6,12 @@
 			$this->load_module('usercentrics');
 			$this->load_module('google_analytics');
 			$this->load_module('google_tag_manager');
-			$this->load_module('bing');
 			$this->load_module('custom');
 			$this->load_module('facebook');
 			$this->load_module('hotjar');
 			$this->load_module('hubspot');
 			$this->load_module('linkedin');
+			$this->load_module('microsoft_advertising');
 			$this->load_module('mouseflow');
 			$this->load_module('yahoo');
 			$this->load_module('plausible');
