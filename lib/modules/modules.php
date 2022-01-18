@@ -11,6 +11,7 @@
 			$this->load_module('hotjar');
 			$this->load_module('hubspot');
 			$this->load_module('linkedin');
+			$this->load_module('mailchimp');
 			$this->load_module('microsoft_advertising');
 			$this->load_module('mouseflow');
 			$this->load_module('yahoo');
