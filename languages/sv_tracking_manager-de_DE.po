@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: SV Tracking Manager\n"
-"POT-Creation-Date: 2022-01-13 18:52+0100\n"
-"PO-Revision-Date: 2022-01-13 18:53+0100\n"
+"POT-Creation-Date: 2022-01-27 13:17+0100\n"
+"PO-Revision-Date: 2022-01-27 13:17+0100\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: de_DE\n"
@@ -53,7 +53,6 @@ msgstr "Hilfreiche Tools &amp; Helfer"
 
 #: lib/core_plugin/core/abstract.php:396
 #: lib/core_plugin/core/abstract_template_sv_archive.php:25
-#: lib/core_plugin/core/abstract_template_sv_content.php:25
 msgid "Common"
 msgstr "Allgemein"
 
@@ -75,113 +74,91 @@ msgid "Settings"
 msgstr "Einstellungen"
 
 #: lib/core_plugin/core/abstract_template_sv_archive.php:29
-#: lib/core_plugin/core/abstract_template_sv_content.php:29
 #: lib/core_plugin/core/settings/modules/setting_group/setting_group.php:64
 msgid "Entry"
 msgstr "Eintrag"
 
 #: lib/core_plugin/core/abstract_template_sv_archive.php:33
-#: lib/core_plugin/core/abstract_template_sv_content.php:33
 msgid "Empty"
 msgstr "Leer"
 
 #: lib/core_plugin/core/abstract_template_sv_archive.php:37
-#: lib/core_plugin/core/abstract_template_sv_content.php:37
 msgid "Header"
 msgstr "Kopfbereich"
 
 #: lib/core_plugin/core/abstract_template_sv_archive.php:41
-#: lib/core_plugin/core/abstract_template_sv_content.php:41
 msgid "Footer"
 msgstr "Fußzeile"
 
 #: lib/core_plugin/core/abstract_template_sv_archive.php:45
-#: lib/core_plugin/core/abstract_template_sv_content.php:45
 msgid "Sidebar Top"
 msgstr "Seitenleiste Oben"
 
 #: lib/core_plugin/core/abstract_template_sv_archive.php:49
-#: lib/core_plugin/core/abstract_template_sv_content.php:49
 msgid "Sidebar Right"
 msgstr "Sidebar rechts"
 
 #: lib/core_plugin/core/abstract_template_sv_archive.php:53
-#: lib/core_plugin/core/abstract_template_sv_content.php:53
 msgid "Sidebar Bottom"
 msgstr "Seitenleiste Unten"
 
 #: lib/core_plugin/core/abstract_template_sv_archive.php:57
-#: lib/core_plugin/core/abstract_template_sv_content.php:57
 msgid "Sidebar Left"
 msgstr "Sidebar links"
 
 #: lib/core_plugin/core/abstract_template_sv_archive.php:61
-#: lib/core_plugin/core/abstract_template_sv_content.php:61
 msgid "Featured Image"
 msgstr "Beitragsbild"
 
 #: lib/core_plugin/core/abstract_template_sv_archive.php:65
-#: lib/core_plugin/core/abstract_template_sv_content.php:65
 msgid "Title"
 msgstr "Titel"
 
 #: lib/core_plugin/core/abstract_template_sv_archive.php:69
-#: lib/core_plugin/core/abstract_template_sv_content.php:69
 msgid "Excerpt"
 msgstr "Auszug"
 
 #: lib/core_plugin/core/abstract_template_sv_archive.php:73
-#: lib/core_plugin/core/abstract_template_sv_content.php:73
 msgid "Read More"
 msgstr "Weiterlesen"
 
 #: lib/core_plugin/core/abstract_template_sv_archive.php:77
-#: lib/core_plugin/core/abstract_template_sv_content.php:77
 msgid "Author"
 msgstr "Autor"
 
 #: lib/core_plugin/core/abstract_template_sv_archive.php:81
-#: lib/core_plugin/core/abstract_template_sv_content.php:81
 msgid "Date"
 msgstr "Datum"
 
 #: lib/core_plugin/core/abstract_template_sv_archive.php:85
-#: lib/core_plugin/core/abstract_template_sv_content.php:85
 msgid "Date Modified"
 msgstr "Datum letzte Bearbeitung"
 
 #: lib/core_plugin/core/abstract_template_sv_archive.php:89
-#: lib/core_plugin/core/abstract_template_sv_content.php:89
 msgid "Categories"
 msgstr "Kategorien"
 
 #: lib/core_plugin/core/abstract_template_sv_archive.php:287
-#: lib/core_plugin/core/abstract_template_sv_content.php:279
 msgid "Extra Styles"
 msgstr "Extra Styles"
 
 #: lib/core_plugin/core/abstract_template_sv_archive.php:294
-#: lib/core_plugin/core/abstract_template_sv_content.php:286
 msgid "Style Label"
 msgstr "Beschriftung"
 
 #: lib/core_plugin/core/abstract_template_sv_archive.php:295
-#: lib/core_plugin/core/abstract_template_sv_content.php:287
 msgid "A label to differentiate your Styles."
 msgstr "Eine Beschriftung, um deine Styles zu unterscheiden."
 
 #: lib/core_plugin/core/abstract_template_sv_archive.php:297
-#: lib/core_plugin/core/abstract_template_sv_content.php:289
 msgid "Label"
 msgstr "Beschriftung"
 
 #: lib/core_plugin/core/abstract_template_sv_archive.php:303
-#: lib/core_plugin/core/abstract_template_sv_content.php:295
 msgid "Slug"
 msgstr "Slug"
 
 #: lib/core_plugin/core/abstract_template_sv_archive.php:304
-#: lib/core_plugin/core/abstract_template_sv_content.php:296
 msgid "This slug is used for the helper classes."
 msgstr "Dieser Slug wird für die Helferklassen verwendet."
 
@@ -515,7 +492,7 @@ msgstr "Cache leeren"
 msgid "Cache Active"
 msgstr "Cache Aktiv"
 
-#: lib/core_plugin/core/scripts/scripts.php:523
+#: lib/core_plugin/core/scripts/scripts.php:524
 msgid "Script \""
 msgstr "Skript \""
 
@@ -539,16 +516,16 @@ msgstr "Du brauchst mindestens"
 msgid "characters."
 msgstr "Zeichen."
 
-#: lib/core_plugin/core/settings/settings.php:605
+#: lib/core_plugin/core/settings/settings.php:609
 msgid "Save (classic)"
 msgstr "Speichern (klassisch)"
 
-#: lib/core_plugin/core/settings/settings.php:605
+#: lib/core_plugin/core/settings/settings.php:609
 msgid "Save (AJAX)"
 msgstr "Speichern (AJAX)"
 
-#: lib/core_plugin/core/settings/settings.php:762
-#: lib/core_plugin/core/settings/settings.php:805
+#: lib/core_plugin/core/settings/settings.php:766
+#: lib/core_plugin/core/settings/settings.php:809
 msgid "Settings Template not found: "
 msgstr "Template für Einstellungen nicht gefunden: "
 
@@ -556,7 +533,7 @@ msgstr "Template für Einstellungen nicht gefunden: "
 #: lib/core_plugin/core/settings/tpl/setting_border_tpl/border_color.php:20
 #: lib/core_plugin/core/settings/tpl/setting_box_shadow_tpl/color.php:11
 #: lib/core_plugin/core/settings/tpl/setting_box_shadow_tpl/color.php:13
-#: lib/core_plugin/core/settings/tpl/setting_color.php:9
+#: lib/core_plugin/core/settings/tpl/setting_color.php:13
 #: lib/core_plugin/core/settings/tpl/setting_font_tpl/color.php:5
 #: lib/core_plugin/core/settings/tpl/setting_font_tpl/color.php:8
 msgid "Toggle Color Picker"
@@ -787,11 +764,11 @@ msgstr "Facebook"
 #: lib/modules/google_analytics/google_analytics.php:32
 #: lib/modules/google_tag_manager/google_tag_manager.php:31
 #: lib/modules/hotjar/hotjar.php:31 lib/modules/hubspot/hubspot.php:31
-#: lib/modules/linkedin/linkedin.php:31
+#: lib/modules/linkedin/linkedin.php:31 lib/modules/mailchimp/mailchimp.php:31
 #: lib/modules/microsoft_advertising/microsoft_advertising.php:31
 #: lib/modules/mouseflow/mouseflow.php:31
 #: lib/modules/plausible/plausible.php:31
-#: lib/modules/usercentrics/usercentrics.php:74 lib/modules/yahoo/yahoo.php:31
+#: lib/modules/usercentrics/usercentrics.php:80 lib/modules/yahoo/yahoo.php:31
 msgid "Activate"
 msgstr "Aktivieren"
 
@@ -953,6 +930,14 @@ msgstr "Linkedin"
 msgid "Insights Tracking ID"
 msgstr "Insights Tracking ID"
 
+#: lib/modules/mailchimp/mailchimp.php:17
+msgid "Mailchimp"
+msgstr ""
+
+#: lib/modules/mailchimp/mailchimp.php:36
+msgid "Mailchimp Script URL"
+msgstr ""
+
 #: lib/modules/microsoft_advertising/microsoft_advertising.php:17
 msgid "Microsoft Advertising"
 msgstr "Microsoft Advertising"
@@ -969,27 +954,27 @@ msgstr "Plausible"
 msgid "Advanced"
 msgstr "Erweitert"
 
-#: lib/modules/usercentrics/usercentrics.php:61
+#: lib/modules/usercentrics/usercentrics.php:67
 msgid "Usercentrics"
 msgstr "Usercentrics"
 
-#: lib/modules/usercentrics/usercentrics.php:75
+#: lib/modules/usercentrics/usercentrics.php:81
 msgid "Enable Usercentrics support"
 msgstr "Usercentrics-Unterstützung aktivieren"
 
-#: lib/modules/usercentrics/usercentrics.php:79
+#: lib/modules/usercentrics/usercentrics.php:85
 msgid "Settings ID"
 msgstr "Einstellungs-ID"
 
-#: lib/modules/usercentrics/usercentrics.php:80
+#: lib/modules/usercentrics/usercentrics.php:86
 msgid "The Usercentrics Settings ID for this site."
 msgstr "Die Usercentrics-Einstellungs-ID für diese Website."
 
-#: lib/modules/usercentrics/usercentrics.php:84
+#: lib/modules/usercentrics/usercentrics.php:90
 msgid "Activate Smart Data Protector"
 msgstr "Smart Data Protector aktivieren"
 
-#: lib/modules/usercentrics/usercentrics.php:87
+#: lib/modules/usercentrics/usercentrics.php:93
 #, php-format
 msgid ""
 "Enable %1$sUsercentrics Smart Data Protector%2$s support to ask user before "
@@ -999,11 +984,11 @@ msgstr ""
 "den Benutzer vor dem Laden von eingebetteten Inhalten wie Youtube oder "
 "Google Maps zu fragen."
 
-#: lib/modules/usercentrics/usercentrics.php:95
+#: lib/modules/usercentrics/usercentrics.php:101
 msgid "API Version"
 msgstr "API-Version"
 
-#: lib/modules/usercentrics/usercentrics.php:96
+#: lib/modules/usercentrics/usercentrics.php:102
 msgid ""
 "Choose between CMP 1 (stable default), CMP 2 (beta) or CMP 2 + legacy (beta "
 "+ legacy browser support)"
@@ -1011,11 +996,11 @@ msgstr ""
 "Wählen Sie zwischen CMP 1 (stabiler Standard), CMP 2 (Beta) oder CMP 2 + "
 "Legacy (Beta + Legacy-Browser-Unterstützung)"
 
-#: lib/modules/usercentrics/usercentrics.php:118
+#: lib/modules/usercentrics/usercentrics.php:124
 msgid "User Roles"
 msgstr "Benutzerrollen"
 
-#: lib/modules/usercentrics/usercentrics.php:119
+#: lib/modules/usercentrics/usercentrics.php:125
 msgid "Disable UserCentrics for the User Roles selected"
 msgstr "UserCentrics für die ausgewählten Benutzerrollen deaktivieren"
 
@@ -1029,7 +1014,7 @@ msgstr "Projekt ID"
 
 #. Plugin Name of the plugin/theme
 msgid "SV Tracking Manager"
-msgstr "SV-Tracking-Manager"
+msgstr "SV Tracking Manager"
 
 #. Plugin URI of the plugin/theme
 msgid "https://straightvisions.com/"
