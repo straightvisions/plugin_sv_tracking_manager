@@ -60,7 +60,9 @@ This plugin is build to work out-of-the-box. Installation is quite simple.
 == Changelog ==
 
 = 1.8.02 =
+* Security Fix: Third Party Vendor Library
 * Improved Usercentrics Script Tag Handling
+* Core Update
 
 = 1.8.01 =
 * HubSport Support added
@@ -133,7 +135,9 @@ Initial Release
 == Upgrade Notice ==
 
 = 1.8.02 =
+* Security Fix: Third Party Vendor Library
 * Improved Usercentrics Script Tag Handling
+* Core Update
 
 == Missing a feature? ==
 
