@@ -4,8 +4,8 @@ Donate link: https://straightvisions.com
 Tags: tracking, analytics, gdpr, dsgvo, usercentrics, cookie banner, bing, facebook, google analytics, google optimize, hotjar, linkedin, mouseflow, yahoo
 Requires PHP: 7.3
 Requires at least: 5.3.2
-Tested up to: 5.9.2
-Stable tag: 1.8.03
+Tested up to: 5.9.3
+Stable tag: 1.8.04
 License: GPL-3.0-or-later
 License URI: https://www.gnu.org/licenses/gpl-3.0-standalone.html
 
@@ -58,6 +58,9 @@ This plugin is build to work out-of-the-box. Installation is quite simple.
 4. Custom Events for Google Analytics
 
 == Changelog ==
+
+= 1.8.04 =
+* Core Update
 
 = 1.8.03 =
 * Fix: Usercentrics Handling
@@ -137,9 +140,6 @@ This plugin is build to work out-of-the-box. Installation is quite simple.
 Initial Release
 
 == Upgrade Notice ==
-
-= 1.8.03 =
-* Fix: Usercentrics Handling
 * Core Update
 
 == Missing a feature? ==
