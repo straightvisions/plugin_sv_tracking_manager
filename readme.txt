@@ -5,7 +5,7 @@ Tags: tracking, analytics, gdpr, dsgvo, usercentrics, cookie banner, bing, faceb
 Requires PHP: 7.3
 Requires at least: 5.3.2
 Tested up to: 5.9.3
-Stable tag: 1.8.04
+Stable tag: 1.8.05
 License: GPL-3.0-or-later
 License URI: https://www.gnu.org/licenses/gpl-3.0-standalone.html
 
@@ -16,14 +16,19 @@ SV Tracking Manager allows you to implement tracking scripts on your website - G
 This lightweight plugin is an advanced tracking manager and allows you to implement various tags from different tracking providers.
 
 ✔ GDPR (DSGVO) ready (via Usercentrics)
-✔ Bing
+✔ Google Analytics (including User Identification, Anonymize IP and Custom Events)
+✔ Google Tag Manager
+✔ Custom Scripts
 ✔ Facebook
-✔ Google Analytics (including User Identification and Custom Events)
 ✔ Google Optimize
 ✔ Hotjar
+✔ Hubspot
 ✔ LinkedIn
+✔ Mailchimp
+✔ Microsoft Advertising
 ✔ Mouseflow
 ✔ Yahoo
+✔ Plausible
 
 You need another tracking service? Just add it to the ✔ Custom Scripts and you are ready to go.
 
