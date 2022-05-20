@@ -66,6 +66,7 @@ This plugin is build to work out-of-the-box. Installation is quite simple.
 
 = 1.9.00 =
 * Core Update
+* Usercentrics Google Customer Reviews Support for Extended Plugin
 
 = 1.8.04 =
 * Core Update
