@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: SV Tracking Manager\n"
-"POT-Creation-Date: 2022-01-27 13:17+0100\n"
-"PO-Revision-Date: 2022-01-27 13:17+0100\n"
+"POT-Creation-Date: 2022-05-30 14:33+0200\n"
+"PO-Revision-Date: 2022-05-30 14:36+0200\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: de_DE\n"
@@ -22,7 +22,6 @@ msgstr ""
 "X-Poedit-SearchPathExcluded-0: *.min.js\n"
 
 #: init.php:25
-#, fuzzy
 msgid ""
 " does not collect or share any data, but the tracking services supported by "
 "this plugin may do."
@@ -53,6 +52,18 @@ msgstr "Hilfreiche Tools &amp; Helfer"
 
 #: lib/core_plugin/core/abstract.php:396
 #: lib/core_plugin/core/abstract_template_sv_archive.php:25
+#: lib/core_plugin/core/abstract_template_sv_archive.php:324
+#: lib/core_plugin/core/abstract_template_sv_archive.php:331
+#: lib/core_plugin/core/abstract_template_sv_archive.php:346
+#: lib/core_plugin/core/abstract_template_sv_archive.php:361
+#: lib/core_plugin/core/abstract_template_sv_archive.php:368
+#: lib/core_plugin/core/abstract_template_sv_archive.php:374
+#: lib/core_plugin/core/abstract_template_sv_archive.php:380
+#: lib/core_plugin/core/abstract_template_sv_archive.php:385
+#: lib/core_plugin/core/abstract_template_sv_archive.php:390
+#: lib/core_plugin/core/abstract_template_sv_archive.php:396
+#: lib/core_plugin/core/abstract_template_sv_archive.php:409
+#: lib/core_plugin/core/abstract_template_sv_archive.php:422
 msgid "Common"
 msgstr "Allgemein"
 
@@ -73,7 +84,18 @@ msgstr "Keine Datenschutzerklärung definiert."
 msgid "Settings"
 msgstr "Einstellungen"
 
+#: lib/core_plugin/core/abstract.php:1095
+#, php-format
+msgid "%s Minute"
+msgid_plural "%s Minutes"
+msgstr[0] "%s Minute"
+msgstr[1] "%s Minuten"
+
 #: lib/core_plugin/core/abstract_template_sv_archive.php:29
+#: lib/core_plugin/core/abstract_template_sv_archive.php:430
+#: lib/core_plugin/core/abstract_template_sv_archive.php:435
+#: lib/core_plugin/core/abstract_template_sv_archive.php:448
+#: lib/core_plugin/core/abstract_template_sv_archive.php:453
 #: lib/core_plugin/core/settings/modules/setting_group/setting_group.php:64
 msgid "Entry"
 msgstr "Eintrag"
@@ -161,6 +183,199 @@ msgstr "Slug"
 #: lib/core_plugin/core/abstract_template_sv_archive.php:304
 msgid "This slug is used for the helper classes."
 msgstr "Dieser Slug wird für die Helferklassen verwendet."
+
+#: lib/core_plugin/core/abstract_template_sv_archive.php:325
+msgid "Min Height"
+msgstr "Min. Höhe"
+
+#: lib/core_plugin/core/abstract_template_sv_archive.php:326
+msgid "Minimum Height Header"
+msgstr "Minimale Höhe Kopfzeile"
+
+#: lib/core_plugin/core/abstract_template_sv_archive.php:332
+msgid "Stack Sidebar Columns"
+msgstr "Stapeln von Seitenleistenspalten"
+
+#: lib/core_plugin/core/abstract_template_sv_archive.php:333
+msgid "You may want to stack Sidebars on narrow viewports."
+msgstr ""
+"Möglicherweise möchten Sie Sidebars in schmalen Ansichtsfenstern stapeln."
+
+#: lib/core_plugin/core/abstract_template_sv_archive.php:347
+msgid "Columns"
+msgstr "Spalten"
+
+#: lib/core_plugin/core/abstract_template_sv_archive.php:348
+msgid "Set number of columns for entries"
+msgstr "Festlegen der Anzahl der Spalten für Einträge"
+
+#: lib/core_plugin/core/abstract_template_sv_archive.php:362
+#: lib/core_plugin/core/abstract_template_sv_archive.php:544
+#: lib/core_plugin/core/settings/tpl/setting_font_tpl/font_family.php:8
+msgid "Font Family"
+msgstr "Schriftart (Font Family)"
+
+#: lib/core_plugin/core/abstract_template_sv_archive.php:363
+#: lib/core_plugin/core/abstract_template_sv_archive.php:545
+msgid "Choose a font for your text."
+msgstr "Wähle eine Schriftart für deinen Text."
+
+#: lib/core_plugin/core/abstract_template_sv_archive.php:364
+#: lib/core_plugin/core/abstract_template_sv_archive.php:546
+msgid "Please activate module SV Webfontloader for this Feature."
+msgstr "Bitte aktiviere das Modul SV Webfontloader für diese Funktion."
+
+#: lib/core_plugin/core/abstract_template_sv_archive.php:369
+#: lib/core_plugin/core/abstract_template_sv_archive.php:551
+#: lib/core_plugin/core/settings/tpl/setting_font_tpl/font_size.php:7
+msgid "Font Size"
+msgstr "Schriftgröße"
+
+#: lib/core_plugin/core/abstract_template_sv_archive.php:370
+#: lib/core_plugin/core/abstract_template_sv_archive.php:552
+msgid "Font Size in Pixel"
+msgstr "Schriftgröße in Pixel"
+
+#: lib/core_plugin/core/abstract_template_sv_archive.php:375
+#: lib/core_plugin/core/abstract_template_sv_archive.php:557
+#: lib/core_plugin/core/settings/tpl/setting_font_tpl/line_height.php:7
+msgid "Line Height"
+msgstr "Zeilenabstand"
+
+#: lib/core_plugin/core/abstract_template_sv_archive.php:376
+#: lib/core_plugin/core/abstract_template_sv_archive.php:558
+msgid "Set line height as multiplier or with a unit."
+msgstr "Setze Zeilenhöhe als Multiplier oder mit einer Einheit."
+
+#: lib/core_plugin/core/abstract_template_sv_archive.php:381
+#: lib/core_plugin/core/abstract_template_sv_archive.php:563
+msgid "Text Color"
+msgstr "Textfarbe"
+
+#: lib/core_plugin/core/abstract_template_sv_archive.php:386
+#: lib/core_plugin/core/abstract_template_sv_archive.php:431
+#: lib/core_plugin/core/abstract_template_sv_archive.php:568
+msgid "Background Color"
+msgstr "Hintergrundfarbe"
+
+#: lib/core_plugin/core/abstract_template_sv_archive.php:391
+msgid "Column Spacing"
+msgstr "Spaltenabstand"
+
+#: lib/core_plugin/core/abstract_template_sv_archive.php:392
+msgid "Set a Spacing in Pixel for columns"
+msgstr "Festlegen eines Abstands in Pixel für Spalten"
+
+#: lib/core_plugin/core/abstract_template_sv_archive.php:397
+#: lib/core_plugin/core/abstract_template_sv_archive.php:436
+#: lib/core_plugin/core/abstract_template_sv_archive.php:583
+msgid "Margin"
+msgstr "Außenabstand"
+
+#: lib/core_plugin/core/abstract_template_sv_archive.php:410
+#: lib/core_plugin/core/abstract_template_sv_archive.php:449
+#: lib/core_plugin/core/abstract_template_sv_archive.php:588
+msgid "Padding"
+msgstr "Innenabstand"
+
+#: lib/core_plugin/core/abstract_template_sv_archive.php:423
+#: lib/core_plugin/core/abstract_template_sv_archive.php:454
+#: lib/core_plugin/core/abstract_template_sv_archive.php:593
+msgid "Border"
+msgstr "Rahmen"
+
+#: lib/core_plugin/core/abstract_template_sv_archive.php:461
+#: lib/core_plugin/core/abstract_template_sv_archive.php:467
+#: lib/core_plugin/core/abstract_template_sv_archive.php:473
+#: lib/core_plugin/core/abstract_template_sv_archive.php:479
+#: lib/core_plugin/core/abstract_template_sv_archive.php:485
+#: lib/core_plugin/core/abstract_template_sv_archive.php:491
+#: lib/core_plugin/core/abstract_template_sv_archive.php:497
+#: lib/core_plugin/core/abstract_template_sv_archive.php:503
+#: lib/core_plugin/core/abstract_template_sv_archive.php:509
+#: lib/core_plugin/core/abstract_template_sv_archive.php:515
+#: lib/core_plugin/core/abstract_template_sv_archive.php:521
+msgid "Parts"
+msgstr "Bereiche"
+
+#: lib/core_plugin/core/abstract_template_sv_archive.php:462
+msgid "Show Archive Header"
+msgstr "Archivkopfzeile anzeigen"
+
+#: lib/core_plugin/core/abstract_template_sv_archive.php:463
+#: lib/core_plugin/core/abstract_template_sv_archive.php:469
+#: lib/core_plugin/core/abstract_template_sv_archive.php:475
+#: lib/core_plugin/core/abstract_template_sv_archive.php:481
+#: lib/core_plugin/core/abstract_template_sv_archive.php:487
+#: lib/core_plugin/core/abstract_template_sv_archive.php:493
+#: lib/core_plugin/core/abstract_template_sv_archive.php:499
+#: lib/core_plugin/core/abstract_template_sv_archive.php:505
+#: lib/core_plugin/core/abstract_template_sv_archive.php:511
+#: lib/core_plugin/core/abstract_template_sv_archive.php:517
+#: lib/core_plugin/core/abstract_template_sv_archive.php:523
+msgid "Show or Hide this Template Part"
+msgstr "Templatebereich anzeigen oder verstecken"
+
+#: lib/core_plugin/core/abstract_template_sv_archive.php:468
+msgid "Show Archive Footer"
+msgstr "Archivfußzeile anzeigen"
+
+#: lib/core_plugin/core/abstract_template_sv_archive.php:474
+msgid "Show Notice when empty"
+msgstr "Info anzeigen, falls leer"
+
+#: lib/core_plugin/core/abstract_template_sv_archive.php:480
+msgid "Show Featured Image"
+msgstr "Beitragsbild anzeigen"
+
+#: lib/core_plugin/core/abstract_template_sv_archive.php:486
+msgid "Show Title"
+msgstr "Titel anzeigen"
+
+#: lib/core_plugin/core/abstract_template_sv_archive.php:492
+msgid "Show Excerpt"
+msgstr "Auszug anzeigen"
+
+#: lib/core_plugin/core/abstract_template_sv_archive.php:498
+msgid "Show Read More"
+msgstr "Weiterlesen anzeigen"
+
+#: lib/core_plugin/core/abstract_template_sv_archive.php:504
+msgid "Show Author"
+msgstr "Autor anzeigen"
+
+#: lib/core_plugin/core/abstract_template_sv_archive.php:510
+msgid "Show Date"
+msgstr "Datum anzeigen"
+
+#: lib/core_plugin/core/abstract_template_sv_archive.php:516
+msgid "Show Date Modified"
+msgstr "Datum der letzten Bearbeitung anzeigen"
+
+#: lib/core_plugin/core/abstract_template_sv_archive.php:522
+msgid "Show Categories"
+msgstr "Kategorie anzeigen"
+
+#: lib/core_plugin/core/abstract_template_sv_archive.php:531
+msgid "Order"
+msgstr "Reihenfolge"
+
+#: lib/core_plugin/core/abstract_template_sv_archive.php:532
+msgid "Order part"
+msgstr "Reihenfolge Bereich"
+
+#: lib/core_plugin/core/abstract_template_sv_archive.php:534
+#: lib/core_plugin/core/scripts/scripts.php:238
+msgid "Default"
+msgstr "Standard"
+
+#: lib/core_plugin/core/abstract_template_sv_archive.php:573
+msgid "Text Color Hover"
+msgstr "Textfarbe Hover"
+
+#: lib/core_plugin/core/abstract_template_sv_archive.php:578
+msgid "Background Color Hover"
+msgstr "Hintergrundfarbe Hover"
 
 #: lib/core_plugin/core/ajax_fragmented_requests/backend/tpl/form.php:3
 msgid "Start"
@@ -478,10 +693,6 @@ msgstr "Inline"
 msgid "Attached"
 msgstr "Angehängt"
 
-#: lib/core_plugin/core/scripts/scripts.php:238
-msgid "Default"
-msgstr "Standard"
-
 #: lib/core_plugin/core/scripts/scripts.php:258
 #: lib/core_plugin/core/scripts/scripts.php:268
 msgid "Flush Cache"
@@ -492,7 +703,7 @@ msgstr "Cache leeren"
 msgid "Cache Active"
 msgstr "Cache Aktiv"
 
-#: lib/core_plugin/core/scripts/scripts.php:524
+#: lib/core_plugin/core/scripts/scripts.php:527
 msgid "Script \""
 msgstr "Skript \""
 
@@ -516,16 +727,16 @@ msgstr "Du brauchst mindestens"
 msgid "characters."
 msgstr "Zeichen."
 
-#: lib/core_plugin/core/settings/settings.php:609
+#: lib/core_plugin/core/settings/settings.php:620
 msgid "Save (classic)"
 msgstr "Speichern (klassisch)"
 
-#: lib/core_plugin/core/settings/settings.php:609
+#: lib/core_plugin/core/settings/settings.php:620
 msgid "Save (AJAX)"
 msgstr "Speichern (AJAX)"
 
-#: lib/core_plugin/core/settings/settings.php:766
-#: lib/core_plugin/core/settings/settings.php:809
+#: lib/core_plugin/core/settings/settings.php:777
+#: lib/core_plugin/core/settings/settings.php:820
 msgid "Settings Template not found: "
 msgstr "Template für Einstellungen nicht gefunden: "
 
@@ -533,7 +744,7 @@ msgstr "Template für Einstellungen nicht gefunden: "
 #: lib/core_plugin/core/settings/tpl/setting_border_tpl/border_color.php:20
 #: lib/core_plugin/core/settings/tpl/setting_box_shadow_tpl/color.php:11
 #: lib/core_plugin/core/settings/tpl/setting_box_shadow_tpl/color.php:13
-#: lib/core_plugin/core/settings/tpl/setting_color.php:13
+#: lib/core_plugin/core/settings/tpl/setting_color.php:15
 #: lib/core_plugin/core/settings/tpl/setting_font_tpl/color.php:5
 #: lib/core_plugin/core/settings/tpl/setting_font_tpl/color.php:8
 msgid "Toggle Color Picker"
@@ -587,14 +798,6 @@ msgstr "Vertikale Länge"
 msgid "Color"
 msgstr "Farbe"
 
-#: lib/core_plugin/core/settings/tpl/setting_font_tpl/font_family.php:8
-msgid "Font Family"
-msgstr "Schriftart (Font Family)"
-
-#: lib/core_plugin/core/settings/tpl/setting_font_tpl/font_size.php:7
-msgid "Font Size"
-msgstr "Schriftgröße"
-
 #: lib/core_plugin/core/settings/tpl/setting_font_tpl/font_weight.php:2
 msgid "Font Weight"
 msgstr "Schriftstärke"
@@ -602,10 +805,6 @@ msgstr "Schriftstärke"
 #: lib/core_plugin/core/settings/tpl/setting_font_tpl/letter_spacing.php:7
 msgid "Letter Spacing"
 msgstr "Zeichenabstand"
-
-#: lib/core_plugin/core/settings/tpl/setting_font_tpl/line_height.php:7
-msgid "Line Height"
-msgstr "Zeilenabstand"
 
 #: lib/core_plugin/core/settings/tpl/setting_font_tpl/text_decoration.php:2
 msgid "Text Decoration"
@@ -644,20 +843,20 @@ msgstr "Erforderlich"
 msgid "You need to install and activate our SV Core plugin to run"
 msgstr "Du musst unser SV Core Plugin installieren und aktivieren"
 
-#: lib/modules/custom/custom.php:23 lib/modules/custom/custom.php:51
+#: lib/modules/custom/custom.php:7 lib/modules/custom/custom.php:35
 msgid "Custom Scripts"
 msgstr "Eigene Scripts"
 
-#: lib/modules/custom/custom.php:24
+#: lib/modules/custom/custom.php:8
 msgid "Setup custom tracking scripts."
 msgstr "Richten Sie benutzerdefinierte Tracking-Skripts ein."
 
-#: lib/modules/custom/custom.php:56
-#: lib/modules/google_analytics/google_analytics.php:59
+#: lib/modules/custom/custom.php:40
+#: lib/modules/google_analytics/google_analytics.php:64
 msgid "Entry Label"
 msgstr "Eintragsbezeichnung"
 
-#: lib/modules/custom/custom.php:57
+#: lib/modules/custom/custom.php:41
 msgid ""
 "This Label will be used as Entry Title for this Settings Group. When using "
 "Usercentrics, use the exact same label for the Script as Usercentrics."
@@ -666,27 +865,27 @@ msgstr ""
 "verwendet. Wenn Sie Usercentrics verwenden, verwenden Sie genau die gleiche "
 "Bezeichnung für das Skript wie Usercentrics."
 
-#: lib/modules/custom/custom.php:63
+#: lib/modules/custom/custom.php:47
 msgid "ID"
 msgstr "ID"
 
-#: lib/modules/custom/custom.php:64
+#: lib/modules/custom/custom.php:48
 msgid "Each Script needs an unique ID."
 msgstr "Jedes Skript benötigt eine eindeutige ID."
 
-#: lib/modules/custom/custom.php:69
+#: lib/modules/custom/custom.php:53
 msgid "URL"
 msgstr "URL"
 
-#: lib/modules/custom/custom.php:70
+#: lib/modules/custom/custom.php:54
 msgid "Script will be attached from this URL"
 msgstr "Skript wird von dieser URL angehängt"
 
-#: lib/modules/custom/custom.php:75
+#: lib/modules/custom/custom.php:59
 msgid "Snippet"
 msgstr "Snippet"
 
-#: lib/modules/custom/custom.php:76
+#: lib/modules/custom/custom.php:60
 msgid "Snippet will be saved in a .JS-file and attached."
 msgstr "Das Snippet wird in einer . JS-Datei und angehängt."
 
@@ -773,8 +972,8 @@ msgid "Activate"
 msgstr "Aktivieren"
 
 #: lib/modules/facebook/facebook.php:36
-#: lib/modules/google_analytics/google_analytics.php:47
-#: lib/modules/google_tag_manager/google_tag_manager.php:36
+#: lib/modules/google_analytics/google_analytics.php:52
+#: lib/modules/google_tag_manager/google_tag_manager.php:41
 #: lib/modules/hotjar/hotjar.php:36
 #: lib/modules/microsoft_advertising/microsoft_advertising.php:36
 #: lib/modules/mouseflow/mouseflow.php:36 lib/modules/yahoo/yahoo.php:36
@@ -786,28 +985,32 @@ msgid "Google Analytics"
 msgstr "Google Analytics"
 
 #: lib/modules/google_analytics/google_analytics.php:37
+msgid "GA4 Compatibility Mode"
+msgstr "GA4-Kompatibilitätsmodus"
+
+#: lib/modules/google_analytics/google_analytics.php:42
 msgid "Anonymize IP"
 msgstr "IP anonymisieren"
 
-#: lib/modules/google_analytics/google_analytics.php:42
+#: lib/modules/google_analytics/google_analytics.php:47
 msgid "User Identification"
-msgstr "Benutzerkennzeichen"
+msgstr "User Identifikation"
 
-#: lib/modules/google_analytics/google_analytics.php:54
+#: lib/modules/google_analytics/google_analytics.php:59
 msgid "Custom Events"
 msgstr "Benutzerdefinierte Ereignisse"
 
-#: lib/modules/google_analytics/google_analytics.php:60
+#: lib/modules/google_analytics/google_analytics.php:65
 msgid "This Label will be used as Entry Title for this Settings Group."
 msgstr ""
 "Diese Bezeichnung wird als Eintragstitel für diese Einstellungsgruppe "
 "verwendet."
 
-#: lib/modules/google_analytics/google_analytics.php:66
+#: lib/modules/google_analytics/google_analytics.php:71
 msgid "Event Trigger"
 msgstr "Ereignisauslöser"
 
-#: lib/modules/google_analytics/google_analytics.php:67
+#: lib/modules/google_analytics/google_analytics.php:72
 msgid ""
 "Selected trigger will be monitored for event action, see https://www."
 "w3schools.com/jquery/jquery_events.asp"
@@ -815,19 +1018,19 @@ msgstr ""
 "Ausgewählter Trigger wird auf Ereignisaktionen überwacht, siehe https://www."
 "w3schools.com/jquery/jquery_events.asp"
 
-#: lib/modules/google_analytics/google_analytics.php:73
+#: lib/modules/google_analytics/google_analytics.php:78
 msgid "DOM Element"
 msgstr "DOM-Element"
 
-#: lib/modules/google_analytics/google_analytics.php:74
+#: lib/modules/google_analytics/google_analytics.php:79
 msgid "DOM Selector (e.g. .contact_form, #submit)"
 msgstr "DOM-Selektor (z.B. .contact_form, #submit)"
 
-#: lib/modules/google_analytics/google_analytics.php:81
+#: lib/modules/google_analytics/google_analytics.php:86
 msgid "Scroll Percentage"
 msgstr "Scroll-Prozentsatz"
 
-#: lib/modules/google_analytics/google_analytics.php:82
+#: lib/modules/google_analytics/google_analytics.php:87
 msgid ""
 "Requires Event Trigger set to \"scroll\". This Event will be triggered once "
 "scrolling has reached percentage of the DOM element set above. Use \"html\" "
@@ -841,43 +1044,43 @@ msgstr ""
 "kein Prozentsatz festgelegt ist, wird das Ereignis ausgelöst, wenn das "
 "Element angezeigt wird."
 
-#: lib/modules/google_analytics/google_analytics.php:89
+#: lib/modules/google_analytics/google_analytics.php:94
 msgid "eventCategory"
 msgstr "eventCategory"
 
-#: lib/modules/google_analytics/google_analytics.php:90
+#: lib/modules/google_analytics/google_analytics.php:95
 msgid "Typically the object that was interacted with (e.g. \"Video\")"
 msgstr "Typischerweise das Objekt, mit dem interagiert wurde (z.B. \"Video\")"
 
-#: lib/modules/google_analytics/google_analytics.php:95
+#: lib/modules/google_analytics/google_analytics.php:100
 msgid "eventAction"
 msgstr "EventAction"
 
-#: lib/modules/google_analytics/google_analytics.php:96
+#: lib/modules/google_analytics/google_analytics.php:101
 msgid "The type of interaction (e.g. \"play\")"
 msgstr "Die Art der Interaktion (z.B. \"Play\")"
 
-#: lib/modules/google_analytics/google_analytics.php:101
+#: lib/modules/google_analytics/google_analytics.php:106
 msgid "eventLabel"
 msgstr "eventLabel"
 
-#: lib/modules/google_analytics/google_analytics.php:102
+#: lib/modules/google_analytics/google_analytics.php:107
 msgid "Useful for categorizing events (e.g. \"Fall Campaign\")"
 msgstr "Nützlich zur Kategorisierung von Ereignissen (z.B. \"Herbstkampagne\")"
 
-#: lib/modules/google_analytics/google_analytics.php:107
+#: lib/modules/google_analytics/google_analytics.php:112
 msgid "eventValue"
 msgstr "eventValue"
 
-#: lib/modules/google_analytics/google_analytics.php:108
+#: lib/modules/google_analytics/google_analytics.php:113
 msgid "A numeric value associated with the event (e.g. 42)"
 msgstr "Ein numerischer Wert, der dem Ereignis zugeordnet ist (z. B. 42)"
 
-#: lib/modules/google_analytics/google_analytics.php:113
+#: lib/modules/google_analytics/google_analytics.php:118
 msgid "Active Page"
 msgstr "Aktive Seite"
 
-#: lib/modules/google_analytics/google_analytics.php:114
+#: lib/modules/google_analytics/google_analytics.php:119
 msgid ""
 "Optional, if you do not want to apply this event globally on site, but on a "
 "specific page."
@@ -885,11 +1088,11 @@ msgstr ""
 "Optional, wenn Sie dieses Ereignis nicht global vor Ort, sondern auf einer "
 "bestimmten Seite anwenden möchten."
 
-#: lib/modules/google_analytics/google_analytics.php:119
+#: lib/modules/google_analytics/google_analytics.php:124
 msgid "Non Interaction"
 msgstr "Keine Interaktion"
 
-#: lib/modules/google_analytics/google_analytics.php:120
+#: lib/modules/google_analytics/google_analytics.php:125
 msgid ""
 "Custom Events will reduce bounce rate in Analytics. Activate this to avoid "
 "reducing bounce rate by this event."
@@ -909,6 +1112,10 @@ msgstr "Anzeigestile"
 #: lib/modules/google_tag_manager/google_tag_manager.php:17
 msgid "Google Tag Manager"
 msgstr "Google Tag Manager"
+
+#: lib/modules/google_tag_manager/google_tag_manager.php:36
+msgid "Activate Consent Mode"
+msgstr "Einwilligungsmodus aktivieren"
 
 #: lib/modules/hotjar/hotjar.php:17
 msgid "Hotjar"
@@ -932,11 +1139,11 @@ msgstr "Insights Tracking ID"
 
 #: lib/modules/mailchimp/mailchimp.php:17
 msgid "Mailchimp"
-msgstr ""
+msgstr "Mailchimp"
 
 #: lib/modules/mailchimp/mailchimp.php:36
 msgid "Mailchimp Script URL"
-msgstr ""
+msgstr "Mailchimp-Skript-URL"
 
 #: lib/modules/microsoft_advertising/microsoft_advertising.php:17
 msgid "Microsoft Advertising"
