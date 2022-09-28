@@ -4,7 +4,7 @@ Version: 2.0.00
 Plugin Name: SV Tracking Manager
 Text Domain: sv_tracking_manager
 Description: This lightweight plugin is an advanced tracking manager and allows you to implement various tags from different tracking providers.
-Plugin URI: https://straightvisions.com/
+Plugin URI: https://straightvisions.com
 Author: straightvisions GmbH
 Author URI: https://straightvisions.com
 Domain Path: /languages
