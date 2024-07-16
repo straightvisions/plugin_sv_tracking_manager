@@ -5,7 +5,7 @@ Tags: tracking, analytics, gdpr, dsgvo, usercentrics, cookie banner, bing, faceb
 Requires PHP: 8.0
 Requires at least: 6.0
 Tested up to: 6.5.5
-Stable tag: 2.0.00
+Stable tag: 2.0.01
 License: GPL-3.0-or-later
 License URI: https://www.gnu.org/licenses/gpl-3.0-standalone.html
 
@@ -63,6 +63,9 @@ This plugin is build to work out-of-the-box. Installation is quite simple.
 4. Custom Events for Google Analytics
 
 == Changelog ==
+
+= 2.0.01 =
+* Core Update
 
 = 2.0.00 =
 * Core Update
@@ -153,7 +156,7 @@ This plugin is build to work out-of-the-box. Installation is quite simple.
 Initial Release
 
 == Upgrade Notice ==
-Core Update, several optimizations
+Core Update
 
 == Missing a feature? ==
 
